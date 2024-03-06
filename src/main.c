@@ -1,27 +1,16 @@
-#include <stdlib.h> /* for exit */
+#include <stdlib.h> // for exit
 #include <string.h>
 #include <getopt.h>
-#include <stdio.h> /* for printf */
+#include <stdio.h> 
 
-#define TABLE_SIZE 67
-
-void cipher(int input, int offset_value);
-void decipher(int input, int offset_value);
+#include "functionsCD.h"
+#include "constants.h"
 
 int getopt(int argc, char * const argv[], const char *optstring);
 extern char *optarg;
 extern int optind, opterr, optopt;
 
-const char cipher_table[] = {
-    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', // 0-9
-    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', // 10-19
-    'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', // 20-29
-    'U', 'V', 'W', 'X', 'Y', 'Z', // 30-35
-    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', // 36-45
-    'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', // 46-55
-    'u', 'v', 'w', 'x', 'y', 'z', // 56-61
-    ' ', '.', ',', ';', '-', //62-66
-};
+extern const char cipher_table[];
 
 int main(int argc, char *argv[])
 {
@@ -113,30 +102,4 @@ int main(int argc, char *argv[])
     }
     printf("\n");
     return 0;
-}
-
-void cipher(int input, int offset_value)
-{   
-    for (int i = 0; i < TABLE_SIZE; i++) {
-        if (input == (int) cipher_table[i]) {
-            int encrypted_index = (i + offset_value) % TABLE_SIZE;
-            printf("%c", cipher_table[encrypted_index]);
-            return;
-        }
-    }
-    // Se não estiver na tabela sai sem ser cifrado
-    printf("%c", input); 
-}
-
-void decipher(int input, int offset_value)
-{
-    for (int i = 0; i < TABLE_SIZE; i++) {
-        if (input == (int) cipher_table[i]) {
-            int deciphered_index = (i + TABLE_SIZE - offset_value) % TABLE_SIZE;
-            printf("%c", cipher_table[deciphered_index]);
-            return;
-        }
-    }
-    // Se não estiver na tabela sai sem ser cifrado
-    printf("%c", input);
 }
