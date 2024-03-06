@@ -25,7 +25,7 @@ const char cipher_table[] = {
 
 int main(int argc, char *argv[])
 {
-    int fflag, cflag, dflag, sflag;  //flags que vão dizer se os comandos foram utilizados
+    int fflag, cflag, dflag;  //flags que vão dizer se os comandos foram utilizados
     int method = 0;
     int opt;
     char key[] = "Programacao2024"; // Password default
@@ -34,7 +34,6 @@ int main(int argc, char *argv[])
     fflag = 0; 
     cflag = 0;
     dflag = 0;
-    sflag = 0;
 
     while ((opt = getopt(argc, argv, "fc:d:s:")) != -1) {
         switch (opt) {
@@ -50,7 +49,6 @@ int main(int argc, char *argv[])
                 method = atoi(optarg); 
                 break;
             case 's':
-                sflag = 1;
                 strcpy(key, optarg);  //guarda a passe num array chamado key
                 break;
             default: /* '?' is returned if neither flag is found*/
