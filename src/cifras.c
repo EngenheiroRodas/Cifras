@@ -4,15 +4,15 @@
 #include <stdio.h> /* for printf */
 
 #define TABLE_SIZE 67
-
 void cipher(int input, int offset_value);
 void decipher(int input, int offset_value);
 
 int getopt(int argc, char * const argv[], const char *optstring);
 extern char *optarg;
 extern int optind, opterr, optopt;
+int fflag;
 
-const char cipher_table[] = {
+const char cipher_table[] = { 
     '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', // 0-9
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', // 10-19
     'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', // 20-29
@@ -25,13 +25,13 @@ const char cipher_table[] = {
 
 int main(int argc, char *argv[])
 {
-    int fflag, cflag, dflag;  //flags que vão dizer se os comandos foram utilizados
+    int cflag, dflag; //flags que vão dizer se os comandos foram utilizados
     int method = 0;
     int opt;
     char key[] = "Programacao2024"; // Password default
     //senha até 1000 caracteres
-
-    fflag = 0; 
+ 
+    fflag = 0;
     cflag = 0;
     dflag = 0;
 
@@ -87,6 +87,7 @@ int main(int argc, char *argv[])
 
     int input;
     key_index = 0;
+    int counter = 0;
     while ((input = getchar()) && input != EOF) {
         if (cflag == 1) {
             if (method == 1) {
@@ -98,7 +99,8 @@ int main(int argc, char *argv[])
                 cipher(input, offset_value);
                 key_index++;
             }
-        } else if (dflag == 1) {
+        }        
+        else if (dflag == 1) {
             if (method == 1) {
                 int offset_value = offset_values[0]; // Valor de offset para caracter.
                 decipher(input, offset_value);
@@ -108,33 +110,51 @@ int main(int argc, char *argv[])
                 key_index++;
             }
         }
+        if (fflag == 1 && input != '\n') {
+            counter++;
+            if (counter % (6 * 8) == 0)
+                printf("\n");
+            if (counter % 6 == 0 && counter % (6 * 8) != 0)
+                printf("_");
+        }
     }
     printf("\n");
     return 0;
 }
 
 void cipher(int input, int offset_value)
-{   
-    for (int i = 0; i < TABLE_SIZE; i++) {
+{
+    int i;
+    for (i = 0; i < TABLE_SIZE; i++) {
         if (input == (int) cipher_table[i]) {
             int encrypted_index = (i + offset_value) % TABLE_SIZE;
             printf("%c", cipher_table[encrypted_index]);
             return;
         }
     }
+    // se se usar filtragem não sai
+    if (fflag ==1 && i == TABLE_SIZE)
+        return;
     // Se não estiver na tabela sai sem ser cifrado
     printf("%c", input); 
+    return;
+    
 }
 
 void decipher(int input, int offset_value)
 {
-    for (int i = 0; i < TABLE_SIZE; i++) {
+    int i;
+    for (i = 0; i < TABLE_SIZE; i++) {
         if (input == (int) cipher_table[i]) {
             int deciphered_index = (i + TABLE_SIZE - offset_value) % TABLE_SIZE;
             printf("%c", cipher_table[deciphered_index]);
             return;
         }
     }
+    // se se usar filtragem não sai
+    if (fflag ==1 && i == TABLE_SIZE)
+        return;
     // Se não estiver na tabela sai sem ser cifrado
-    printf("%c", input);
+    printf("%c", input); 
+    return;
 }
