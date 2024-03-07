@@ -11,6 +11,7 @@ int getopt(int argc, char * const argv[], const char *optstring);
 extern char *optarg;
 extern int optind, opterr, optopt;
 int fflag;
+int counter = 0; //global para poder ser acessado pelas funções
 
 const char cipher_table[] = { 
     '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', // 0-9
@@ -87,7 +88,6 @@ int main(int argc, char *argv[])
 
     int input;
     key_index = 0;
-    int counter = 0;
     while ((input = getchar()) && input != EOF) {
         if (cflag == 1) {
             if (method == 1) {
@@ -112,10 +112,12 @@ int main(int argc, char *argv[])
         }
         if (fflag == 1 && input != '\n') {
             counter++;
-            if (counter % (6 * 8) == 0)
-                printf("\n");
             if (counter % 6 == 0 && counter % (6 * 8) != 0)
                 printf("_");
+            if (counter % (6 * 8) == 0) {
+                printf("\n");
+                counter = 1;
+            }
         }
     }
     printf("\n");
@@ -128,6 +130,9 @@ void cipher(int input, int offset_value)
     for (i = 0; i < TABLE_SIZE; i++) {
         if (input == (int) cipher_table[i]) {
             int encrypted_index = (i + offset_value) % TABLE_SIZE;
+            if (fflag ==1 && encrypted_index == 62 && (counter % 47 == 0)) {//62 corresponde ao espaço em branco
+                return;
+            }
             printf("%c", cipher_table[encrypted_index]);
             return;
         }
@@ -151,9 +156,6 @@ void decipher(int input, int offset_value)
             return;
         }
     }
-    // se se usar filtragem não sai
-    if (fflag ==1 && i == TABLE_SIZE)
-        return;
     // Se não estiver na tabela sai sem ser cifrado
     printf("%c", input); 
     return;
