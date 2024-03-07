@@ -116,7 +116,6 @@ int main(int argc, char *argv[])
                 printf("_");
             if (counter % (6 * 8) == 0) {
                 printf("\n");
-                counter = 1;
             }
         }
     }
@@ -131,6 +130,7 @@ void cipher(int input, int offset_value)
         if (input == (int) cipher_table[i]) {
             int encrypted_index = (i + offset_value) % TABLE_SIZE;
             if (fflag ==1 && encrypted_index == 62 && (counter % 47 == 0)) {//62 corresponde ao espaço em branco
+                counter--;
                 return;
             }
             printf("%c", cipher_table[encrypted_index]);
