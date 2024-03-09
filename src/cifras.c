@@ -57,8 +57,8 @@ int main(int argc, char *argv[])
         }
     }
 
-    const int key_size = strlen(key); //tamanho da password
-    if (key_size < 4){
+    int key_size = strlen(key); //tamanho da password
+    /*if (key_size < 4){
         fprintf(stderr, "ERROR: your password must be at least 4 characters long.\n");
         exit(EXIT_FAILURE);
     }
@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
     if(cflag == 1 && dflag == 1) { // não pode decifrar e cifrar ao mesmo tempo
         fprintf(stderr, "ERROR: can't cipher and decipher at the same time, choose only one.\n");
         exit(EXIT_FAILURE);
-    }
+    }*/
 
     int offset_values[key_size]; // Array para guardar valores do offset
     int key_index = 0;
@@ -85,23 +85,22 @@ int main(int argc, char *argv[])
         }   
     }
 
-    int offset_value = 0;
-    char input;
-    key_index = 0;
-    int agregado = 0;
-    int blocos = 0;
-    int novaLinha = 1;  
-        //cipher(input, offset_value);
-    if (method == 1) {
-        offset_value = offset_values[0]; // Valor de offset para caracter.
-    }
-    else if (method == 2) {
-        offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
-    }
-
     if (cflag == 1) {
+        key_index = 0;
+        char input;
         if (fflag == 1) {
+            int agregado = 0;
+            int blocos = 0;
+            int novaLinha = 1;
             while ((scanf("%c", &input) == 1) && input != EOF) {
+                int offset_value = 0;
+                if (method == 1) {
+                    offset_value = offset_values[0]; // Valor de offset para caracter.
+                }
+                else if (method == 2) {
+                    offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
+                }
+                novaLinha = 1;
                 if (getNumberOfChar(input) != -1) {
                     key_index++;
                     if (agregado < 5) {
@@ -126,16 +125,36 @@ int main(int argc, char *argv[])
             }
         } else {
             while ((scanf("%c", &input) == 1) && input != EOF) {
+                int offset_value = 0;
+                if (method == 1) {
+                    offset_value = offset_values[0]; // Valor de offset para caracter.
+                }
+                else if (method == 2) {
+                    offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
+                }
+                cipher(input, offset_value);
                 if (getNumberOfChar(input) == -1) {
 					key_index--;
 				}
-                cipher(input, offset_value);
                 key_index++;
             }   
         }
     } else if (dflag == 1){
+        key_index = 0;
+        char input;
         if (fflag == 1) {
+            int agregado = 0;
+            int blocos = 0;
+            int novaLinha = 1;
             while ((scanf("%c", &input) == 1) && input != EOF) {
+                int offset_value = 0;
+                if (method == 1) {
+                    offset_value = offset_values[0]; // Valor de offset para caracter.
+                }
+                else if (method == 2) {
+                    offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
+                }
+                novaLinha = 1;
                 if (getNumberOfChar(input) != -1) {
                     key_index++;
                     if (agregado < 5) {
@@ -159,10 +178,17 @@ int main(int argc, char *argv[])
             }
         } else {
             while ((scanf("%c", &input) == 1) && input != EOF) {
+                int offset_value = 0;
+                if (method == 1) {
+                    offset_value = offset_values[0]; // Valor de offset para caracter.
+                }
+                else if (method == 2) {
+                    offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
+                }
+                decipher(input, offset_value);
                 if (getNumberOfChar(input) == -1) {
                     key_index--;
                 }
-                decipher(input, offset_value);
                 key_index++;
             }
         }
