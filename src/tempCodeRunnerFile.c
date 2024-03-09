@@ -1,0 +1,2 @@
+
+					printf("%c", caracte

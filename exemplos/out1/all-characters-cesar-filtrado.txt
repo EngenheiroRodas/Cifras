@@ -1,2 +1,2 @@
-K__MOLPQ_RSTUVW_XYN_Zab_cdefgh_ijklmn
-opqrst_uvwxy_z_ .,;-0_123456_789ABC_DEFGHI_J
+KMOLPQ_RSTUVW_XYNZab_cdefgh_ijklmn_opqrst_uvwxyz_ .,;-0
+123456_789ABC_DEFGHI_J
