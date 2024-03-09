@@ -10,8 +10,6 @@ void decipher(int input, int offset_value);
 int getopt(int argc, char * const argv[], const char *optstring);
 extern char *optarg;
 extern int optind, opterr, optopt;
-int fflag, dflag;
-int counter = 0; //global para poder ser acessado pelas funções
 
 const char cipher_table[] = { 
     '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', // 0-9
@@ -26,7 +24,7 @@ const char cipher_table[] = {
 
 int main(int argc, char *argv[])
 {
-    int cflag; //flags que vão dizer se os comandos foram utilizados
+    int cflag, dflag, fflag; //flags que vão dizer se os comandos foram utilizados
     int method = 0;
     int opt;
     char key[] = "Programacao2024"; // Password default
@@ -86,36 +84,70 @@ int main(int argc, char *argv[])
         }   
     }
 
-    int input;
+    int input, offset_value;
     key_index = 0;
-    while ((input = getchar()) && input != EOF) {
+    while ((input = getchar()) && input != EOF) { //cipher(input, offset_value);
+        if (method == 1) {
+            offset_value = offset_values[0]; // Valor de offset para caracter.
+        }
+        else if (method == 2) {
+            offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
+            key_index++;
+        }
+
         if (cflag == 1) {
-            if (method == 1) {
-                int offset_value = offset_values[0]; // Valor de offset para caracter.
-                cipher(input, offset_value);
+            if (fflag) {
+                int agregado = 0;
+                int blocos = 0;
+                int novaLinha = 1;
+                if (agregado < 5) {
+                    agregado++;
+                    cipher(input, offset_value); //printf
+                } else {
+                    agregado = 0;
+                    cipher(input, offset_value);
+                    if (blocos < 7) {
+                        printf("_");
+                        blocos++;
+                    } else {
+                        printf("\n");
+                        novaLinha = 0;
+                        blocos = 0;
+                    }
+                }
+                if (novaLinha == 1) {
+                printf("\n");
+                }
             }
-            else if (method == 2) {
-                int offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
+            else {
                 cipher(input, offset_value);
-                key_index++;
-            }
-        }        
-        else if (dflag == 1) {
-            if (method == 1) {
-                int offset_value = offset_values[0]; // Valor de offset para caracter.
-                decipher(input, offset_value);
-            } else if (method == 2) {
-                int offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
-                decipher(input, offset_value);
-                key_index++;
             }
         }
-        if (fflag == 1 && cflag == 1) {
-            counter++;
-            if ((counter % 6 == 0) && (counter % 48 != 0) && (counter != 0))
-                printf("_");
-            if ((counter % 48 == 0) && (counter != 0)) {
-                printf("\n");
+        else if (dflag == 1){
+            if (fflag) {
+                int agregado = 0;
+                int blocos = 0;
+                int novaLinha = 1;
+                if (agregado < 5) {
+                    agregado++;
+                    decipher(input, offset_value); //printf
+                } else {
+                    agregado = 0;
+                    decipher(input, offset_value);
+                    if (blocos < 7) {
+                        blocos++;
+                    } else {
+                        printf("\n");
+                        novaLinha = 0;
+                        blocos = 0;
+                    }
+                }
+                if (novaLinha == 1) {
+			    printf("\n");
+		        }
+            }
+            else {
+                decipher(input, offset_value);
             }
         }
     }
@@ -128,19 +160,10 @@ void cipher(int input, int offset_value)
     int i;
     for (i = 0; i < TABLE_SIZE; i++) {
         if (input == (int) cipher_table[i]) {
-            int encrypted_index = (i + offset_value) % TABLE_SIZE; // 47 pq função é chamada antes
-            if ((fflag == 1) && (encrypted_index == 62) && (counter % 47 == 0) && (counter != 0) ) {//62 corresponde ao espaço em branco
-                counter--;
-                return;
-            }
+            int encrypted_index = (i + offset_value) % TABLE_SIZE;
             printf("%c", cipher_table[encrypted_index]);
             return;
         }
-    }
-    // se se usar filtragem não sai
-    if (fflag == 1 && i >= TABLE_SIZE) {
-        counter--;
-        return;
     }
     // Se não estiver na tabela sai sem ser cifrado
     printf("%c", input); 
@@ -150,29 +173,14 @@ void cipher(int input, int offset_value)
 
 void decipher(int input, int offset_value)
 {
-    int i;
-    if (fflag == 0) {
-        for (i = 0; i < TABLE_SIZE; i++) {
-            if (input == (int) cipher_table[i]) {
-                int deciphered_index = (i + TABLE_SIZE - offset_value) % TABLE_SIZE;
-                printf("%c", cipher_table[deciphered_index]);
-                return;
-            }
-        }
-        // Se não estiver na tabela sai sem ser cifrado
-        printf("%c", input); 
-        return;
-    }
-
-    if (fflag == 1 && input != '\n') {
-        for (i = 0; i < TABLE_SIZE; i++) {
-            if (input == (int) cipher_table[i]) {
-                int deciphered_index = (i + TABLE_SIZE - offset_value) % TABLE_SIZE;
-                printf("%c", cipher_table[deciphered_index]);
-            }
-        }
-        if (i >= TABLE_SIZE) {
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        if (input == (int) cipher_table[i]) {
+            int deciphered_index = (i + TABLE_SIZE - offset_value) % TABLE_SIZE;
+            printf("%c", cipher_table[deciphered_index]);
             return;
         }
     }
+    // Se não estiver na tabela sai sem ser cifrado
+    printf("%c", input); 
+    return;
 }
