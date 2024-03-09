@@ -4,9 +4,15 @@
 #include <stdio.h> /* for printf */
 
 #define TABLE_SIZE 67
-void cipher(char input, int offset_value);
-void decipher(char input, int offset_value);
-int getNumberOfChar(char caracter);
+#define CESAR 1
+#define VIGENERE 2
+
+// devolve o valor de tabela do input
+int getIndex(char caracter);
+// codifica e imprime o caracter de input
+void encode(char input, int offset_value); 
+// descodifica e imprime o caracter codificado
+void decode(char input, int offset_value);
 
 int getopt(int argc, char * const argv[], const char *optstring);
 extern char *optarg;
@@ -29,7 +35,6 @@ int main(int argc, char *argv[])
     int method = 0;
     int opt;
     char key[] = "Programacao2024"; // Password default
-    //senha até 1000 caracteres
  
     fflag = 0;
     cflag = 0;
@@ -58,12 +63,12 @@ int main(int argc, char *argv[])
     }
 
     int key_size = strlen(key); //tamanho da password
-    /*if (key_size < 4){
+    if (key_size < 4){ //se password for menor que 4 dá erro
         fprintf(stderr, "ERROR: your password must be at least 4 characters long.\n");
         exit(EXIT_FAILURE);
     }
 
-    if (method >= 3){
+    if (method >= 3){ //para a fase 1 o método ou pode ser 1 ou 2
         fprintf(stderr, "ERROR: ciphering method must be either 1 or 2.\n");
         exit(EXIT_FAILURE);
     }
@@ -71,10 +76,11 @@ int main(int argc, char *argv[])
     if(cflag == 1 && dflag == 1) { // não pode decifrar e cifrar ao mesmo tempo
         fprintf(stderr, "ERROR: can't cipher and decipher at the same time, choose only one.\n");
         exit(EXIT_FAILURE);
-    }*/
+    }
 
     int offset_values[key_size]; // Array para guardar valores do offset
-    int key_index = 0;
+    int key_index = 0; 
+    
     // Calcula valores de offset na password
     for (int i = 0; key[i] != '\0'; i++) {
         for (int j = 0; j < TABLE_SIZE; j++) {
@@ -85,36 +91,39 @@ int main(int argc, char *argv[])
         }   
     }
 
+
+
+
+    char input;
+    key_index = 0;
+    int offset_value = offset_values[0]; // Valor de offset para caracter.
+    int agregado = 0; // agregado de no máximo 6 letras
+    int blocos = 0; // conjunto de no máximo 8 blocos
+    int novaLinha = 1; //para dar \n no final
+
     if (cflag == 1) {
-        key_index = 0;
-        char input;
         if (fflag == 1) {
-            int agregado = 0;
-            int blocos = 0;
-            int novaLinha = 1;
             while ((scanf("%c", &input) == 1) && input != EOF) {
-                int offset_value = 0;
-                if (method == 1) {
-                    offset_value = offset_values[0]; // Valor de offset para caracter.
-                }
-                else if (method == 2) {
+                novaLinha = 1;
+                if (method == VIGENERE) {
                     offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
                 }
-                novaLinha = 1;
-                if (getNumberOfChar(input) != -1) {
+                /* getIndex tem de ser diferente de -1(porque este valor indica que input não está na tabela) 
+                para o caracter poder sair, já que na formatação elementos não pertencentes da tabela são eliminados*/
+                if (getIndex(input) != -1) { 
                     key_index++;
                     if (agregado < 5) {
                         agregado++;
-                        cipher(input, offset_value); //printf
+                        encode(input, offset_value); //printf do elemento codificado
                     } else {
                         agregado = 0;
-                        cipher(input, offset_value);
+                        encode(input, offset_value); //printf do elemento codificado
                         if (blocos < 7) {
-                            printf("_");
+                            printf("_"); //insere underscore quando agregado = 6
                             blocos++;
                         } else {
-                            printf("\n");
-                            novaLinha = 0;
+                            printf("\n"); //insere '\n' quando número de blocos = 8
+                            novaLinha = 0; // se no final do programa a última operação tiver sido printf("\n"), não a volta a repetir
                             blocos = 0;
                         }
                     }
@@ -125,49 +134,38 @@ int main(int argc, char *argv[])
             }
         } else {
             while ((scanf("%c", &input) == 1) && input != EOF) {
-                int offset_value = 0;
-                if (method == 1) {
-                    offset_value = offset_values[0]; // Valor de offset para caracter.
-                }
-                else if (method == 2) {
+                if (method == CESAR) {
+                    encode(input, offset_value); //printf do elemento codificado
+                } else if (method == VIGENERE) {
                     offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
+                    encode(input, offset_value); //printf do elemento codificado
+                    if (getIndex(input) == -1) {
+                        key_index--; //se não pertencer à tabela, o elemento não é codificado, logo a chave não deve avançar
+                    }
                 }
-                cipher(input, offset_value);
-                if (getNumberOfChar(input) == -1) {
-					key_index--;
-				}
-                key_index++;
-            }   
+                key_index++; //avança um elemento na chave
+            } 
         }
     } else if (dflag == 1){
-        key_index = 0;
-        char input;
         if (fflag == 1) {
-            int agregado = 0;
-            int blocos = 0;
-            int novaLinha = 1;
             while ((scanf("%c", &input) == 1) && input != EOF) {
-                int offset_value = 0;
-                if (method == 1) {
-                    offset_value = offset_values[0]; // Valor de offset para caracter.
-                }
-                else if (method == 2) {
+                novaLinha = 1;
+                if (method == VIGENERE) {
                     offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
                 }
-                novaLinha = 1;
-                if (getNumberOfChar(input) != -1) {
+                if (getIndex(input) != -1) {
                     key_index++;
                     if (agregado < 5) {
                         agregado++;
-                        decipher(input, offset_value); //printf
+                        decode(input, offset_value); //printf do elemento descodificado
                     } else {
-                        agregado = 0;
-                        decipher(input, offset_value);
+                        agregado = 0; 
+                        decode(input, offset_value); //printf do elemento descodificado
                         if (blocos < 7) {
                             blocos++;
                         } else {
                             printf("\n");
-                            novaLinha = 0;
+                            novaLinha = 0; // se no final do programa a última operação tiver sido printf("\n"), não a volta a repetir
                             blocos = 0;
                         }
                     }
@@ -178,57 +176,89 @@ int main(int argc, char *argv[])
             }
         } else {
             while ((scanf("%c", &input) == 1) && input != EOF) {
-                int offset_value = 0;
-                if (method == 1) {
-                    offset_value = offset_values[0]; // Valor de offset para caracter.
+                if (method == CESAR) {
+                    decode(input, offset_value); //printf do elemento descodificado
                 }
-                else if (method == 2) {
+                else if (method == VIGENERE) {
                     offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
+                    decode(input, offset_value); //printf do elemento descodificado
+                    if (getIndex(input) == -1) {
+                        key_index--; //se não pertencer à tabela, o elemento não é descodificado, logo a chave não deve avançar
+                    }
                 }
-                decipher(input, offset_value);
-                if (getNumberOfChar(input) == -1) {
-                    key_index--;
-                }
-                key_index++;
+                key_index++; //avança um elemento na chave
             }
         }
     }
     return 0;
 }
 
-int getNumberOfChar(char input) {
+
+/*
+ * Function:  getIndex 
+ * --------------------
+ * devolve o valor de tabela do input:
+ *
+ * Parâmetros: caracter de input
+ *
+ * Returns: o valor da tabela do caracter de input
+ *          se o valor não estiver na tabela devolve -1
+ */
+int getIndex(char input) {
 	int i;
 	for(i= 0; i<TABLE_SIZE; i++) {
 		if (input == cipher_table[i]) {
-			return i; // da numero do caracter
+			return i; 
 		}
 	}
 	return -1;
 }
 
-void cipher(char input, int offset_value)
+/*
+ * Function:  encode 
+ * --------------------
+ * codifica e imprime o caracter de input:
+ *
+ * input: caracter de input tranformado para o valor de tabela por getIndex(input)
+ * offset_value: o valor do offset
+ * 
+ * Returns: imprime para stdout o input codificado, usando encoded = (input + offset) % 67 
+ */
+void encode(char input, int offset_value)
 {
-    int input_num = getNumberOfChar(input); 
+    // Se estiver na tabela é codificado 
+    int input_num = getIndex(input); 
     if (0 <= input_num && input_num < TABLE_SIZE) {
         printf("%c", cipher_table[(input_num + offset_value) % TABLE_SIZE]);
         return;
     }
-    // Se não estiver na tabela sai sem ser cifrado
+    // Se o input não estiver na tabela, sai sem ser modificado
     else {
     printf("%c", input); 
     return;
     }
 }
 
-void decipher(char input, int offset_value)
+/*
+ * Function:  decode 
+ * --------------------
+ * descodifica e imprime o caracter codificado:
+ *
+ * input: caracter de input codificado, tranformado para o valor de tabela por getIndex(input)
+ * offset_value: o valor do offset
+ * 
+ * Returns: imprime para stdout o input descodificado, usando decoded = (encoded_char - offset + 67) % 67 
+ */
+void decode(char input, int offset_value)
 {
-    int input_num = getNumberOfChar(input);
+    int input_num = getIndex(input);
+    // Se estiver na tabela é codificado
     if (0 <= input_num && input_num < TABLE_SIZE) {
         printf("%c", cipher_table[(input_num + TABLE_SIZE - offset_value) % TABLE_SIZE]);
         return;
     }
 
-    // Se não estiver na tabela sai sem ser cifrado
+    // Se o input não estiver na tabela, sai sem ser modificado
     else {
     printf("%c", input); 
     return;
