@@ -1,11 +1,14 @@
 #include <stdlib.h> /* for exit */
 #include <string.h>
-#include <getopt.h>
+#include <unistd.h>
 #include <stdio.h> /* for printf */
 
 #define TABLE_SIZE 67
 #define CESAR 1
 #define VIGENERE 2
+
+#define NEEDED 1
+#define NOT_NEEDED 0 
 
 // devolve o valor de tabela do input
 int getIndex(char caracter);
@@ -31,26 +34,26 @@ const char cipher_table[] = {
 
 int main(int argc, char *argv[])
 {
-    int cflag, dflag, fflag; //flags que vão dizer se os comandos foram utilizados
+    int cflag, fflag; //flags que vão dizer se os comandos foram utilizados
     int method = 0;
     int opt;
     char key[] = "Programacao2024"; // Password default
  
     fflag = 0;
-    cflag = 0;
-    dflag = 0;
+    cflag = 1;
 
-    while ((opt = getopt(argc, argv, "fc:d:s:")) != -1) {
+    while ((opt = getopt(argc, argv, "fc:d:s:")) != -1) { // lê as opções fornecidas através da linha de comando
+    
         switch (opt) {
             case 'f':
                 fflag = 1;
                 break;
             case 'c':
-                cflag = 1;
+                cflag = 1; //cifrar = 1, logo cifrar
                 method = atoi(optarg);
                 break;
             case 'd':
-                dflag = 1;
+                cflag = 0; //cifrar = 0, logo decifrar
                 method = atoi(optarg); 
                 break;
             case 's':
@@ -73,11 +76,6 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    if(cflag == 1 && dflag == 1) { // não pode decifrar e cifrar ao mesmo tempo
-        fprintf(stderr, "ERROR: can't cipher and decipher at the same time, choose only one.\n");
-        exit(EXIT_FAILURE);
-    }
-
     int offset_values[key_size]; // Array para guardar valores do offset
     int key_index = 0; 
     
@@ -91,20 +89,17 @@ int main(int argc, char *argv[])
         }   
     }
 
-
-
-
     char input;
     key_index = 0;
     int offset_value = offset_values[0]; // Valor de offset para caracter.
     int agregado = 0; // agregado de no máximo 6 letras
     int blocos = 0; // conjunto de no máximo 8 blocos
-    int novaLinha = 1; //para dar \n no final
-
+    
     if (cflag == 1) {
         if (fflag == 1) {
+            int novaLinha = NEEDED; //para dar \n no final
             while ((scanf("%c", &input) == 1) && input != EOF) {
-                novaLinha = 1;
+                novaLinha = NEEDED;
                 if (method == VIGENERE) {
                     offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
                 }
@@ -123,13 +118,13 @@ int main(int argc, char *argv[])
                             blocos++;
                         } else {
                             printf("\n"); //insere '\n' quando número de blocos = 8
-                            novaLinha = 0; // se no final do programa a última operação tiver sido printf("\n"), não a volta a repetir
+                            novaLinha = NOT_NEEDED; // se no final do programa a última operação tiver sido printf("\n"), não a volta a repetir
                             blocos = 0;
                         }
                     }
                 }
             }
-            if (novaLinha == 1) {
+            if (novaLinha == NEEDED) { // se no final do programa a última operação não tiver sido printf("\n")
                 printf("\n");
             }
         } else {
@@ -146,10 +141,11 @@ int main(int argc, char *argv[])
                 key_index++; //avança um elemento na chave
             } 
         }
-    } else if (dflag == 1){
+    } else {
         if (fflag == 1) {
+            int novaLinha = NEEDED; //para dar \n no final
             while ((scanf("%c", &input) == 1) && input != EOF) {
-                novaLinha = 1;
+                novaLinha = NEEDED;
                 if (method == VIGENERE) {
                     offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
                 }
@@ -165,21 +161,20 @@ int main(int argc, char *argv[])
                             blocos++;
                         } else {
                             printf("\n");
-                            novaLinha = 0; // se no final do programa a última operação tiver sido printf("\n"), não a volta a repetir
+                            novaLinha = NOT_NEEDED; // se no final do programa a última operação tiver sido printf("\n"), não a volta a repetir
                             blocos = 0;
                         }
                     }
                 }
             }
-            if (novaLinha == 1) {
+            if (novaLinha == NEEDED) { // se no final do programa a última operação não tiver sido printf("\n")
                 printf("\n");
             }
         } else {
             while ((scanf("%c", &input) == 1) && input != EOF) {
                 if (method == CESAR) {
                     decode(input, offset_value); //printf do elemento descodificado
-                }
-                else if (method == VIGENERE) {
+                } else if (method == VIGENERE) {
                     offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
                     decode(input, offset_value); //printf do elemento descodificado
                     if (getIndex(input) == -1) {
@@ -192,7 +187,6 @@ int main(int argc, char *argv[])
     }
     return 0;
 }
-
 
 /*
  * Function:  getIndex 
