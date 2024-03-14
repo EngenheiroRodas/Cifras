@@ -1,9 +1,34 @@
-#include "functionsf1.h"
-#include "constants.h"
-#include <stdio.h>
+#include "cifras.h"
 
-extern const char cipher_table[];
+#define TABLE_SIZE 67
 
+#define CESAR 1
+#define VIGENERE 2
+
+#define NEEDED 1
+#define NOT_NEEDED 0
+
+const char cipher_table[] = {
+    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', // 0-9
+    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', // 10-19
+    'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', // 20-29
+    'U', 'V', 'W', 'X', 'Y', 'Z', // 30-35
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', // 36-45
+    'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', // 46-55
+    'u', 'v', 'w', 'x', 'y', 'z', // 56-61
+    ' ', '.', ',', ';', '-', //62-66
+};
+
+/*
+ * Function:  getIndex 
+ * --------------------
+ * devolve o valor de tabela do input:
+ *
+ * Parâmetros: caracter de input
+ *
+ * Returns: o valor da tabela do caracter de input
+ *          se o valor não estiver na tabela devolve -1
+ */
 int getIndex(char input) {
 	int i;
 	for(i= 0; i<TABLE_SIZE; i++) {
@@ -14,6 +39,16 @@ int getIndex(char input) {
 	return -1;
 }
 
+/*
+ * Function:  encode 
+ * --------------------
+ * codifica e imprime o caracter de input:
+ *
+ * input: caracter de input tranformado para o valor de tabela por getIndex(input)
+ * offset_value: o valor do offset
+ * 
+ * Returns: imprime para stdout o input codificado, usando encoded = (input + offset) % 67 
+ */
 void encode(char input, int offset_value)
 {
     // Se estiver na tabela é codificado 
@@ -29,6 +64,16 @@ void encode(char input, int offset_value)
     }
 }
 
+/*
+ * Function:  decode 
+ * --------------------
+ * descodifica e imprime o caracter codificado:
+ *
+ * input: caracter de input codificado, tranformado para o valor de tabela por getIndex(input)
+ * offset_value: o valor do offset
+ * 
+ * Returns: imprime para stdout o input descodificado, usando decoded = (encoded_char - offset + 67) % 67 
+ */
 void decode(char input, int offset_value)
 {
     int input_num = getIndex(input);
@@ -45,11 +90,16 @@ void decode(char input, int offset_value)
     }
 }
 
-int offset_calculator(char *key)
+int *offset_calculator(char *key)
 {
     int key_size = strlen(key); //tamanho da password
-    int offset_values[key_size]; // Array para guardar valores do offset
+    int *offset_values = malloc(key_size * sizeof(int)); // allocate memory for the offset values
     int key_index = 0; 
+
+    if (offset_values == NULL) {
+        printf("Memory allocation failed\n");
+        return NULL; // return NULL to indicate failure
+    }
 
     for (int i = 0; key[i] != '\0'; i++) {
         for (int j = 0; j < TABLE_SIZE; j++) {
