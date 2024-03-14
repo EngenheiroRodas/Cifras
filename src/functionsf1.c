@@ -154,6 +154,19 @@ void format_c(char *key, int *offset_values, int fflag, int method)
         if (novaLinha == NEEDED) { // se no final do programa a última operação não tiver sido printf("\n")
             printf("\n");
         }
+    } else {
+        while ((scanf("%c", &input) == 1) && input != EOF) {
+            if (method == CESAR) {
+                encode(input, offset_value); //printf do elemento codificado
+            } else if (method == VIGENERE) {
+                offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
+                encode(input, offset_value); //printf do elemento codificado
+                if (getIndex(input) == -1) {
+                    key_index--; //se não pertencer à tabela, o elemento não é codificado, logo a chave não deve avançar
+                }
+            }
+            key_index++; //avança um elemento na chave
+        } 
     }
     return;
 }
