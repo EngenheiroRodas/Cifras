@@ -2,7 +2,6 @@
 #include "constants.h"
 #include <stdio.h>
 
-
 extern const char cipher_table[];
 
 int getIndex(char input) {
@@ -62,4 +61,104 @@ int offset_calculator(char *key)
     }
 
     return offset_values;
+}
+
+void format_c(char *key, int *offset_values, int fflag, int method) 
+{
+    int key_size = strlen(key); //tamanho da password
+    int offset_value = offset_values[0]; // Valor de offset para caracter.
+    
+    int agregado = 0; // agregado de no máximo 6 letras
+    int blocos = 0; // conjunto de no máximo 8 blocos
+    int key_index = 0;
+
+    char input;
+    if (fflag == 1) {
+        int novaLinha = NEEDED; //para dar \n no final
+        while ((scanf("%c", &input) == 1) && input != EOF) {
+            novaLinha = NEEDED;
+            if (method == VIGENERE) {
+                offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
+            }
+            /* getIndex tem de ser diferente de -1(porque este valor indica que input não está na tabela) 
+            para o caracter poder sair, já que na formatação elementos não pertencentes da tabela são eliminados*/
+            if (getIndex(input) != -1) { 
+                key_index++;
+                if (agregado < 5) {
+                    agregado++;
+                    encode(input, offset_value); //printf do elemento codificado
+                } else {
+                    agregado = 0;
+                    encode(input, offset_value); //printf do elemento codificado
+                    if (blocos < 7) {
+                        printf("_"); //insere underscore quando agregado = 6
+                        blocos++;
+                    } else {
+                        printf("\n"); //insere '\n' quando número de blocos = 8
+                        novaLinha = NOT_NEEDED; // se no final do programa a última operação tiver sido printf("\n"), não a volta a repetir
+                        blocos = 0;
+                    }
+                }
+            }
+        }
+        if (novaLinha == NEEDED) { // se no final do programa a última operação não tiver sido printf("\n")
+            printf("\n");
+        }
+    }
+    return;
+}
+
+void format_d(char *key, int *offset_values, int fflag, int method) 
+{
+    int key_size = strlen(key); //tamanho da password
+    int offset_value = offset_values[0]; // Valor de offset para caracter.
+    
+    int agregado = 0; // agregado de no máximo 6 letras
+    int blocos = 0; // conjunto de no máximo 8 blocos
+    int key_index = 0;
+
+    char input;
+    if (fflag == 1) {
+        int novaLinha = NEEDED; //para dar \n no final
+        while ((scanf("%c", &input) == 1) && input != EOF) {
+            novaLinha = NEEDED;
+            if (method == VIGENERE) {
+                offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
+            }
+            if (getIndex(input) != -1) {
+                key_index++;
+                if (agregado < 5) {
+                    agregado++;
+                    decode(input, offset_value); //printf do elemento descodificado
+                } else {
+                    agregado = 0; 
+                    decode(input, offset_value); //printf do elemento descodificado
+                    if (blocos < 7) {
+                        blocos++;
+                    } else {
+                        printf("\n");
+                        novaLinha = NOT_NEEDED; // se no final do programa a última operação tiver sido printf("\n"), não a volta a repetir
+                        blocos = 0;
+                    }
+                }
+            }
+        }
+        if (novaLinha == NEEDED) { // se no final do programa a última operação não tiver sido printf("\n")
+            printf("\n");
+        }
+    } else {
+        while ((scanf("%c", &input) == 1) && input != EOF) {
+            if (method == CESAR) {
+                decode(input, offset_value); //printf do elemento descodificado
+            } else if (method == VIGENERE) {
+                offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
+                decode(input, offset_value); //printf do elemento descodificado
+                if (getIndex(input) == -1) {
+                    key_index--; //se não pertencer à tabela, o elemento não é descodificado, logo a chave não deve avançar
+                }
+            }
+            key_index++; //avança um elemento na chave
+        }
+    }
+    return;
 }
