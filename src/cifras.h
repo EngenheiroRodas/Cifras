@@ -17,8 +17,8 @@ char decode(char input, int offset_value);
 // converte as letras da password em números da tabela, retornando esse vetor
 int *offset_calculator(char *key);
 // formata, ou não a saída para a cifra
-void filter_c(FILE *output_stream, char *key, int *offset_values, int fflag, int method);
+void filter_c(FILE *input_stream, FILE *output_stream, char *key, int *offset_values, int fflag, int method);
 // formata, ou não a saída para a decifra
-void filter_d(FILE *output_stream, char *key, int *offset_values, int fflag, int method);
+void filter_d(FILE *input_stream, FILE *output_stream, char *key, int *offset_values, int fflag, int method);
 
 #endif

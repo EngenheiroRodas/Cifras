@@ -119,7 +119,7 @@ int *offset_calculator(char *key)
     return offset_values;
 }
 
-void filter_c(FILE *output_stream, char *key, int *offset_values, int fflag, int method) 
+void filter_c(FILE *input_stream, FILE *output_stream, char *key, int *offset_values, int fflag, int method) 
 {
     int key_size = strlen(key); //tamanho da password
     int offset_value = offset_values[0]; // Valor de offset para caracter.
@@ -131,7 +131,7 @@ void filter_c(FILE *output_stream, char *key, int *offset_values, int fflag, int
     char input, output;
     if (fflag == 1) {
         int novaLinha = NEEDED; //para dar \n no final
-        while ((scanf("%c", &input) == 1) && input != EOF) {
+        while ((fscanf(input_stream, "%c", &input) == 1) && input != EOF) {
             novaLinha = NEEDED;
             if (method == VIGENERE) {
                 offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
@@ -163,7 +163,7 @@ void filter_c(FILE *output_stream, char *key, int *offset_values, int fflag, int
             fprintf(output_stream, "\n");
         }
     } else {
-        while ((scanf("%c", &input) == 1) && input != EOF) {
+        while ((fscanf(input_stream, "%c", &input) == 1) && input != EOF) {
             if (method == CESAR) {
                 output = encode(input, offset_value); //printf do elemento codificado
                 fprintf(output_stream,"%c", output);
@@ -181,7 +181,7 @@ void filter_c(FILE *output_stream, char *key, int *offset_values, int fflag, int
     return;
 }
 
-void filter_d(FILE *output_stream, char *key, int *offset_values, int fflag, int method) 
+void filter_d(FILE *input_stream, FILE *output_stream, char *key, int *offset_values, int fflag, int method) 
 {
     int key_size = strlen(key); //tamanho da password
     int offset_value = offset_values[0]; // Valor de offset para caracter.
@@ -193,7 +193,7 @@ void filter_d(FILE *output_stream, char *key, int *offset_values, int fflag, int
     char input, output;
     if (fflag == 1) {
         int novaLinha = NEEDED; //para dar \n no final
-        while ((scanf("%c", &input) == 1) && input != EOF) {
+        while ((fscanf(input_stream, "%c", &input) == 1) && input != EOF) {
             novaLinha = NEEDED;
             if (method == VIGENERE) {
                 offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
@@ -222,7 +222,7 @@ void filter_d(FILE *output_stream, char *key, int *offset_values, int fflag, int
             fprintf(output_stream, "\n");
         }
     } else {
-        while ((scanf("%c", &input) == 1) && input != EOF) {
+        while ((fscanf(input_stream, "%c", &input) == 1) && input != EOF) {
             if (method == CESAR) {
                 output = decode(input, offset_value); //printf do elemento descodificado
                 fprintf(output_stream,"%c", output);
