@@ -123,7 +123,7 @@ int *offset_calculator(char *key)
     return offset_values;
 }
 
-void format_c(char *key, int *offset_values, int fflag, int method) 
+void filter_c(char *key, int *offset_values, int fflag, int method) 
 {
     int key_size = strlen(key); //tamanho da password
     int offset_value = offset_values[0]; // Valor de offset para caracter.
@@ -181,7 +181,7 @@ void format_c(char *key, int *offset_values, int fflag, int method)
     return;
 }
 
-void format_d(char *key, int *offset_values, int fflag, int method) 
+void filter_d(char *key, int *offset_values, int fflag, int method) 
 {
     int key_size = strlen(key); //tamanho da password
     int offset_value = offset_values[0]; // Valor de offset para caracter.
@@ -235,3 +235,4 @@ void format_d(char *key, int *offset_values, int fflag, int method)
     }
     return;
 }
+

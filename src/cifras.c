@@ -6,14 +6,17 @@ extern int optind, opterr, optopt;
  
 int main(int argc, char *argv[])
 {
-    int cflag, fflag; //flags que vão dizer se os comandos foram utilizados
+    int cflag, fflag, iflag, oflag; //flags que vão dizer se os comandos foram utilizados
     int method = 0;
     char key[] = "Programacao2024"; // Password default
+    char *inputFile, *outputFile;
     int opt;
     fflag = 0;
     cflag = 1;
+    iflag = 0;
+    oflag = 0;
 
-    while ((opt = getopt(argc, argv, "fc:d:s:")) != -1) { // lê as opções fornecidas através da linha de comando
+    while ((opt = getopt(argc, argv, "fc:d:s:i:o:")) != -1) { // lê as opções fornecidas através da linha de comando
     
         switch (opt) {
             case 'f':
@@ -29,6 +32,20 @@ int main(int argc, char *argv[])
                 break;
             case 's':
                 strcpy(key, optarg);  //guarda a passe num array chamado key
+                break;
+            case 'i':
+                inputFile = strdup(optarg);
+                if (inputFile == NULL) {
+                    fprintf(stderr, "Memory allocation failed.\n");
+                    exit(EXIT_FAILURE);
+                }
+                break;
+            case 'o':
+                outputFile = strdup(optarg);
+                if (inputFile == NULL) {
+                    fprintf(stderr, "Memory allocation failed.\n");
+                    exit(EXIT_FAILURE);
+                }
                 break;
             default: /* '?' is returned if neither flag is found*/
                 fprintf(stderr, "Use -h for help\n");
@@ -50,9 +67,9 @@ int main(int argc, char *argv[])
     int *offset_values = offset_calculator(key); // Array para guardar valores do offset
 
     if (cflag == 1) {
-        format_c(key, offset_values, fflag, method);
+        filter_c(key, offset_values, fflag, method);
     } else {
-        format_d(key, offset_values, fflag, method);
+        filter_d(key, offset_values, fflag, method);
     }
     
     free(offset_values);
