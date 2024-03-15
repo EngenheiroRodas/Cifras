@@ -119,7 +119,7 @@ int *offset_calculator(char *key)
     return offset_values;
 }
 
-void filter_c(char *key, int *offset_values, int fflag, int method) 
+void filter_c(FILE *output_stream, char *key, int *offset_values, int fflag, int method) 
 {
     int key_size = strlen(key); //tamanho da password
     int offset_value = offset_values[0]; // Valor de offset para caracter.
@@ -143,16 +143,16 @@ void filter_c(char *key, int *offset_values, int fflag, int method)
                 if (agregado < 5) {
                     agregado++;
                     output = encode(input, offset_value); //printf do elemento codificado
-                    printf("%c", output);
+                    fprintf(output_stream,"%c", output);
                 } else {
                     agregado = 0;
                     output = encode(input, offset_value); //printf do elemento codificado
-                    printf("%c", output);
+                    fprintf(output_stream,"%c", output);
                     if (blocos < 7) {
-                        printf("_"); //insere underscore quando agregado = 6
+                        fprintf(output_stream, "_"); //insere underscore quando agregado = 6
                         blocos++;
                     } else {
-                        printf("\n"); //insere '\n' quando número de blocos = 8
+                        fprintf(output_stream, "\n"); //insere '\n' quando número de blocos = 8
                         novaLinha = NOT_NEEDED; // se no final do programa a última operação tiver sido printf("\n"), não a volta a repetir
                         blocos = 0;
                     }
@@ -160,17 +160,17 @@ void filter_c(char *key, int *offset_values, int fflag, int method)
             }
         }
         if (novaLinha == NEEDED) { // se no final do programa a última operação não tiver sido printf("\n")
-            printf("\n");
+            fprintf(output_stream, "\n");
         }
     } else {
         while ((scanf("%c", &input) == 1) && input != EOF) {
             if (method == CESAR) {
                 output = encode(input, offset_value); //printf do elemento codificado
-                printf("%c", output);
+                fprintf(output_stream,"%c", output);
             } else if (method == VIGENERE) {
                 offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
                 output = encode(input, offset_value); //printf do elemento codificado
-                printf("%c", output);
+                fprintf(output_stream,"%c", output);
                 if (getIndex(input) == -1) {
                     key_index--; //se não pertencer à tabela, o elemento não é codificado, logo a chave não deve avançar
                 }
@@ -181,7 +181,7 @@ void filter_c(char *key, int *offset_values, int fflag, int method)
     return;
 }
 
-void filter_d(char *key, int *offset_values, int fflag, int method) 
+void filter_d(FILE *output_stream, char *key, int *offset_values, int fflag, int method) 
 {
     int key_size = strlen(key); //tamanho da password
     int offset_value = offset_values[0]; // Valor de offset para caracter.
@@ -203,15 +203,15 @@ void filter_d(char *key, int *offset_values, int fflag, int method)
                 if (agregado < 5) {
                     agregado++;
                     output = decode(input, offset_value); //printf do elemento descodificado
-                    printf("%c", output);
+                    fprintf(output_stream,"%c", output);
                 } else {
                     agregado = 0; 
                     output = decode(input, offset_value); //printf do elemento descodificado
-                    printf("%c", output);
+                    fprintf(output_stream,"%c", output);
                     if (blocos < 7) {
                         blocos++;
                     } else {
-                        printf("\n");
+                        fprintf(output_stream, "\n");
                         novaLinha = NOT_NEEDED; // se no final do programa a última operação tiver sido printf("\n"), não a volta a repetir
                         blocos = 0;
                     }
@@ -219,17 +219,17 @@ void filter_d(char *key, int *offset_values, int fflag, int method)
             }
         }
         if (novaLinha == NEEDED) { // se no final do programa a última operação não tiver sido printf("\n")
-            printf("\n");
+            fprintf(output_stream, "\n");
         }
     } else {
         while ((scanf("%c", &input) == 1) && input != EOF) {
             if (method == CESAR) {
                 output = decode(input, offset_value); //printf do elemento descodificado
-                printf("%c", output);
+                fprintf(output_stream,"%c", output);
             } else if (method == VIGENERE) {
                 offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
                 output = decode(input, offset_value); //printf do elemento descodificado
-                printf("%c", output);
+                fprintf(output_stream,"%c", output);
                 if (getIndex(input) == -1) {
                     key_index--; //se não pertencer à tabela, o elemento não é descodificado, logo a chave não deve avançar
                 }
@@ -239,4 +239,3 @@ void filter_d(char *key, int *offset_values, int fflag, int method)
     }
     return;
 }
-

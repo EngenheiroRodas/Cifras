@@ -6,15 +6,15 @@ extern int optind, opterr, optopt;
  
 int main(int argc, char *argv[])
 {
-    int cflag, fflag; //flags que vão dizer se os comandos foram utilizados
+    int cflag, fflag, oflag; //flags que vão dizer se os comandos foram utilizados
     int method = 0;
     char key[] = "Programacao2024"; // Password default
-    // char *inputFile, *outputFile;
+    char /**inputFile,*/ *outputFile = NULL;
     int opt;
     fflag = 0;
     cflag = 1;
     // iflag = 0;
-    //oflag = 0;
+    oflag = 0;
 
     while ((opt = getopt(argc, argv, "fc:d:s:i:o:")) != -1) { // lê as opções fornecidas através da linha de comando
     
@@ -39,19 +39,31 @@ int main(int argc, char *argv[])
                     fprintf(stderr, "Memory allocation failed.\n");
                     exit(EXIT_FAILURE);
                 }
-                break; 
+                break; */
             case 'o':
                 outputFile = strdup(optarg);
                 if (outputFile == NULL) {
                     fprintf(stderr, "Memory allocation failed.\n");
                     exit(EXIT_FAILURE);
                 }
-                break; */
+                oflag = 1;
+                break;
             default: /* '?' is returned if neither flag is found*/
                 fprintf(stderr, "Use -h for help\n");
                 exit(EXIT_FAILURE);
         }
     }
+    
+    FILE *output_stream = stdout; // Default to standard output
+
+    if (oflag == 1) {
+        output_stream = fopen(outputFile, "w");
+        if (output_stream == NULL) {
+            fprintf(stderr, "Error opening output file.\n");
+            exit(EXIT_FAILURE);
+        }
+    }
+
 
     int key_size = strlen(key); //tamanho da password
     if (key_size < 4){ //se password for menor que 4 dá erro
@@ -67,9 +79,9 @@ int main(int argc, char *argv[])
     int *offset_values = offset_calculator(key); // Array para guardar valores do offset
 
     if (cflag == 1) {
-        filter_c(key, offset_values, fflag, method);
+        filter_c(output_stream, key, offset_values, fflag, method);
     } else {
-        filter_d(key, offset_values, fflag, method);
+        filter_d(output_stream, key, offset_values, fflag, method);
     }
     
     free(offset_values);
