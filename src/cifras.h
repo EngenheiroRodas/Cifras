@@ -11,9 +11,9 @@ extern const char cipher_table[];
 // devolve o valor de tabela do input
 int getIndex(char caracter);
 // codifica e imprime o caracter de input
-void encode(char input, int offset_value); 
+char encode(char input, int offset_value); 
 // descodifica e imprime o caracter codificado
-void decode(char input, int offset_value);
+char decode(char input, int offset_value);
 // converte as letras da password em números da tabela, retornando esse vetor
 int *offset_calculator(char *key);
 // formata, ou não a saída para a cifra

@@ -49,18 +49,16 @@ int getIndex(char input) {
  * 
  * Returns: imprime para stdout o input codificado, usando encoded = (input + offset) % 67 
  */
-void encode(char input, int offset_value)
+char encode(char input, int offset_value)
 {
     // Se estiver na tabela é codificado 
     int input_num = getIndex(input); 
     if (0 <= input_num && input_num < TABLE_SIZE) {
-        printf("%c", cipher_table[(input_num + offset_value) % TABLE_SIZE]);
-        return;
+        return (cipher_table[(input_num + offset_value) % TABLE_SIZE]);
     }
     // Se o input não estiver na tabela, sai sem ser modificado
     else {
-    printf("%c", input); 
-    return;
+    return input; 
     }
 }
 
@@ -74,19 +72,17 @@ void encode(char input, int offset_value)
  * 
  * Returns: imprime para stdout o input descodificado, usando decoded = (encoded_char - offset + 67) % 67 
  */
-void decode(char input, int offset_value)
+char decode(char input, int offset_value)
 {
     int input_num = getIndex(input);
     // Se estiver na tabela é codificado
     if (0 <= input_num && input_num < TABLE_SIZE) {
-        printf("%c", cipher_table[(input_num + TABLE_SIZE - offset_value) % TABLE_SIZE]);
-        return;
+        return (cipher_table[(input_num + TABLE_SIZE - offset_value) % TABLE_SIZE]);
     }
 
     // Se o input não estiver na tabela, sai sem ser modificado
     else {
-    printf("%c", input); 
-    return;
+    return input;
     }
 }
 
@@ -132,7 +128,7 @@ void filter_c(char *key, int *offset_values, int fflag, int method)
     int blocos = 0; // conjunto de no máximo 8 blocos
     int key_index = 0;
 
-    char input;
+    char input, output;
     if (fflag == 1) {
         int novaLinha = NEEDED; //para dar \n no final
         while ((scanf("%c", &input) == 1) && input != EOF) {
@@ -146,10 +142,12 @@ void filter_c(char *key, int *offset_values, int fflag, int method)
                 key_index++;
                 if (agregado < 5) {
                     agregado++;
-                    encode(input, offset_value); //printf do elemento codificado
+                    output = encode(input, offset_value); //printf do elemento codificado
+                    printf("%c", output);
                 } else {
                     agregado = 0;
-                    encode(input, offset_value); //printf do elemento codificado
+                    output = encode(input, offset_value); //printf do elemento codificado
+                    printf("%c", output);
                     if (blocos < 7) {
                         printf("_"); //insere underscore quando agregado = 6
                         blocos++;
@@ -167,10 +165,12 @@ void filter_c(char *key, int *offset_values, int fflag, int method)
     } else {
         while ((scanf("%c", &input) == 1) && input != EOF) {
             if (method == CESAR) {
-                encode(input, offset_value); //printf do elemento codificado
+                output = encode(input, offset_value); //printf do elemento codificado
+                printf("%c", output);
             } else if (method == VIGENERE) {
                 offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
-                encode(input, offset_value); //printf do elemento codificado
+                output = encode(input, offset_value); //printf do elemento codificado
+                printf("%c", output);
                 if (getIndex(input) == -1) {
                     key_index--; //se não pertencer à tabela, o elemento não é codificado, logo a chave não deve avançar
                 }
@@ -190,7 +190,7 @@ void filter_d(char *key, int *offset_values, int fflag, int method)
     int blocos = 0; // conjunto de no máximo 8 blocos
     int key_index = 0;
 
-    char input;
+    char input, output;
     if (fflag == 1) {
         int novaLinha = NEEDED; //para dar \n no final
         while ((scanf("%c", &input) == 1) && input != EOF) {
@@ -202,10 +202,12 @@ void filter_d(char *key, int *offset_values, int fflag, int method)
                 key_index++;
                 if (agregado < 5) {
                     agregado++;
-                    decode(input, offset_value); //printf do elemento descodificado
+                    output = decode(input, offset_value); //printf do elemento descodificado
+                    printf("%c", output);
                 } else {
                     agregado = 0; 
-                    decode(input, offset_value); //printf do elemento descodificado
+                    output = decode(input, offset_value); //printf do elemento descodificado
+                    printf("%c", output);
                     if (blocos < 7) {
                         blocos++;
                     } else {
@@ -222,10 +224,12 @@ void filter_d(char *key, int *offset_values, int fflag, int method)
     } else {
         while ((scanf("%c", &input) == 1) && input != EOF) {
             if (method == CESAR) {
-                decode(input, offset_value); //printf do elemento descodificado
+                output = decode(input, offset_value); //printf do elemento descodificado
+                printf("%c", output);
             } else if (method == VIGENERE) {
                 offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
-                decode(input, offset_value); //printf do elemento descodificado
+                output = decode(input, offset_value); //printf do elemento descodificado
+                printf("%c", output);
                 if (getIndex(input) == -1) {
                     key_index--; //se não pertencer à tabela, o elemento não é descodificado, logo a chave não deve avançar
                 }
