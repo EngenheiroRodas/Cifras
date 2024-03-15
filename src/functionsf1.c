@@ -90,6 +90,16 @@ void decode(char input, int offset_value)
     }
 }
 
+/*
+ * Function:  calcular offsets 
+ * --------------------
+ * transforma as letras da senha em valores da tabela:
+ *
+ * input: senha
+ * 
+ * Returns: guarda num array offset_values, com o tamanho da chave, os valores da tabela de cada letra da senha, 
+ * retornando o apontador para o início desse array
+ */
 int *offset_calculator(char *key)
 {
     int key_size = strlen(key); //tamanho da password
