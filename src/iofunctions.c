@@ -1,11 +1,14 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
+
+#include "cifras.h"
 
 #define MAX_BUFFER 101
 #define INITIAL_CAPACITY 10
 #define GROWTH_FACTOR 2
 
+//diz-se qual é a stream de entrada e carrega para a memória dinamicamente para array de strings "lines"
 char **loadFile(FILE *input_stream, int *lineCounter) {
     char buffer[MAX_BUFFER];
     int numLines = 0;
@@ -60,29 +63,16 @@ char **loadFile(FILE *input_stream, int *lineCounter) {
     return lines;
 }
 
-int main() {
-    char **lines = NULL;
-    int lineCounter = 0;
-    FILE *pointer = fopen("1paragraph.txt", "r");
-    if (pointer == NULL) {
-        fprintf(stderr, "Failed to open file.\n");
-        exit(EXIT_FAILURE);
-    }
-    lines = loadFile(pointer, &lineCounter);
-    if (lineCounter == -1) {
-        fprintf(stderr, "Failed to read lines from file.\n");
-        exit(EXIT_FAILURE);
-    }
-
-    // Process or use the data stored in lines[]
-
-    // Free memory for each string
+void writeOutput(FILE *output_stream, char *lines[], int lineCounter) {
     for (int i = 0; i < lineCounter; i++) {
-        printf("%s", lines[i]);
+        fprintf(output_stream, "%s", lines[i]);
         free(lines[i]);
     }
-    // Free memory for the array of pointers
+
+    for (int i = 0; i < lineCounter; i++) {
+            free(lines[i]);
+        }
     free(lines);
 
-    return EXIT_SUCCESS;
+    return;
 }

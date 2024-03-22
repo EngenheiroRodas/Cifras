@@ -66,7 +66,7 @@ int compare_categories(const void *a, const void *b) {
     return result;
 }
 
-void writeOutput(char *linhas[]) {
+void writeOutput(FILE output_stream, char *linhas[],int lineCounter) {
     FILE *outputFile = fopen("sorted_output.txt", "w");
     if (outputFile == NULL) {
         fprintf(stderr, "ERROR: Cannot open output file. \n");

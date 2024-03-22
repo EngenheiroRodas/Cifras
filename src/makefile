@@ -2,15 +2,16 @@ CC = gcc
 FLAGS = -Wall -Wextra -O3
 MODE = -g 
 TARGET = cifras
+SRCS = cifras.c cryptor.c iofunctions.c statistics.c
+OBJS = $(SRCS:.c=.o)
 
-$(TARGET): cifras.o functionsf1.o
-	$(CC) $(FLAGS) $(MODE) -o $(TARGET) cifras.o functionsf1.o
+all-: $(TARGET)
 
-cifras.o: cifras.c cifras.h
-	$(CC) $(FLAGS) $(MODE) -c cifras.c
+$(TARGET): $(OBJS)
+	$(CC) $(FLAGS) $(MODE) -o $@ $^
 
-functionsf1.o: functionsf1.c cifras.h
-	$(CC) $(FLAGS) $(MODE) -c functionsf1.c
+%.o: %.c cifras.h
+	$(CC) $(FLAGS) $(MODE) -c $< -o $@
 
 clean:
-	rm *.o $(TARGET)
+	rm -f $(TARGET) *.o

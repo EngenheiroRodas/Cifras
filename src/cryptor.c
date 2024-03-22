@@ -1,3 +1,7 @@
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+
 #include "cifras.h"
 
 #define TABLE_SIZE 67
@@ -7,17 +11,6 @@
 
 #define NEEDED 1
 #define NOT_NEEDED 0
-
-const char cipher_table[] = {
-    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', // 0-9
-    'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', // 10-19
-    'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', // 20-29
-    'U', 'V', 'W', 'X', 'Y', 'Z', // 30-35
-    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', // 36-45
-    'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', // 46-55
-    'u', 'v', 'w', 'x', 'y', 'z', // 56-61
-    ' ', '.', ',', ';', '-', //62-66
-};
 
 /*
  * Function:  getIndex 
@@ -119,7 +112,7 @@ int *offset_calculator(char *key)
     return offset_values;
 }
 
-void filter_c(FILE *input_stream, FILE *output_stream, char *key, int *offset_values, int fflag, int method) 
+void filter_c(FILE *input_stream, FILE *output_stream, char *key, int *offset_values, int fflag, int c_method) 
 {
     int key_size = strlen(key); //tamanho da password
     int offset_value = offset_values[0]; // Valor de offset para caracter.
@@ -133,20 +126,19 @@ void filter_c(FILE *input_stream, FILE *output_stream, char *key, int *offset_va
         int novaLinha = NEEDED; //para dar \n no final
         while ((fscanf(input_stream, "%c", &input) == 1) && input != EOF) {
             novaLinha = NEEDED;
-            if (method == VIGENERE) {
+            if (c_method == VIGENERE) {
                 offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
             }
+            output = encode(input, offset_value);
             /* getIndex tem de ser diferente de -1(porque este valor indica que input não está na tabela) 
             para o caracter poder sair, já que na formatação elementos não pertencentes da tabela são eliminados*/
             if (getIndex(input) != -1) { 
                 key_index++;
                 if (agregado < 5) {
                     agregado++;
-                    output = encode(input, offset_value); //printf do elemento codificado
-                    fprintf(output_stream,"%c", output);
+                    fprintf(output_stream,"%c", output);//printf do elemento codificado
                 } else {
                     agregado = 0;
-                    output = encode(input, offset_value); //printf do elemento codificado
                     fprintf(output_stream,"%c", output);
                     if (blocos < 7) {
                         fprintf(output_stream, "_"); //insere underscore quando agregado = 6
@@ -164,10 +156,10 @@ void filter_c(FILE *input_stream, FILE *output_stream, char *key, int *offset_va
         }
     } else {
         while ((fscanf(input_stream, "%c", &input) == 1) && input != EOF) {
-            if (method == CESAR) {
+            if (c_method == CESAR) {
                 output = encode(input, offset_value); //printf do elemento codificado
                 fprintf(output_stream,"%c", output);
-            } else if (method == VIGENERE) {
+            } else if (c_method == VIGENERE) {
                 offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
                 output = encode(input, offset_value); //printf do elemento codificado
                 fprintf(output_stream,"%c", output);
@@ -181,7 +173,7 @@ void filter_c(FILE *input_stream, FILE *output_stream, char *key, int *offset_va
     return;
 }
 
-void filter_d(FILE *input_stream, FILE *output_stream, char *key, int *offset_values, int fflag, int method) 
+void filter_d(FILE *input_stream, FILE *output_stream, char *key, int *offset_values, int fflag, int c_method) 
 {
     int key_size = strlen(key); //tamanho da password
     int offset_value = offset_values[0]; // Valor de offset para caracter.
@@ -195,19 +187,18 @@ void filter_d(FILE *input_stream, FILE *output_stream, char *key, int *offset_va
         int novaLinha = NEEDED; //para dar \n no final
         while ((fscanf(input_stream, "%c", &input) == 1) && input != EOF) {
             novaLinha = NEEDED;
-            if (method == VIGENERE) {
+            if (c_method == VIGENERE) {
                 offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
             }
+            output = decode(input, offset_value);
             if (getIndex(input) != -1) {
                 key_index++;
                 if (agregado < 5) {
-                    agregado++;
-                    output = decode(input, offset_value); //printf do elemento descodificado
-                    fprintf(output_stream,"%c", output);
+                    agregado++; 
+                    fprintf(output_stream,"%c", output);//printf do elemento descodificado
                 } else {
                     agregado = 0; 
-                    output = decode(input, offset_value); //printf do elemento descodificado
-                    fprintf(output_stream,"%c", output);
+                    fprintf(output_stream,"%c", output);//printf do elemento descodificado
                     if (blocos < 7) {
                         blocos++;
                     } else {
@@ -223,10 +214,10 @@ void filter_d(FILE *input_stream, FILE *output_stream, char *key, int *offset_va
         }
     } else {
         while ((fscanf(input_stream, "%c", &input) == 1) && input != EOF) {
-            if (method == CESAR) {
+            if (c_method == CESAR) {
                 output = decode(input, offset_value); //printf do elemento descodificado
                 fprintf(output_stream,"%c", output);
-            } else if (method == VIGENERE) {
+            } else if (c_method == VIGENERE) {
                 offset_value = offset_values[key_index % key_size]; // Valor de offset para caracteres vai alterando à medida que o ciclo while executa.
                 output = decode(input, offset_value); //printf do elemento descodificado
                 fprintf(output_stream,"%c", output);
