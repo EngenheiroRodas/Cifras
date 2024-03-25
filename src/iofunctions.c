@@ -11,67 +11,44 @@
 //diz-se qual é a stream de entrada e carrega para a memória dinamicamente para array de strings "lines"
 char **loadFile(FILE *input_stream, int *lineCounter) {
     char buffer[MAX_BUFFER];
-    int numLines = 0;
-    int maxLines = INITIAL_CAPACITY;
+    *lineCounter = 0;
+    int capacity = INITIAL_CAPACITY;
 
-    // Allocate memory for the initial capacity
-    char **lines = (char **)malloc(maxLines * sizeof(char *)); //sizeof(char *), array de apontadores(strings)
+    char **lines = malloc(capacity * sizeof(char *));
     if (lines == NULL) {
         fprintf(stderr, "Memory allocation failed.\n");
-        fclose(input_stream);
         exit(EXIT_FAILURE);
     }
 
-    // Read each line of the file
-    while (fgets(buffer, sizeof(buffer), input_stream) != NULL) {
-        // Check if reallocation is needed
-        if (numLines >= maxLines) {
-            maxLines *= GROWTH_FACTOR; // Increase capacity using growth factor
-            //realloc para tmp, evitando perder dados
-            char **tmp = realloc(lines, maxLines * sizeof(char *)); 
-            if (tmp == NULL) {
-                fprintf(stderr, "Memory reallocation failed.\n");
-                // Free previously allocated memory
-                for (int i = 0; i < numLines; i++) {
-                    free(lines[i]);
-                }
-                free(lines);
-                fclose(input_stream);
+    while (fgets(buffer, MAX_BUFFER, input_stream) != NULL) {
+        if (*lineCounter == capacity) {
+            capacity *= GROWTH_FACTOR;
+            char **tmp = realloc(lines, capacity * sizeof(char *));
+            if (!tmp) {
+                free(lines); // Simplified memory cleanup
+                fprintf(stderr, "Failed to reallocate memory.\n");
                 exit(EXIT_FAILURE);
             }
-            lines = tmp; //devolver as o novo espaço com mais linhas a lines
+            lines = tmp;
         }
 
-        // Allocate memory for the string and copy the content
-        lines[numLines] = strdup(buffer);
-        if (lines[numLines] == NULL) {
-            fprintf(stderr, "Memory allocation failed.\n");
-            // Free previously allocated memory
-            for (int i = 0; i < numLines; i++) {
-                free(lines[i]);
-            }
-            free(lines);
-            fclose(input_stream);
+        buffer[strcspn(buffer, "\n")] = 0; // Remove newline character if it exists
+        lines[*lineCounter] = strdup(buffer);
+        if (!lines[*lineCounter]) {
+            // Simplified error handling
+            fprintf(stderr, "Memory allocation for lines failed.\n");
             exit(EXIT_FAILURE);
         }
-        numLines++;
+        (*lineCounter)++;
     }
-
-    *lineCounter = numLines;
-
-    fclose(input_stream);
+    
     return lines;
 }
 
-void writeOutput(FILE *output_stream, char *lines[], int lineCounter) {
-    for (int i = 0; i < lineCounter; i++) {
-        fprintf(output_stream, "%s", lines[i]);
+void freeLines(char *lines[], int *lineCounter) {
+    for (int i = 0; i < *lineCounter; i++) {
         free(lines[i]);
     }
-
-    for (int i = 0; i < lineCounter; i++) {
-            free(lines[i]);
-        }
     free(lines);
 
     return;

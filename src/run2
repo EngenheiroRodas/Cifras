@@ -1,0 +1,78 @@
+#!/bin/bash
+#
+# (C) 2024 Docentes de Programação/MEEC
+#
+# Shell script para correr testes a um projecto de CIFRAS
+# programas a correr
+PROG_ALUNOS="./cifras"
+VALGRIND="time valgrind --leak-check=full --show-leak-kinds=all "
+DIFF="diff --text"
+# opções para o time
+export TIME="real %E\tuser %U\tsys %S\texit status %x\t%I inputs + %O outputs"
+INPUT=in
+OUTPUT=out2
+EXPECTED=expected2
+DECODED_CESAR=cesar2
+DECODED_VIGENERE=vigenere2
+
+if ( ! [ -d $INPUT ] ); then
+  echo A pasta com os inputs não existe no caminho definido na variável INPUT como $INPUT.
+  echo Por favor faça unzip do exemplos.zip e defina o caminho na variável INPUT na linha 12 deste script
+  exit 1 
+fi
+if ( ! [ -d $EXPECTED ] ); then
+  echo A pasta com os outputs esperados não existe no caminho definido na variável EXPECTED como $EXPECTED.
+  echo Por favor faça unzip do exemplos.zip e defina o caminho na variável EXPECTED na linha 14 deste script
+  exit 1 
+fi
+if ( ! [ -x $PROG_ALUNOS ] ); then
+  echo ERRO: O programa $PROG_ALUNOS não existe com este nome.
+  exit 1 
+fi
+# Criar directorias, caso não existam
+if ( ! [ -d $OUTPUT ] ); then
+  mkdir $OUTPUT
+fi
+if ( ! [ -d $DECODED_CESAR ] ); then
+  mkdir $DECODED_CESAR
+fi
+if ( ! [ -d $DECODED_VIGENERE ] ); then
+  mkdir $DECODED_VIGENERE
+fi
+# Percorrer os ficheiros todos, cifrando e decifrando, calculando estatísticas
+for file in $INPUT/*; do
+  echo -e "\e[7mFicheiro $file\e[0m"
+  filename=`echo $file | sed "s/$INPUT\///g ; s/\.txt//g"`
+  # fase 2, com ficheiros
+  $VALGRIND $PROG_ALUNOS -c 1 -i $file -o $OUTPUT/$filename-cesar.txt
+  $VALGRIND $PROG_ALUNOS -d 1 -i $EXPECTED/$filename-cesar.txt -o $DECODED_CESAR/$filename.txt
+  $VALGRIND $PROG_ALUNOS -c 2 -i $file -o $OUTPUT/$filename-vigenere.txt
+  $VALGRIND $PROG_ALUNOS -d 2 -i $EXPECTED/$filename-vigenere.txt -o $DECODED_VIGENERE/$filename.txt
+  $VALGRIND $PROG_ALUNOS -c 3 -i $file -o $OUTPUT/$filename-matriz.txt
+  $VALGRIND $PROG_ALUNOS -d 3 -i $EXPECTED/$filename-matriz.txt -o $OUTPUT/$filename-matriz-decifrado.txt
+  $VALGRIND $PROG_ALUNOS -e -i $file -o $OUTPUT/$filename-stats.txt
+  $VALGRIND $PROG_ALUNOS -a 1 -i $EXPECTED/$filename-cesar.txt -o $OUTPUT/$filename-cesar-attacked1.txt -w dic-very-small.txt
+  $VALGRIND $PROG_ALUNOS -a 1 -i $EXPECTED/$filename-cesar.txt -o $OUTPUT/$filename-cesar-attacked1-small.txt -w dic-small.txt
+  $VALGRIND $PROG_ALUNOS -a 1 -i $EXPECTED/$filename-cesar.txt -o $OUTPUT/$filename-cesar-attacked1-en.txt -w en_US.dic
+  $VALGRIND $PROG_ALUNOS -a 2 -i $EXPECTED/$filename-cesar.txt -o $OUTPUT/$filename-cesar-attacked2.txt
+  $VALGRIND $PROG_ALUNOS -a 3 -i $EXPECTED/$filename-vigenere.txt -o $OUTPUT/$filename-vigenere-attacked3.txt
+done
+# Comparar as directorias
+$DIFF -r $OUTPUT $EXPECTED
+if [ $? -eq 0 ]; then
+  echo Cifras OK
+else
+  echo ERRO detectado nos ficheiros Cifrados ou resultado dos Ataques
+fi
+$DIFF -r $INPUT $DECODED_CESAR
+if [ $? -eq 0 ]; then
+  echo Decifra César OK
+else
+  echo ERRO detectado na decifra de César
+fi
+$DIFF -r $INPUT $DECODED_VIGENERE
+if [ $? -eq 0 ]; then
+  echo Decifra Vigenère OK
+else
+  echo ERRO detectado na decifra de Vigenère
+fi

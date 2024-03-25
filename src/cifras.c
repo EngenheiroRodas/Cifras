@@ -5,6 +5,8 @@
 
 #include "cifras.h"
 
+#define TABLE_SIZE 67
+
 const char cipher_table[] = {
     '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', // 0-9
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', // 10-19
@@ -97,8 +99,8 @@ int main(int argc, char *argv[])
     }
     //End of error handling
     
-    char **lines = NULL;
-    int lineCounter = 0;
+    
+    
     FILE *input_stream = stdin; //Default to standard output
     FILE *output_stream = stdout; // Default to standard output
        
@@ -117,6 +119,34 @@ int main(int argc, char *argv[])
             exit(EXIT_FAILURE);
         }
     }
+    char **lines = NULL;
+
+    int lineCounter = 0;
+    if (eflag == 1 || aflag == 1) { //carrega para memória, line counter fica modificado
+        lines = loadFile(input_stream, &lineCounter);
+
+        if (eflag == 1) {
+            unsigned int regularChar = 0, weirdChar = 0;
+            double *stats = statCalculator(lines, &lineCounter, &regularChar, &weirdChar);
+            if (stats == NULL) {
+                fprintf(stderr, "Error: statCalculator failed.\n");
+                return EXIT_FAILURE;
+            }
+            for (int i = 0; i < TABLE_SIZE; i++) {
+                fprintf(output_stream,"conta('%c')= %f\n", cipher_table[i], stats[i]);
+            }
+            fprintf(output_stream, "Total: %u caracteres\n", regularChar);
+            fprintf(output_stream, "conta(outros) = %f\n", stats[67]);
+            fprintf(output_stream, "Total: %u caracteres\n", (regularChar + weirdChar));
+
+            free(stats);
+        }
+    }
+
+    //escreve o ficheiro de output e liberta memória, só com -e e -a pq já está incorporado em -c e -d
+    if ((eflag == 1) || (aflag == 1)) { 
+        freeLines(lines, &lineCounter);
+    }
 
     //cipher decipher block
     int *offset_values = offset_calculator(key); // Array para guardar valores do offset
@@ -125,22 +155,8 @@ int main(int argc, char *argv[])
     } else {
         filter_d(input_stream, output_stream, key, offset_values, fflag, c_method);
     }
+    free(offset_values);
 
-    if (eflag == 1 || aflag == 1) { //line counter fica modificado
-        lines = loadFile(input_stream, &lineCounter); 
-    }
-
-    /*if (eflag == 1) {
-        double *stats = statCalculator(lines, &lineCounter);
-        for (int i = 0; i < 67; i++) {
-            printf("%f", stats[i]);
-        }
-    */ //a dar mal não sei pq**********************************************************************************************************************************************************
-
-    //escreve o ficheiro de output e liberta memória, só com -e e -a pq já está incorporado em -c e -d
-    if ((oflag == 1) && ((eflag == 1) || (aflag == 1))) { 
-        writeOutput(input_stream, lines, lineCounter);
-    }
     //closing the files, freeing memory blocks
     if (iflag == 1) {
         fclose(input_stream);
@@ -151,6 +167,5 @@ int main(int argc, char *argv[])
         free(outputFile);
     }
 
-    free(offset_values);
     return 0;
 }

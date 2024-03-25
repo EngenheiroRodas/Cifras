@@ -19,8 +19,8 @@ void filter_d(FILE *input_stream, FILE *output_stream, char *key, int *offset_va
 //carregar ficehiro para memória, devolve array com texto
 char **loadFile(FILE *input_stream, int *lineCounter);
 //escreve os conteúdos processados de lines num ficheiro 
-void writeOutput(FILE *output_stream, char *lines[],int lineCounter);
+void freeLines(char *lines[],int *lineCounter);
 //devolve array com valores das estatísticas
-double *statCalculator(char *lines[], int *lineCounter);
+double *statCalculator(char *lines[], int *lineCounter, unsigned int *regularchar, unsigned int *weirdChar);
 
 #endif

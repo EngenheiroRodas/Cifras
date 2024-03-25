@@ -4,6 +4,7 @@
         "cstdlib": "c",
         "getopt.h": "c",
         "unistd.h": "c",
-        "cifras.h": "c"
+        "cifras.h": "c",
+        "stdio.h": "c"
     }
 }
