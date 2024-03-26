@@ -16,7 +16,7 @@ char **loadFile(FILE *input_stream, int *lineCounter) {
 
     char **lines = malloc(capacity * sizeof(char *));
     if (lines == NULL) {
-        fprintf(stderr, "Memory allocation failed.\n");
+        fprintf(stderr, "ERROR: Memory allocation failed for lines.\n");
         exit(EXIT_FAILURE);
     }
 
@@ -24,24 +24,29 @@ char **loadFile(FILE *input_stream, int *lineCounter) {
         if (*lineCounter == capacity) {
             capacity *= GROWTH_FACTOR;
             char **tmp = realloc(lines, capacity * sizeof(char *));
-            if (!tmp) {
-                free(lines); // Simplified memory cleanup
-                fprintf(stderr, "Failed to reallocate memory.\n");
+            if (tmp == NULL) {
+                fprintf(stderr, "ERROR: Failed to reallocate memory.\n");
+                for (int i = 0; i < *lineCounter; i++) {
+                    free(lines[i]); // Free individual lines
+                }
+                free(lines); // Free the lines array
                 exit(EXIT_FAILURE);
             }
             lines = tmp;
         }
 
-        buffer[strcspn(buffer, "\n")] = 0; // Remove newline character if it exists
+        buffer[strcspn(buffer, "\n")] = 0; // Encontra \n e remove-o
         lines[*lineCounter] = strdup(buffer);
-        if (!lines[*lineCounter]) {
-            // Simplified error handling
-            fprintf(stderr, "Memory allocation for lines failed.\n");
+        if (lines[*lineCounter] == NULL) {
+            fprintf(stderr, "ERROR: Memory allocation failed for lines.\n");
+            for (int i = 0; i < *lineCounter; i++) {
+                free(lines[i]);
+            }
+            free(lines);
             exit(EXIT_FAILURE);
         }
         (*lineCounter)++;
     }
-    
     return lines;
 }
 

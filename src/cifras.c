@@ -26,8 +26,7 @@ int main(int argc, char *argv[])
 {
     int opt, cflag, fflag, iflag, oflag, eflag, aflag; //flags que vão dizer se os comandos foram utilizados
     int c_method = 0, a_method = 0; //método de cifra e ataque
-    char key[] = "Programacao2024"; // Password default
-    char *inputFile = NULL, *outputFile = NULL; //nomes de files de input/output
+    char *key = "Programacao2024"; // Password default
     fflag = 0; // inicialização
     cflag = 1;
     iflag = 0;
@@ -35,8 +34,10 @@ int main(int argc, char *argv[])
     eflag = 0;
     aflag = 0;
 
+    FILE *input_stream = stdin; //Default to standard output
+    FILE *output_stream = stdout; // Default to standard output
+
     while ((opt = getopt(argc, argv, "fc:d:s:i:o:ea:")) != -1) { // lê as opções fornecidas através da linha de comando
-    
         switch (opt) {
             case 'f':
                 fflag = 1;
@@ -50,22 +51,22 @@ int main(int argc, char *argv[])
                 c_method = atoi(optarg); 
                 break;
             case 's':
-                strcpy(key, optarg);  //guarda a passe num array chamado key
+                key = strdup(optarg);  //guarda a passe num array chamado key
                 break;
             case 'i':
-                inputFile = strdup(optarg); //aloca memória para guardar o nome do input
-                if (inputFile == NULL) {
-                    fprintf(stderr, "Memory allocation failed.\n");
+                input_stream = fopen(optarg, "r"); //set correct stream
+                if (input_stream == NULL) {
+                    fprintf(stderr, "ERROR: failure opening input file.\n");
                     exit(EXIT_FAILURE);
-                }
+                } else
                 iflag = 1;
                 break;
             case 'o':
-                outputFile = strdup(optarg); //aloca memória para guardar o nome do output
-                if (outputFile == NULL) {
-                    fprintf(stderr, "Memory allocation failed.\n");
+                output_stream = fopen(optarg, "w");
+                if (output_stream == NULL) {
+                    fprintf(stderr, "ERROR: failure opening output file.\n");
                     exit(EXIT_FAILURE);
-                }
+                } else
                 oflag = 1;
                 break;
             case 'e':
@@ -99,26 +100,6 @@ int main(int argc, char *argv[])
     }
     //End of error handling
     
-    
-    
-    FILE *input_stream = stdin; //Default to standard output
-    FILE *output_stream = stdout; // Default to standard output
-       
-    if (iflag == 1) {
-        input_stream = fopen(inputFile, "r"); //set correct stream
-        if (input_stream == NULL) {
-            fprintf(stderr, "Error opening input file.\n");
-            exit(EXIT_FAILURE);
-        }   
-    }
-
-    if (oflag == 1) { //set correct stream
-        output_stream = fopen(outputFile, "w");
-        if (output_stream == NULL) {
-            fprintf(stderr, "Error opening output file.\n");
-            exit(EXIT_FAILURE);
-        }
-    }
     char **lines = NULL;
 
     int lineCounter = 0;
@@ -126,18 +107,19 @@ int main(int argc, char *argv[])
         lines = loadFile(input_stream, &lineCounter);
 
         if (eflag == 1) {
-            unsigned int regularChar = 0, weirdChar = 0;
-            double *stats = statCalculator(lines, &lineCounter, &regularChar, &weirdChar);
+            unsigned int regularChar = 0, weirdChar = 0, temp[67] = {0};
+            double *stats = statCalculator(lines, &lineCounter, &regularChar, &weirdChar, temp);
             if (stats == NULL) {
+                free(stats);
                 fprintf(stderr, "Error: statCalculator failed.\n");
                 return EXIT_FAILURE;
             }
             for (int i = 0; i < TABLE_SIZE; i++) {
-                fprintf(output_stream,"conta('%c')= %f\n", cipher_table[i], stats[i]);
+                fprintf(output_stream,"conta('%c')=%u\t%f\n", cipher_table[i], temp [i], stats[i]);
             }
             fprintf(output_stream, "Total: %u caracteres\n", regularChar);
-            fprintf(output_stream, "conta(outros) = %f\n", stats[67]);
-            fprintf(output_stream, "Total: %u caracteres\n", (regularChar + weirdChar));
+            fprintf(output_stream, "conta(outros)=%u\t%f\n", weirdChar, stats[67]);
+            fprintf(output_stream, "Total do ficheiro: %u caracteres\n", (regularChar + weirdChar));
 
             free(stats);
         }
@@ -160,11 +142,9 @@ int main(int argc, char *argv[])
     //closing the files, freeing memory blocks
     if (iflag == 1) {
         fclose(input_stream);
-        free (inputFile);
     }
     if (oflag == 1) {
         fclose(output_stream);
-        free(outputFile);
     }
 
     return 0;

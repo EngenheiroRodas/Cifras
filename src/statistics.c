@@ -5,13 +5,12 @@
 
 #define TABLE_SIZE 67
 
-double *statCalculator(char *lines[], int *lineCounter, unsigned int *regularchar, unsigned int *weirdChar) {
-    unsigned int temp[TABLE_SIZE] = {0};
+double *statCalculator(char *lines[], int *lineCounter, unsigned int *regularchar, unsigned int *weirdChar, unsigned int *temp) {
     // Allocate stats with one additional space for the "weird" characters, so a total of 68
     double *stats = calloc(TABLE_SIZE + 1, sizeof(double));
     
     if (stats == NULL) {
-        fprintf(stderr, "Failed to allocate memory for character statistics.\n");
+        fprintf(stderr, "ERROR: Failed to allocate memory for character statistics.\n");
         return NULL;
     }
 

@@ -21,6 +21,6 @@ char **loadFile(FILE *input_stream, int *lineCounter);
 //escreve os conteúdos processados de lines num ficheiro 
 void freeLines(char *lines[],int *lineCounter);
 //devolve array com valores das estatísticas
-double *statCalculator(char *lines[], int *lineCounter, unsigned int *regularchar, unsigned int *weirdChar);
+double *statCalculator(char *lines[], int *lineCounter, unsigned int *regularchar, unsigned int *weirdChar, unsigned int *temp);
 
 #endif
