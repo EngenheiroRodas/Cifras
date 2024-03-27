@@ -2,7 +2,7 @@ CC = gcc
 FLAGS = -Wall -Wextra -O3
 MODE = -g 
 TARGET = cifras
-SRCS = cifras.c cryptor.c iofunctions.c statistics.c
+SRCS = cifras.c cryptor.c iofunctions.c statistics.c attacks.c
 OBJS = $(SRCS:.c=.o)
 
 all-: $(TARGET)

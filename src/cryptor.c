@@ -89,9 +89,8 @@ char decode(char input, int offset_value)
  * Returns: guarda num array offset_values, com o tamanho da chave, os valores da tabela de cada letra da senha, 
  * retornando o apontador para o início desse array
  */
-int *offset_calculator(char *key)
+int *offset_calculator(char *key, int key_size)
 {
-    int key_size = strlen(key); //tamanho da password
     int *offset_values = malloc(key_size * sizeof(int)); // allocate memory for the offset values
     int key_index = 0; 
 
@@ -112,9 +111,8 @@ int *offset_calculator(char *key)
     return offset_values;
 }
 
-void filter_c(FILE *input_stream, FILE *output_stream, char *key, int *offset_values, int fflag, int c_method) 
+void filter_c(FILE *input_stream, FILE *output_stream, int *offset_values, int key_size, int fflag, int c_method) 
 {
-    int key_size = strlen(key); //tamanho da password
     int offset_value = offset_values[0]; // Valor de offset para caracter.
     
     int agregado = 0; // agregado de no máximo 6 letras
@@ -173,9 +171,8 @@ void filter_c(FILE *input_stream, FILE *output_stream, char *key, int *offset_va
     return;
 }
 
-void filter_d(FILE *input_stream, FILE *output_stream, char *key, int *offset_values, int fflag, int c_method) 
+void filter_d(FILE *input_stream, FILE *output_stream, int *offset_values, int key_size, int fflag, int c_method) 
 {
-    int key_size = strlen(key); //tamanho da password
     int offset_value = offset_values[0]; // Valor de offset para caracter.
     
     int agregado = 0; // agregado de no máximo 6 letras

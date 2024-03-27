@@ -7,7 +7,7 @@
 
 #define TABLE_SIZE 67
 
-const char cipher_table[] = {
+char cipher_table[TABLE_SIZE] = {
     '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', // 0-9
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', // 10-19
     'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', // 20-29
@@ -87,55 +87,67 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    for (size_t i = 0; i < strlen(key); i++) {
+    for (size_t i = 0; i < strlen(key); i++) { //password não pode ter carcateres desconhecidos
         if (getIndex(key[i]) == -1) {
             fprintf(stderr, "ERROR: your password has an unknown character.\n");
             exit(EXIT_FAILURE);
         }
     }
 
-    if (c_method >= 4){ //para a fase 2 o método ou pode ser 1, 2 ou 3, mas não temos o 3 implementado
-        fprintf(stderr, "ERROR: ciphering method must be either 1 or 2.\n");
+    if (c_method >= 4 || a_method >= 4){ //métodos de ataque e cifragem inválidos
+        fprintf(stderr, "ERROR: ciphering or attack method invalid.\n");
         exit(EXIT_FAILURE);
     }
     //End of error handling
     
-    char **lines = NULL;
-
-    int lineCounter = 0;
-    if (eflag == 1 || aflag == 1) { //carrega para memória, line counter fica modificado
+    if (eflag == 1 || aflag == 1) { 
+        //carrega para memória, line counter fica modificado (só carrega se formos atacr ou calcular estatísticas)
+        char **lines = NULL;
+        int lineCounter = 0;
         lines = loadFile(input_stream, &lineCounter);
-
-        if (eflag == 1) {
+        
+        if (eflag == 1) { //calcula estatísticas
             unsigned int regularChar = 0, weirdChar = 0, temp[67] = {0};
-            double *stats = statCalculator(lines, &lineCounter, &regularChar, &weirdChar, temp);
-            if (stats == NULL) {
-                free(stats);
-                fprintf(stderr, "Error: statCalculator failed.\n");
-                return EXIT_FAILURE;
-            }
+            double *frequency = statCalculator(lines, &lineCounter, &regularChar, &weirdChar, temp);
+
             for (int i = 0; i < TABLE_SIZE; i++) {
-                fprintf(output_stream,"conta('%c')=%u\t%f\n", cipher_table[i], temp [i], stats[i]);
+                fprintf(output_stream,"conta('%c')=%u\t%f%%\n", cipher_table[i], temp [i], (frequency[i] * 100));
             }
+
             fprintf(output_stream, "Total: %u caracteres\n", regularChar);
-            fprintf(output_stream, "conta(outros)=%u\t%f\n", weirdChar, stats[67]);
+            fprintf(output_stream, "conta(outros)=%u\t%f%%\n", weirdChar, (frequency[67] * 100));
             fprintf(output_stream, "Total do ficheiro: %u caracteres\n", (regularChar + weirdChar));
+            free(frequency);
+            
+        } else if (a_method == 1) {
 
-            free(stats);
+        } else if (a_method == 2) {
+            unsigned int regularChar = 0, weirdChar = 0, temp[67] = {0};
+            double *frequency = statCalculator(lines, &lineCounter, &regularChar, &weirdChar, temp);
+            
+            int min_offset = attack2(output_stream, frequency);
+
+            char key_letter[1] = {cipher_table[(TABLE_SIZE - min_offset) % TABLE_SIZE]};
+            int *attack_values = offset_calculator(key_letter, 1);
+            rewind(input_stream);
+
+            filter_d(input_stream, output_stream, attack_values, 1, 0, 1);
+
+            free(frequency);
+            free(attack_values);
+        } else { //ataque 3
+
         }
-    }
-
-    //escreve o ficheiro de output e liberta memória, só com -e e -a pq já está incorporado em -c e -d
-    if ((eflag == 1) || (aflag == 1)) { 
         freeLines(lines, &lineCounter);
     }
 
     //cipher decipher block
-    int *offset_values = offset_calculator(key); // Array para guardar valores do offset
+    int key_size = strlen(key);
+    int *offset_values = offset_calculator(key, key_size); // Array para guardar valores do offset
     if (cflag == 1) {
-        filter_c(input_stream, output_stream, key, offset_values, fflag, c_method); //produzem ficheiro de output dentro da função sem alocação de mem dinâmica
+        filter_c(input_stream, output_stream, offset_values, key_size, fflag, c_method); //produzem ficheiro de output dentro da função sem alocação de mem dinâmica
     } else {
-        filter_d(input_stream, output_stream, key, offset_values, fflag, c_method);
+        filter_d(input_stream, output_stream, offset_values, key_size, fflag, c_method);
     }
     free(offset_values);
 

@@ -5,11 +5,12 @@
 
 #define TABLE_SIZE 67
 
-double *statCalculator(char *lines[], int *lineCounter, unsigned int *regularchar, unsigned int *weirdChar, unsigned int *temp) {
+double *statCalculator(char *lines[], int *lineCounter, unsigned int *regularchar, unsigned int *weirdChar, unsigned int *temp) 
+{
     // Allocate stats with one additional space for the "weird" characters, so a total of 68
-    double *stats = calloc(TABLE_SIZE + 1, sizeof(double));
+    double *frequency = (double*)malloc((TABLE_SIZE + 1) * sizeof(double));
     
-    if (stats == NULL) {
+    if (frequency == NULL) {
         fprintf(stderr, "ERROR: Failed to allocate memory for character statistics.\n");
         return NULL;
     }
@@ -35,17 +36,17 @@ double *statCalculator(char *lines[], int *lineCounter, unsigned int *regularcha
     }
     
 
-    // Calculate statistics as percentages
+    // Calculate statistics 
     for (int i = 0; i < 67; i++) {
         if (*regularchar != 0) // Check for division by zero
-            stats[i] = ((double)temp[i] / *regularchar) * 100;
+            frequency[i] = ((double)temp[i] / *regularchar);
         else
-            stats[i] = 0; // Handle division by zero
+            frequency[i] = 0; // Handle division by zero
     }
     if ((*regularchar + *weirdChar) != 0) // Check for division by zero
-        stats[67] = ((double)*weirdChar / (*regularchar + *weirdChar)) * 100;
+        frequency[67] = ((double)*weirdChar / (*regularchar + *weirdChar));
     else
-        stats[67] = 0; // Handle division by zero
+        frequency[67] = 0; // Handle division by zero
 
-    return stats;
+    return frequency;
 }
