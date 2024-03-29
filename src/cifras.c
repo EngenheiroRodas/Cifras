@@ -24,20 +24,23 @@ extern int optind, opterr, optopt;
  
 int main(int argc, char *argv[])
 {
-    int opt, cflag, fflag, iflag, oflag, eflag, aflag; //flags que vão dizer se os comandos foram utilizados
+    int opt, cflag, fflag, iflag, oflag, eflag, aflag, wflag; //flags que vão dizer se os comandos foram utilizados
     int c_method = 0, a_method = 0; //método de cifra e ataque
     char *key = "Programacao2024"; // Password default
+    char *dictionary_name;
     fflag = 0; // inicialização
     cflag = 1;
     iflag = 0;
     oflag = 0;
     eflag = 0;
     aflag = 0;
+    wflag = 0;
+    int nnumber = 0;
 
     FILE *input_stream = stdin; //Default to standard output
     FILE *output_stream = stdout; // Default to standard output
 
-    while ((opt = getopt(argc, argv, "fc:d:s:i:o:ea:")) != -1) { // lê as opções fornecidas através da linha de comando
+    while ((opt = getopt(argc, argv, "fc:d:s:i:o:ea:n:")) != -1) { // lê as opções fornecidas através da linha de comando
         switch (opt) {
             case 'f':
                 fflag = 1;
@@ -76,17 +79,19 @@ int main(int argc, char *argv[])
                 aflag = 1;
                 a_method = atoi(optarg);
                 break;
+            case 'n':
+                nnumber = atoi(optarg);
+                break;
+            case 'w':
+                wflag = 1;
+                dictionary_name = strdup(optarg);
+                break;
             default: /* '?' is returned if neither flag is found*/
                 fprintf(stderr, "Use -h for help\n");
                 exit(EXIT_FAILURE);
         }
     }
     //Error handling
-    if (strlen(key) < 4){ //se password for menor que 4 dá erro
-        fprintf(stderr, "ERROR: your password must be at least 4 characters long.\n");
-        exit(EXIT_FAILURE);
-    }
-
     for (size_t i = 0; i < strlen(key); i++) { //password não pode ter carcateres desconhecidos
         if (getIndex(key[i]) == -1) {
             fprintf(stderr, "ERROR: your password has an unknown character.\n");
@@ -100,15 +105,11 @@ int main(int argc, char *argv[])
     }
     //End of error handling
     
-    if (eflag == 1 || aflag == 1) { 
-        //carrega para memória, line counter fica modificado (só carrega se formos atacr ou calcular estatísticas)
-        char **lines = NULL;
-        int lineCounter = 0;
-        lines = loadFile(input_stream, &lineCounter);
-        
+    if (eflag == 1 || aflag == 1) {   
         if (eflag == 1) { //calcula estatísticas
+            int chunkSize = 2;
             unsigned int regularChar = 0, weirdChar = 0, temp[67] = {0};
-            double *frequency = statCalculator(lines, &lineCounter, &regularChar, &weirdChar, temp);
+            double *frequency = statCalculator(input_stream, &regularChar, &weirdChar, temp, chunkSize);
 
             for (int i = 0; i < TABLE_SIZE; i++) {
                 fprintf(output_stream,"conta('%c')=%u\t%f%%\n", cipher_table[i], temp [i], (frequency[i] * 100));
@@ -121,24 +122,12 @@ int main(int argc, char *argv[])
             
         } else if (a_method == 1) {
 
-        } else if (a_method == 2) {
-            unsigned int regularChar = 0, weirdChar = 0, temp[67] = {0};
-            double *frequency = statCalculator(lines, &lineCounter, &regularChar, &weirdChar, temp);
-            
-            int min_offset = attack2(output_stream, frequency);
-
-            char key_letter[1] = {cipher_table[(TABLE_SIZE - min_offset) % TABLE_SIZE]};
-            int *attack_values = offset_calculator(key_letter, 1);
-            rewind(input_stream);
-
-            filter_d(input_stream, output_stream, attack_values, 1, 0, 1);
-
-            free(frequency);
-            free(attack_values);
+        } else if (a_method == 2) { //ataque 2
+            cesarAttack(input_stream, output_stream);
         } else { //ataque 3
-
+            vigenereAttack(input_stream, output_stream, nnumber);
         }
-        freeLines(lines, &lineCounter);
+        
     }
 
     //cipher decipher block
@@ -158,6 +147,8 @@ int main(int argc, char *argv[])
     if (oflag == 1) {
         fclose(output_stream);
     }
-
+    if (wflag == 1) {
+        free(dictionary_name);
+    }
     return 0;
 }

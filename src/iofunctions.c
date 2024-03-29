@@ -4,7 +4,7 @@
 
 #include "cifras.h"
 
-#define MAX_BUFFER 101
+#define MAX_BUFFER 100
 #define INITIAL_CAPACITY 10
 #define GROWTH_FACTOR 2
 
@@ -35,7 +35,12 @@ char **loadFile(FILE *input_stream, int *lineCounter) {
             lines = tmp;
         }
 
-        buffer[strcspn(buffer, "\n")] = 0; // Encontra \n e remove-o
+        // Remove trailing newline character
+        size_t length = strlen(buffer);
+        if (length > 0 && buffer[length - 1] == '\n') {
+            buffer[length - 1] = '\0';
+        }
+
         lines[*lineCounter] = strdup(buffer);
         if (lines[*lineCounter] == NULL) {
             fprintf(stderr, "ERROR: Memory allocation failed for lines.\n");
