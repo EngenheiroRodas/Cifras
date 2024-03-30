@@ -22,13 +22,12 @@ const double probabilities [TABLE_SIZE] =
   0.014999588, 0.000554985, 0.190494768, 0.014249609, 0.014999588, 0.000554985, //60-65
   0.001124969 }; //66
 
-void cesarAttack(FILE *input_stream, FILE *output_stream)
+void cesarAttack(FILE *input_stream, int *min_offset, double *min_error, int eflag)
 {
     int chunkSize = 1;
     unsigned int regularChar = 0, weirdChar = 0, temp[67] = {0};
-    double *freq = statCalculator(input_stream, &regularChar, &weirdChar, temp, chunkSize);
+    double *freq = statCalculator(input_stream, &regularChar, &weirdChar, temp, chunkSize, eflag);
 
-    int min_offset = 0;
     double error[TABLE_SIZE + 1] = {0};
 
     for (int offset = 0; offset < TABLE_SIZE; offset++) {
@@ -38,31 +37,17 @@ void cesarAttack(FILE *input_stream, FILE *output_stream)
     }
 
     free(freq);
-    double min_error = error[0];
+    *min_error = error[0];
     for (int i = 1; i < TABLE_SIZE; i++) {
-        if (error[i] < min_error) {
-            min_error = error[i];
-            min_offset = i;
+        if (error[i] < *min_error) {
+            *min_error = error[i];
+            *min_offset = i;
         }
     }
-
-    fprintf(output_stream, "offset com menor erro %d, letra '%c', "
-                       "cifrado com letra '%c', "
-                       "erro quadrático médio: %f.\n",
-                       min_offset, cipher_table[min_offset],
-                       cipher_table[(TABLE_SIZE - min_offset) % TABLE_SIZE], min_error);
-
-    char key_letter[1] = {cipher_table[(TABLE_SIZE - min_offset) % TABLE_SIZE]};
-    int *attack_values = offset_calculator(key_letter, 1);
-    rewind(input_stream);
-
-    filter_d(input_stream, output_stream, attack_values, 1, 0, 1);
-
-    free(attack_values);
     return;
 }
 
-void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize){
+void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize, int eflag){
     if (maxKeySize <= DEFAULT_SIZE) {
         maxKeySize = DEFAULT_SIZE; // Restrict to the default max size
     }
@@ -86,7 +71,7 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize){
         for (int i = 0; i < chunkSize; i++) { // For each segment of the key
             unsigned int regularChar = 0, weirdChar = 0, temp[TABLE_SIZE] = {0};
             fseek(input_stream, i, SEEK_SET);  // Start from the ith character
-            double *freq = statCalculator(input_stream, &regularChar, &weirdChar, temp, chunkSize);
+            double *freq = statCalculator(input_stream, &regularChar, &weirdChar, temp, chunkSize, eflag);
 
             // Quadratic error calculation for each possible character in the key
             for (int offset = 0; offset < TABLE_SIZE; offset++) {
@@ -108,8 +93,8 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize){
         }
         
         key[chunkSize] = '\0'; // Null-terminate after each assignment
-        fprintf(output_stream, "Key size: \"%s\"\n", key);
-        
+        fprintf(output_stream, "tamanho chave %d: \"%s\"\n", chunkSize, key);
+
         // Free allocated errorArray memory for this chunkSize iteration
         for (int i = 0; i < chunkSize; i++) {
             free(errorArray[i]);

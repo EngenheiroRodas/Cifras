@@ -105,30 +105,48 @@ int main(int argc, char *argv[])
     }
     //End of error handling
     
-    if (eflag == 1 || aflag == 1) {   
-        if (eflag == 1) { //calcula estatísticas
-            int chunkSize = 2;
-            unsigned int regularChar = 0, weirdChar = 0, temp[67] = {0};
-            double *frequency = statCalculator(input_stream, &regularChar, &weirdChar, temp, chunkSize);
+      
+    if (eflag == 1) { //calcula estatísticas
+        int chunkSize = 2;
+        unsigned int regularChar = 0, weirdChar = 0, temp[67] = {0};
+        double *frequency = statCalculator(input_stream, &regularChar, &weirdChar, temp, chunkSize, eflag);
 
-            for (int i = 0; i < TABLE_SIZE; i++) {
-                fprintf(output_stream,"conta('%c')=%u\t%f%%\n", cipher_table[i], temp [i], (frequency[i] * 100));
-            }
+        for (int i = 0; i < TABLE_SIZE; i++) {
+            fprintf(output_stream,"conta('%c')=%u\t%f%%\n", cipher_table[i], temp [i], (frequency[i] * 100));
+        }
 
-            fprintf(output_stream, "Total: %u caracteres\n", regularChar);
-            fprintf(output_stream, "conta(outros)=%u\t%f%%\n", weirdChar, (frequency[67] * 100));
-            fprintf(output_stream, "Total do ficheiro: %u caracteres\n", (regularChar + weirdChar));
-            free(frequency);
-            
-        } else if (a_method == 1) {
+        fprintf(output_stream, "Total: %u caracteres\n", regularChar);
+        fprintf(output_stream, "conta(outros)=%u\t%f%%\n", weirdChar, (frequency[67] * 100));
+        fprintf(output_stream, "Total do ficheiro: %u caracteres\n", (regularChar + weirdChar));
+        free(frequency);
+    }
+
+    if (aflag == 1) {
+        if (a_method == 1) {
 
         } else if (a_method == 2) { //ataque 2
-            cesarAttack(input_stream, output_stream);
-        } else { //ataque 3
-            vigenereAttack(input_stream, output_stream, nnumber);
-        }
+        int min_offset = 0;
+        double min_error = 0;
+            cesarAttack(input_stream, &min_offset, &min_error, eflag);
+
+            fprintf(output_stream, "offset com menor erro %d, letra '%c', "
+                       "cifrado com letra '%c', "
+                       "erro quadrático médio: %f.\n",
+                       min_offset, cipher_table[min_offset],
+                       cipher_table[(TABLE_SIZE - min_offset) % TABLE_SIZE], min_error);
         
-    }
+            char key_letter[1] = {cipher_table[(TABLE_SIZE - min_offset) % TABLE_SIZE]};
+            int *attack_values = offset_calculator(key_letter, 1);
+            rewind(input_stream);
+
+            filter_d(input_stream, output_stream, attack_values, 1, 0, 1);
+
+            free(attack_values);
+        } else { //ataque 3
+            vigenereAttack(input_stream, output_stream, nnumber, eflag);
+        }
+    }      
+    
 
     //cipher decipher block
     int key_size = strlen(key);

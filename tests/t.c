@@ -11,6 +11,8 @@
 #define TABLE_SIZE 67
 #define ABSURDLY_LARGE_ERROR 1000
 
+#define NEEDED 1
+#define NOT_NEEDED 0
 #define DEFAULT_SIZE 20 
 
 char cipher_table[TABLE_SIZE] = {
@@ -55,75 +57,63 @@ int getIndex(char input) {
     return -1;
 }
 
-double *statCalculator(FILE *input_stream, unsigned int *regularChar, unsigned int *weirdChar, unsigned int *temp, int chunkSize)
-{
-    //aloca memória, calcula estatísticas
+double *statCalculator(FILE *input_stream, unsigned int *regularChar, unsigned int *weirdChar, unsigned int *temp, int chunkSize) {
     char **lines = NULL;
     int lineCounter = 0;
     lines = loadFile(input_stream, &lineCounter);
 
-    // Allocate stats with one additional space for the "weird" characters, so a total of 68
-    double *frequency = (double*)malloc((TABLE_SIZE + 1) * sizeof(double));
+    double *frequency = (double *)malloc((TABLE_SIZE + 1) * sizeof(double));
     if (frequency == NULL) {
         fprintf(stderr, "ERROR: Failed to allocate memory for character statistics.\n");
         return NULL;
     }
 
-    int length, j;
-    char lastChar = '*';
+    int aux = 0;
+    int needTemp = NOT_NEEDED;
     for (int i = 0; i < lineCounter; i++) {
-        length = strlen(lines[i]);
-        j = 0;
-        while (lines[i][j] != '\0') {
-            int charIndex = getIndex(lines[i][j]);
-            if (charIndex!= -1) {
-                // Increment the count for recognized characters
-                temp[charIndex]++;
-                (*regularChar)++;
-            } else {
-                // Increment the count for unrecognized (weird) characters
-                (*weirdChar)++;
-            } 
-            j += chunkSize;
-        }
-        //contar com \n
-        (*weirdChar)++;
-        
-        if (lastChar == '\0' && j >= length) {
-            if (length % chunkSize == 0){
-                continue;
-            } else {
-                j = length % chunkSize;
-                while ((lastChar = lines[i][j]) != '\0') {
-                    int charIndex = getIndex(lines[i][j]);
-                    if (charIndex!= -1) {
-                        // Increment the count for recognized characters
-                        temp[charIndex]++;
-                        (*regularChar)++;
-                    } else {
-                        // Increment the count for unrecognized (weird) characters
-                        (*weirdChar)++;
-                    } 
-                    j += chunkSize;
+        int length = strlen(lines[i]);
+        if (needTemp == NOT_NEEDED) {
+            for (int j = 0; j < length; j += chunkSize) {
+                // Process each character within the chunk, ensuring not to exceed string bounds
+                if (getIndex(lines[i][j]) != -1) {
+                    temp[getIndex(lines[i][j])]++;
+                    (*regularChar)++;
+                } else {
+                    (*weirdChar)++;
                 }
-                //contar com \n
-                (*weirdChar)++;
+                if (j + chunkSize >= length - 1) {
+                    aux = length - 1 - j;
+                    needTemp = NEEDED;
+                }
             }
-        }
+            // Account for the newline character at the end of each line
+            (*weirdChar)++;
+        } else {
+            for (int j = 0; j < length; j += chunkSize) {
+                // Process each character within the chunk, ensuring not to exceed string bounds
+                j = aux;
+                if (getIndex(lines[i][j]) != -1) {
+                    temp[getIndex(lines[i][j])]++;
+                    (*regularChar)++;
+                } else {
+                    (*weirdChar)++;
+                }
+                if (j + chunkSize >= length - 1) {
+                    aux = length - 1 - j;
+                    needTemp = NEEDED; 
+                }
+            }
+            // Account for the newline character at the end of each line
+            (*weirdChar)++;
+        }        
     }
     freeLines(lines, &lineCounter);
 
     // Calculate statistics 
-    for (int i = 0; i < 67; i++) {
-        if (*regularChar != 0) // Check for division by zero
-            frequency[i] = ((double)temp[i] / *regularChar);
-        else
-            frequency[i] = 0; // Handle division by zero
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        frequency[i] = *regularChar ? (double)temp[i] / *regularChar : 0;
     }
-    if ((*regularChar + *weirdChar) != 0) // Check for division by zero
-        frequency[67] = ((double)*weirdChar / (*regularChar + *weirdChar));
-    else
-        frequency[67] = 0; // Handle division by zero
+    frequency[TABLE_SIZE] = (*regularChar + *weirdChar) ? (double)*weirdChar / (*regularChar + *weirdChar) : 0;
     
     return frequency;
 }
@@ -260,7 +250,18 @@ int main () {
     }
     
     // int nnumber = 2;  // Adjust this value to change the maximum chunk size
-    viginereAttack(input_stream, output_stream, 2);
+    int chunkSize = 2;
+            unsigned int regularChar = 0, weirdChar = 0, temp[67] = {0};
+            double *frequency = statCalculator(input_stream, &regularChar, &weirdChar, temp, chunkSize);
+
+            for (int i = 0; i < TABLE_SIZE; i++) {
+                fprintf(output_stream,"conta('%c')=%u\t%f%%\n", cipher_table[i], temp [i], (frequency[i] * 100));
+            }
+
+            fprintf(output_stream, "Total: %u caracteres\n", regularChar);
+            fprintf(output_stream, "conta(outros)=%u\t%f%%\n", weirdChar, (frequency[67] * 100));
+            fprintf(output_stream, "Total do ficheiro: %u caracteres\n", (regularChar + weirdChar));
+            free(frequency);
 
     fclose(input_stream);
     fclose(output_stream);

@@ -35,12 +35,6 @@ char **loadFile(FILE *input_stream, int *lineCounter) {
             lines = tmp;
         }
 
-        // Remove trailing newline character
-        size_t length = strlen(buffer);
-        if (length > 0 && buffer[length - 1] == '\n') {
-            buffer[length - 1] = '\0';
-        }
-
         lines[*lineCounter] = strdup(buffer);
         if (lines[*lineCounter] == NULL) {
             fprintf(stderr, "ERROR: Memory allocation failed for lines.\n");

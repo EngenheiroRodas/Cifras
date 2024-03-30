@@ -21,10 +21,10 @@ char **loadFile(FILE *input_stream, int *lineCounter);
 //escreve os conteúdos processados de lines num ficheiro 
 void freeLines(char *lines[],int *lineCounter);
 //devolve array com valores das estatísticas
-double *statCalculator(FILE *input_stream, unsigned int *regularChar, unsigned int *weirdChar, unsigned int *temp, int chunkSize);;
+double *statCalculator(FILE *input_stream, unsigned int *regularChar, unsigned int *weirdChar, unsigned int *temp, int chunkSize, int eflag);
 //ataca cesar
-void cesarAttack(FILE *input_stream, FILE *output_stream);
+void cesarAttack(FILE *input_stream, int *min_offset, double *min_error, int eflag);
 //ataca viginere
-void vigenereAttack(FILE *input_stream, FILE *output_stream, int nnumber);
+void vigenereAttack(FILE *input_stream, FILE *output_stream, int nnumber, int eflag);
 
 #endif
