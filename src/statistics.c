@@ -18,7 +18,7 @@ double *statCalculator(FILE *input_stream, unsigned int *regularChar, unsigned i
         return NULL;
     }
 
-    /*if (eflag == 1) { //estatística
+    if (eflag == 1) { //estatística
         for (int i = 0; i < lineCounter; i++) {
         unsigned int j = 0;
         while (lines[i][j] != '\0')
@@ -36,10 +36,10 @@ double *statCalculator(FILE *input_stream, unsigned int *regularChar, unsigned i
         //contar com \n
         (*weirdChar)++;
         }
-    }*/ if (eflag == 1) { //ataque
+    } else { //ataque
         int aux = 0;
         int needTemp = NOT_NEEDED;
-        for (int i = 0; i < lineCounter; i++) {
+        for (int i = 0; i < lineCounter; i++) { // i = 2
             int length = strlen(lines[i]);
             if (needTemp == NOT_NEEDED) {
                 for (int j = 0; j < length; j += chunkSize) {
@@ -47,15 +47,12 @@ double *statCalculator(FILE *input_stream, unsigned int *regularChar, unsigned i
                     if (getIndex(lines[i][j]) != -1) {
                         temp[getIndex(lines[i][j])]++;
                         (*regularChar)++;
-                        if (j + chunkSize >= length - 1) {
-                            needTemp = NEEDED;
-                            if (j + chunkSize > length - 1)
-                            aux = length - 1 - j;
-                            else if (j + chunkSize == length - 1)
-                            aux = length - 2 - j;                            
+                        if ((length - 2 - j) < chunkSize) {
+                            aux = chunkSize - (length - 1 - j);
+                            needTemp = NEEDED;   
                         }
                     } else {
-                        aux++;
+                        j++;
                     }
                 }
             } else if (needTemp == NEEDED) {
@@ -64,15 +61,12 @@ double *statCalculator(FILE *input_stream, unsigned int *regularChar, unsigned i
                     if (getIndex(lines[i][j]) != -1) {
                         temp[getIndex(lines[i][j])]++;
                         (*regularChar)++;
-                        if (j + chunkSize >= length - 1) {
-                            needTemp = NEEDED;
-                            if (j + chunkSize > length - 1)
-                            aux = length - 1 - j;
-                            else if (j + chunkSize == length - 1)
-                            aux = length - 2 - j;                            
+                        if ((length - 2 - j) < chunkSize) {
+                            aux = chunkSize - (length - 1 - j);
+                            needTemp = NEEDED;   
                         }
                     } else {
-                        aux++;
+                        j++;
                     }
                 }
             }        

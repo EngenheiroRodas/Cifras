@@ -107,7 +107,7 @@ int main(int argc, char *argv[])
     
       
     if (eflag == 1) { //calcula estatísticas
-        int chunkSize = 2;
+        int chunkSize = 1;
         unsigned int regularChar = 0, weirdChar = 0, temp[67] = {0};
         double *frequency = statCalculator(input_stream, &regularChar, &weirdChar, temp, chunkSize, eflag);
 

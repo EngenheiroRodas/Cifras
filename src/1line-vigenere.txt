@@ -1,3 +1,5 @@
-ABCDEFGHIJKL
-MNOPQRSTUVWXYZ
-abcdefghijklmnopq
+0123456789
+ABCDEFGHIJKLMNO
+PQRSTUVWXYZabcdefg
+hijklmnopq
+rstuvwxyz .,;-
