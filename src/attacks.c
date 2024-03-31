@@ -119,7 +119,7 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize, int
         }
         if (error < tempMinError) {
             tempMinError = error;
-            fprintf(output_stream, "min\t");
+            fprintf(output_stream, "min \t");
             tempMinErrorIndex = chunkSize;
         } else {
             fprintf(output_stream, "\t");
