@@ -77,7 +77,7 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize){
         
         //Alocação de memória antes de entrar no loop
         key[chunkSize - 1] = malloc((chunkSize + 1) * sizeof(char));  // key terá chunksize + 1, para o '\0'
-        errorArray[chunkSize - 1] = (double *) malloc(TABLE_SIZE * sizeof(double)); // Aloca 67 espaços de erro para 67 diferentes offsets 
+        errorArray[chunkSize - 1] = (double *) calloc(TABLE_SIZE, sizeof(double)); // Aloca 67 espaços de erro para 67 diferentes offsets 
         min_error[chunkSize - 1] = ABSURDLY_LARGE_ERROR; //inicializa o erro a um número gigante
 
 
