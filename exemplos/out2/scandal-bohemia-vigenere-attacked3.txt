@@ -1,481 +1,481 @@
 min 	tamanho chave 1: "Z" erro 26.627740
-min 	tamanho chave 2: "nZ" erro 23.083185
-min 	tamanho chave 3: "cqn" erro 17.756314
-	tamanho chave 4: "nZZZ" erro 24.056249
-min 	tamanho chave 5: "Lomeq" erro 16.433030
-	tamanho chave 6: "cqncqn" erro 17.756314
-	tamanho chave 7: "mnnZnZn" erro 21.871181
-	tamanho chave 8: "nZnZmnmZ" erro 21.980572
-min 	tamanho chave 9: "cqncnnXqn" erro 16.320436
-	tamanho chave 10: "LomeqLomeq" erro 16.433030
-	tamanho chave 11: "ZZmimgnZZgZ" erro 21.253028
-	tamanho chave 12: "cnncnncqncqn" erro 17.586958
-	tamanho chave 13: "ZZnmmmmimnYZZ" erro 21.172491
-	tamanho chave 14: "mgnnnZnnZnZZin" erro 20.926178
-min 	tamanho chave 15: "Programacao2024" erro 0.041527
-	tamanho chave 16: "nigoZlYZnnnnnmmg" erro 20.362709
-	tamanho chave 17: "gnZnZZZngmmZZmnZg" erro 20.237266
-	tamanho chave 18: "cqnXnncnncqncnnXqg" erro 15.951945
-	tamanho chave 19: "mnZZZmgnZmmmmZngnZn" erro 19.758488
-	tamanho chave 20: "LongqLomenZomeUaomeq" erro 14.150877
-A SCANDAL IN BOHEMIA
-To Sherlock Holmes she is always the woman. I have seldom heard him
-mention her under any other name. In his eyes she eclipses and
-predominates the whole of her sex. It was not that he felt any emotion
-akin to love for Irene Adler. All emotions, and that one particularly,
-were abhorrent to his cold, precise but admirably balanced mind. He
-was, I take it, the most perfect reasoning and observing machine that
-the world has seen, but as a lover he would have placed himself in a
-false position. He never spoke of the softer passions, save with a gibe
-and a sneer. They were admirable things for the observer-excellent for
-drawing the veil from men's motives and actions. But for the trained
-reasoner to admit such intrusions into his own delicate and finely
-adjusted temperament was to introduce a distracting factor which might
-throw a doubt upon all his mental results. Grit in a sensitive
-instrument, or a crack in one of his own high-power lenses, would not
-be more disturbing than a strong emotion in a nature such as his. And
-yet there was but one woman to him, and that woman was the late Irene
-Adler, of dubious and questionable memory.
-
-I had seen little of Holmes lately. My marriage had drifted us away
-from each other. My own complete happiness, and the home-centred
-interests which rise up around the man who first finds himself master
-of his own establishment, were sufficient to absorb all my attention,
-while Holmes, who loathed every form of society with his whole Bohemian
-soul, remained in our lodgings in Baker Street, buried among his old
-books, and alternating from week to week between cocaine and ambition,
-the drowsiness of the drug, and the fierce energy of his own keen
-nature. He was still, as ever, deeply attracted by the study of crime,
-and occupied his immense faculties and extraordinary powers of
-observation in following out those clues, and clearing up those
-mysteries which had been abandoned as hopeless by the official police.
-From time to time I heard some vague account of his doings: of his
-summons to Odessa in the case of the Trepoff murder, of his clearing up
-of the singular tragedy of the Atkinson brothers at Trincomalee, and
-finally of the mission which he had accomplished so delicately and
-successfully for the reigning family of Holland. Beyond these signs of
-his activity, however, which I merely shared with all the readers of
-the daily press, I knew little of my former friend and companion.
-
-One night-it was on the twentieth of March, 1888-I was returning from a
-journey to a patient (for I had now returned to civil practice), when
-my way led me through Baker Street. As I passed the well-remembered
-door, which must always be associated in my mind with my wooing, and
-with the dark incidents of the Study in Scarlet, I was seized with a
-keen desire to see Holmes again, and to know how he was employing his
-extraordinary powers. His rooms were brilliantly lit, and, even as I
-looked up, I saw his tall, spare figure pass twice in a dark silhouette
-against the blind. He was pacing the room swiftly, eagerly, with his
-head sunk upon his chest and his hands clasped behind him. To me, who
-knew his every mood and habit, his attitude and manner told their own
-story. He was at work again. He had risen out of his drug-created
-dreams and was hot upon the scent of some new problem. I rang the bell
-and was shown up to the chamber which had formerly been in part my own.
-
-His manner was not effusive. It seldom was; but he was glad, I think,
-to see me. With hardly a word spoken, but with a kindly eye, he waved
-me to an armchair, threw across his case of cigars, and indicated a
-spirit case and a gasogene in the corner. Then he stood before the fire
-and looked me over in his singular introspective fashion.
-
-"Wedlock suits you," he remarked. "I think, Watson, that you have put
-on seven and a half pounds since I saw you."
-
-"Seven!" I answered.
-
-"Indeed, I should have thought a little more. Just a trifle more, I
-fancy, Watson. And in practice again, I observe. You did not tell me
-that you intended to go into harness."
-
-"Then, how do you know?"
-
-"I see it, I deduce it. How do I know that you have been getting
-yourself very wet lately, and that you have a most clumsy and careless
-servant girl?"
-
-"My dear Holmes," said I, "this is too much. You would certainly have
-been burned, had you lived a few centuries ago. It is true that I had a
-country walk on Thursday and came home in a dreadful mess, but as I
-have changed my clothes I can't imagine how you deduce it. As to Mary
-Jane, she is incorrigible, and my wife has given her notice, but there,
-again, I fail to see how you work it out."
-
-He chuckled to himself and rubbed his long, nervous hands together.
-
-"It is simplicity itself," said he; "my eyes tell me that on the inside
-of your left shoe, just where the firelight strikes it, the leather is
-scored by six almost parallel cuts. Obviously they have been caused by
-someone who has very carelessly scraped round the edges of the sole in
-order to remove crusted mud from it. Hence, you see, my double
-deduction that you had been out in vile weather, and that you had a
-particularly malignant boot-slitting specimen of the London slavey. As
-to your practice, if a gentleman walks into my rooms smelling of
-iodoform, with a black mark of nitrate of silver upon his right
-forefinger, and a bulge on the right side of his top-hat to show where
-he has secreted his stethoscope, I must be dull, indeed, if I do not
-pronounce him to be an active member of the medical profession."
-
-I could not help laughing at the ease with which he explained his
-process of deduction. "When I hear you give your reasons," I remarked,
-"the thing always appears to me to be so ridiculously simple that I
-could easily do it myself, though at each successive instance of your
-reasoning I am baffled until you explain your process. And yet I
-believe that my eyes are as good as yours."
-
-"Quite so," he answered, lighting a cigarette, and throwing himself
-down into an armchair. "You see, but you do not observe. The
-distinction is clear. For example, you have frequently seen the steps
-which lead up from the hall to this room."
-
-"Frequently."
-
-"How often?"
-
-"Well, some hundreds of times."
-
-"Then how many are there?"
-
-"How many? I don't know."
-
-"Quite so! You have not observed. And yet you have seen. That is just
-my point. Now, I know that there are seventeen steps, because I have
-both seen and observed. By the way, since you are interested in these
-little problems, and since you are good enough to chronicle one or two
-of my trifling experiences, you may be interested in this." He threw
-over a sheet of thick, pink-tinted notepaper which had been lying open
-upon the table. "It came by the last post," said he. "Read it aloud."
-
-The note was undated, and without either signature or address.
-
-"There will call upon you to-night, at a quarter to eight o'clock," it
-said, "a gentleman who desires to consult you upon a matter of the very
-deepest moment. Your recent services to one of the royal houses of
-Europe have shown that you are one who may safely be trusted with
-matters which are of an importance which can hardly be exaggerated.
-This account of you we have from all quarters received. Be in your
-chamber then at that hour, and do not take it amiss if your visitor
-wear a mask."
-
-"This is indeed a mystery," I remarked. "What do you imagine that it
-means?"
-
-"I have no data yet. It is a capital mistake to theorise before one has
-data. Insensibly one begins to twist facts to suit theories, instead of
-theories to suit facts. But the note itself. What do you deduce from
-it?"
-
-I carefully examined the writing, and the paper upon which it was
-written.
-
-"The man who wrote it was presumably well to do," I remarked,
-endeavouring to imitate my companion's processes. "Such paper could not
-be bought under half a crown a packet. It is peculiarly strong and
-stiff."
-
-"Peculiar-that is the very word," said Holmes. "It is not an English
-paper at all. Hold it up to the light."
-
-I did so, and saw a large "E" with a small "g," a "P," and a large "G"
-with a small "t" woven into the texture of the paper.
-
-"What do you make of that?" asked Holmes.
-
-"The name of the maker, no doubt; or his monogram, rather."
-
-"Not at all. The 'G' with the small 't' stands for 'Gesellschaft,'
-which is the German for 'Company.' It is a customary contraction like
-our 'Co.' 'P,' of course, stands for 'Papier.' Now for the 'Eg.' Let us
-glance at our Continental Gazetteer." He took down a heavy brown volume
-from his shelves. "Eglow, Eglonitz-here we are, Egria. It is in a
-German-speaking country-in Bohemia, not far from Carlsbad. 'Remarkable
-as being the scene of the death of Wallenstein, and for its numerous
-glass-factories and paper-mills.' Ha, ha, my boy, what do you make of
-that?" His eyes sparkled, and he sent up a great blue triumphant cloud
-from his cigarette.
-
-"The paper was made in Bohemia," I said.
-
-"Precisely. And the man who wrote the note is a German. Do you note the
-peculiar construction of the sentence-'This account of you we have from
-all quarters received.' A Frenchman or Russian could not have written
-that. It is the German who is so uncourteous to his verbs. It only
-remains, therefore, to discover what is wanted by this German who
-writes upon Bohemian paper and prefers wearing a mask to showing his
-face. And here he comes, if I am not mistaken, to resolve all our
-doubts."
-
-As he spoke there was the sharp sound of horses' hoofs and grating
-wheels against the curb, followed by a sharp pull at the bell. Holmes
-whistled.
-
-"A pair, by the sound," said he. "Yes," he continued, glancing out of
-the window. "A nice little brougham and a pair of beauties. A hundred
-and fifty guineas apiece. There's money in this case, Watson, if there
-is nothing else."
-
-"I think that I had better go, Holmes."
-
-"Not a bit, Doctor. Stay where you are. I am lost without my Boswell.
-And this promises to be interesting. It would be a pity to miss it."
-
-"But your client-"
-
-"Never mind him. I may want your help, and so may he. Here he comes.
-Sit down in that armchair, Doctor, and give us your best attention."
-
-A slow and heavy step, which had been heard upon the stairs and in the
-passage, paused immediately outside the door. Then there was a loud and
-authoritative tap.
-
-"Come in!" said Holmes.
-
-A man entered who could hardly have been less than six feet six inches
-in height, with the chest and limbs of a Hercules. His dress was rich
-with a richness which would, in England, be looked upon as akin to bad
-taste. Heavy bands of astrakhan were slashed across the sleeves and
-fronts of his double-breasted coat, while the deep blue cloak which was
-thrown over his shoulders was lined with flame-coloured silk and
-secured at the neck with a brooch which consisted of a single flaming
-beryl. Boots which extended halfway up his calves, and which were
-trimmed at the tops with rich brown fur, completed the impression of
-barbaric opulence which was suggested by his whole appearance. He
-carried a broad-brimmed hat in his hand, while he wore across the upper
-part of his face, extending down past the cheekbones, a black vizard
-mask, which he had apparently adjusted that very moment, for his hand
-was still raised to it as he entered. From the lower part of the face
-he appeared to be a man of strong character, with a thick, hanging lip,
-and a long, straight chin suggestive of resolution pushed to the length
-of obstinacy.
-
-"You had my note?" he asked with a deep harsh voice and a strongly
-marked German accent. "I told you that I would call." He looked from
-one to the other of us, as if uncertain which to address.
-
-"Pray take a seat," said Holmes. "This is my friend and colleague, Dr.
-Watson, who is occasionally good enough to help me in my cases. Whom
-have I the honour to address?"
-
-"You may address me as the Count Von Kramm, a Bohemian nobleman. I
-understand that this gentleman, your friend, is a man of honour and
-discretion, whom I may trust with a matter of the most extreme
-importance. If not, I should much prefer to communicate with you
-alone."
-
-I rose to go, but Holmes caught me by the wrist and pushed me back into
-my chair. "It is both, or none," said he. "You may say before this
-gentleman anything which you may say to me."
-
-The Count shrugged his broad shoulders. "Then I must begin," said he,
-"by binding you both to absolute secrecy for two years; at the end of
-that time the matter will be of no importance. At present it is not too
-much to say that it is of such weight it may have an influence upon
-European history."
+	tamanho chave 2: "ZZ" erro 26.627740
+min 	tamanho chave 3: "ZZn" erro 25.354744
+min 	tamanho chave 4: "ZZnZ" erro 23.614025
+min 	tamanho chave 5: "ZZnZq" erro 21.118291
+	tamanho chave 6: "ZZnZqn" erro 21.976320
+	tamanho chave 7: "ZZnZqnn" erro 25.630115
+	tamanho chave 8: "ZZnZqnnZ" erro 23.782921
+	tamanho chave 9: "ZZnZqnnZn" erro 23.853582
+	tamanho chave 10: "ZZnZqnnZnq" erro 21.793597
+	tamanho chave 11: "ZZnZqnnZnqZ" erro 24.336021
+	tamanho chave 12: "ZZnZqnnZnqZn" erro 26.631268
+	tamanho chave 13: "ZZnZqnnZnqZnZ" erro 24.130398
+	tamanho chave 14: "ZZnZqnnZnqZnZn" erro 25.196961
+	tamanho chave 15: "ZZnZqnnZnqZnZn4" erro 22.087053
+	tamanho chave 16: "ZZnZqnnZnqZnZn4g" erro 25.850028
+	tamanho chave 17: "ZZnZqnnZnqZnZn4gg" erro 26.493927
+	tamanho chave 18: "ZZnZqnnZnqZnZn4ggg" erro 24.534386
+	tamanho chave 19: "ZZnZqnnZnqZnZn4gggn" erro 25.315676
+	tamanho chave 20: "ZZnZqnnZnqZnZn4gggnq" erro 24.347547
+0DTJBOQ,OkXvDjh7WNPB
+U.nVRtK;HvaDIvmnrf;cw7DB6qsm;bz0nwRtT9H0Q0,2J.uNyOALwEwe-.ofb-Q;RxF
+-71j pu.ire;e,6wKEQ0z2puuRuk,3-7Fqao2ij0nhitLDL UDfjmj,fhcA306
+3hwevnj NwO2T6Axq9ivmf8bikw74T6UA,2Ju8jdcAG1MEjzb .irniO MD31oDftpuvbq
+KzB0T7eDmvwf8SrbAq471UDBkmf-o;z ED70e6jvotAndXsT6AtjDpuf.,Nudx57Eth;z4
+xf-R;KqA1K5U0u2up8UlcA51EwsDqyfdvfhkqN6TtT-jybcyl;LpEsGvUv.tjoqo;1t
+PsLGqa. blrnldCT6Axq-pzu.,RuPt56T5Ustvoj T;K,6DHuiws,jotnpKrA Gxq6ihu
+uuR;g;K;6EXst2tfra0kqN6TtiDb2mp3Rukw7DP2k;e2ib3R;Z 3u7wqzjttfyS;S,Ts
+8tb5f2qp0VwS;GETaUDolwf-nvZ;DwT2VDuof.0bidtKDIti5jvotAnvK57DP.jz.h.hvOh
+K,6D3Ei0fls,8GkO8T975UDbknj-NeVtT6A.dyt2gp-nwRtT146U4wls0rkfO EwG7qxpy
+esnjlXvT6Axq8fpm.serWAFwG'6q-p jwrf;K,6D3vj put,8;xdA81KEjzf2usnVqOs
+Kw36e0fy.u.ndN.B6T6kui2jo1excxH0LEY0uv.ivf;Y6GD6xb dhuf8NqNA8 GxbB
+bkkv0ghNAMwF3U4btfo1nzK2T6HEY0uype2PhkpTvB6j4bjuj T;Pp56H5q9ipdi8ZlQwM
+6A5e9.h.e.hedAN2H1qsms.ivf;WtG63-q4fzvm1f-kVK MEY0.h.travS3B87
+.d5uyvnrawmAH4Ttqushdl8Vqk;GwT2VDipt..jqkwByAIf1xls.yRqctLFTAe7mk.o.g
+eOAF1Kxqvjzuv-OlXvT6AtdDb2tu-bqQA7-H7Y1o2jo8N;XpM7Kxq5vji.nf;RxLETTdv
+zlu.1UhbtT936qtv .p R;g;FsGEj1.ojnAndXsT6AtjDxvnb nzK2T6Axq;b f.VehXt
+ivExhF.vg.qheS;N5Ttdv.xvf0glY,3tExq-ftps6o
+
+Lkw3vT6Uwo2mj1goOAHxTae;nlt.yNwO RETfoDnhssvNjOAAs6ET4jmufqnxcA393C
+V4pt.fnPkk;Mz75rDN0.p4a;M;F2Exjw.obq,VqO2LFTtdv. if8UrWtXu71j4fk
+jo1RuO2M5TAX do.svfhk4ID35e7ok.uuR;WpGDP eDgpst1niS,65T Y-tlmg8Zdc374
+Hyqzjz.p4a;O2Ms4-Y5itfo1p;gtKwT6kxgpdjrawk3HD3ui1si.byY;W8TsM7U0uppoA
+jkS 7Dp2b-fz;.4Urk HsM Uv.lwf-l;P;K-T2VDtvdjrg.k6B6AEX t2xi.YhkQHz70Yso
+zpvyp;btFsB1Uv.po..huk Hv9.dyt2jo8;dUtKD 7hwf ;.ohuSt6D30e0h2ij0nrVs
+41H;iF.hoe8NodtK037Y0h2gs.Z;gt7,T7eDxlfl8Ohd67wGES1dhjorndXsTsFuY6jvo;
+1UhksK1P6Y0fzt..S;dw7D65ky;2boqnwRtTxBxhuf2forejiAHxT Y5.vxo8XhO,
+GsM8hw,2If8jdcAL6B-bF.ht.rihbCTv7xf;z2bu1edM37vTuoDuof.0gxN8T18ES4jtf;
+nagk;5uN3Ywe2ij0nlW.70Lxqxbjvm1VhcA306EUAuybp-QlXpKBT3e9fyt..S
+rL274Otj pu.j niY E1P.dy.vvu8gkY27D5-kwt4.b Q;M 7sK.dy..q.1Urct
+FBL7U4jlt.4UlMwTz3wqtflo.nOdXsH07wqst2ip,RoO2LD4Cq6il.psSlMx3;T3e;jjf,
+SerWAM Fxq6p2ujzR;2AAw35TDtvnf8idQ47D3vS1vuu..S;RxLD62Y0hz:.psnkS2
+L7F0e0t2up8BgO2LsT.dDuof.pNvOAHxT7Xw.asf,biPAF7KwU4;2pg8UlcA5;7th on.v,
+bik3AwT6Y0h.mb-nwbp9w6Cq1g2uirnDdzB0L2dDcypuuRucA36Tmh ojpnnYhOCTsGw
+V ohmm6nrPAMz7Ec tzjp nzRx5zT UDihe.nPfY.I;B6Xwe2tp8QhVx5sMxbB.hoe
+0hfMtL588b;z2gp-nwRtT47.W0juh.sNpS RDHyqZpsmb Q-kQ7BH1TDuoftrnvSvG5T2V
+zjz.bpglfxMBVEX1xlwf-p;gwBuAE8Dnlsfyl;cw347wq9j i.nYok3AwT5Uselst8bi
+dw7D6tY;z2qsrfvmAqDD1U9.sju1Yhk;8DFCqxpynf-nibx706EQ0e2dpzcdXxH0U
+
+hdw.ujhug2S3T936q1o2uirnwgtG6Bxjz.vg.ZNuMwVDZR;Q0P.xnf;btM7K1Y0h2gs.Z;K
+yH7K1UB. p.nnsK3BwG7q(xpy.J8UdNAG1PEhwu.sorQ;d;TuB9Y;.wsbpglMt)VDP U0
+n0.xnl;Vt6DFxq6iypvtU; pDwKEI6slfu9nDcAqDIti5fk.uuR;gtE;X5U-ftcf-Rg
+N;H4VEmzjji.zhvdA3;Pto5.if.nfvYrBsMxTDju.n6npS,6DP.jz.tz.4brS,9FTtdv
+xpui8gkOA6sK;q ojjerawcAHxT7Xw.Zuvql;S,Tk5th;f ;.VnzK2T57.pwe2xj1U;K
+z7wGETwtpsf8grk27wTae;nlt.nTdS,VD31TDuv.l bzkwH9T UDxht.rZsV;R Gzqzjz
+fy1edY16 GthB.wpxrevlAp LEh1ptt.4RuOA44B-b buum6noS3VD31TF.lwf ndcAq
+;H2awe2vqAnLk239T Y5. bmyp;c-347EV h.sf8cdc2T6P.Sw.po.nngK1DDL.bzp.fu1R
+dQpB0L7q6il.cyVqNBTZ7Emst2qbpVqQAMz7Eh1pt.t4Vid RFTxQyfymzAnzS3ADA.i
+zfhe.0hqUAN2H1qzjz.duRvdA306EX t2ib QvkrEsL3Uv.ifivagkwB-UEJ1.tf;8jkY
+zGwPEX t2fwre.k.H16EQ0e2iboVwmAA LEQ6upuvqR;K,6DFtd0fy.u.Ygk3AwB5q1xu
+tu.e.lApwTAQ5.hu.4buUA3y3.dE.Of.uNgk1B571q1v .psnkS2TvK8WHdyfb1Rg
+N17sF6qsok.xnf;R;MDN3e0. if8ffO,MDHyq5ptf. Rzk-K14-U-,2J.-NqQAMz7ERwms
+boqnzK2T5A2m0..q.1b;dw7D5 Q-cls.4UlMwTz3wqxpynf-Y.kq7wGEY0.wbs1npiAH9GF
+
+7 t2nb ahbAPsLEd1u2fgshvS57ETbjDtlme.Z;gpLGTuk6.of.4NvkvEs6Gqa. ij X0
+d;T57xq-f3.Xvgkkw346-oDb2xp-Q;c-H,71sDc.u.4VwRA3DD.dvm0.f6R0kw7DPtlwe
+tf.1b;K,TsK0Szbps;8gkbtPD3vh1tz.ivf;MpLwT2VDdphb-f0kpGvT.dvjjburQ;K
+2I K.jDdhtf8NqNA3D9ti1hlof8Vqk3AwTve4ols,8GkO,Tz7Ei6pve.oRiY17DM UDgpsf
+nagk H1DxTDnl.p3RukxGDA.iDtpoh2YdbAB0M5e5qlduvihku35A.e0,
+
+"dfeybfUAL7B7iDzvv;"8Uhk17-35awe3."J8gkS,DFTpQ6tvo;8gkK3TBH8qzb,f.,hw
+Y,T579U0.hoe8N;RpExT3e7okt.0VqMtTaT6Q9.0pv9"
+
+"FhftG!"DqEQ0t;fsrQ-
+
+"2,6w7wsDJ2ti.hoNAAsOxq6ivvhug;KAE M7bw.tpsro;34L6Ttq6spgmrnpY17FTb
+Vsojz;8Jdd2H0UE00e2jo8cuKrM 5xqshhjoAnLk;4575lw,2Zp2ngSsT0H7q6fsm.zR
+wRpMDR2kDjuuf QhNAM1TzeDjuup8Udb,75LF"
+
+"Jzfu;.ubzksHDR2kDlupx?"
+
+"VnvOtT MGqa.kfe2PhkxMETae9.kp.VnnX;PDM Q6.0pv8UdftTt7xdDhluuvaj
+i;N4Lxbx.,fs6nzO3T;37U;z4.b Q;dw36TCe7.obwrndk.H5MES;vttz8NqNA5sKxbwtz
+tf-idX3TyB5b?"
+
+"ez2efne;1;E-76s"Dthje850k"3A LEY5. pp8ZxMwUD12kDxvvmqnfO1MsB1bB.obwr
+OhO,TtN5dwe4.inQ;i;NDE.lwe2b.sRzkr70M8h fz.btb-kXMDB6q6s.f.1UddAqDAtTDb
+jpv guiAPsE;q1o2Ui2evNpRD31TDdhnf8UrWtT GEQDeyfbqSxVAFwL6sDc.u.nf;2
+w387ESzbuhfqnpiA5;H7Xwt2J.pNq'dAB-3zY0f2ip4n.Y4Tv7wkuf2ju9nDcAM1TfQ4z
+Qborp;cw7DB6q ojps-VjSqEwVEQ0e2nz8jlPtTz36qyj,fo8UhbAG1M.Sw;2cv1nwRtKwV
+tWsju;.VniKxEDM2q5fl.i.j;i;NDP2h,.pu..hwl"
+
+W7D5 kulsfe8grkwB-Lxbx.hoe8exLq7vT Y5.spotp;XtK8H8iDihoe0nwYv76AxhE
+
+"J .j0nvS.I;BvY6z2ju0RoPC"T53.TDil-."zl;O875T7U;m2nf8gkK3T1GEjzf2jo0VgO
+;8DR2k4.sfg1nvR;7FT,k5u2xirehk3AwTyY4fsjhug;c3K DxiDj ;.1Uhk 7sM U4.pt
+tpbuOsTtREi y2bmzbvdAIsKtb;fs.d2gvlAwtO.e7tsz.1UhiAAsOxqtflo.pNxct6D4C
+i1nlpornzR;Tz36q8fyz.pNuO 75L-oDtjsb,Rgk1H7Gwq6il.fqThcAHxT7Xw.zpmrnlX
+;Kv75q6p2sfzbyOA54N6jwe2nvqnib;FDB7rDIlodrp;i;NDLxUF.tz.qbxL 7
+v7wkuuppo8gkK3TBH8qzbk.crRqk;N6T.dDwpmf8jhK3AwKGqsok.uuNwk8H7T Qv.h
+qb-glM4EsK-oDnhmjtadX3TtH2jHtsju1VqQAL27vY-fu.psnwRtTdH1T1o2tmnihiBTSL
+7eDzvvs8cuKrM 5xsDjm.b8ThX3EwFtdDxhml0nlX3HDFCq4pvnt8fpO E Gzq1g
+ppe.Srb.VDP.jz.h.cyNfUAFsK;q1g2oj1eddtT18Ei m,fs8hsY,TzB6q4jniu
+sbuOuB09xhF.hoe8N;L4Ey7Ee0. if8elQwMDL.Tw.vg.uVvk3H2X Q6. p.0UrgAPz75U
+zf2ib0nvOrKwMxTDipt.0ghdwH552fw;2J.zhvdA4wTwk;m4.j QhOsVDByqa.kp. bw
+Z1H0H8duf2ijznwYA4wTtdDbjuj3R;WtFt75q1g2uirnpOsBu3-q2svgf0flY,U"
+
+aTve7mk.o.g;RtE2T-Q7hojotnddAMz7EUstl.xvgkk6A 5 qzf2fy,YdS,7vT Y5
+qypdrfvk;8D6xT7d jp o;"Gw70Tbqzfhs.6bxkvB87Eo1vy.srNvY,LF"Tbq4ftbsxRgm
+"3AwT7X on.byjdi2TsI3Ussz.u.npOAM1TuUDtv.svQlM4E1N6bB.zjn,Yhk3AsME8
+up.me8RdcxEBTweDj .n6fhVuVDM e7ho.b1nhKrADL8Sufztj3R;S,L631Sw.vg.6bxb
+17sL2d on.J8Npkq3x8-Uv..ouvY;i;ND7Bf;bpo.6bxbAI4HvU5t3.B Q;itMDq
+uU;jlwf8gkK3T-REUBfz.b-R;K2TyH2TDbz.z.hucB"
+
+"y7B7UDtv;".uR;K,L975Uv;2mjtUwS,9D3ES hhsf1ghmA306Ejzsvxj T;RxF57-V
+vp;o.vawYA30Tth-dobj-o;"I;NDLxUF.ivu8lreA61T1e6.vctreyOBTlAx
+T t jopglY,T LES;fhs,82rbA7A30f;f4.z.h;RpOwTyhwr.fo1Y.k27wGEjzf2turcv
+gwBuAEbwbk.v,nib;FDM UDihmm8grk3A LEh1pt,"
+
+"G-RtetG6ECr"
+
+"Zp;.psghX?"
+
+"l7;EGq5ptf.uhqN17vLEex. jnrf-"
+
+"Dw70T e9.tbo6ndbtT6Axhw?"
+
+"Ivx.zNqi?AqD62d'6.rop4o"
+
+"TexMwT6e!DZvv.uNyOAG1MEettlswrQ-kPGvTCU6.0pv8UdftT57xdE.aib1nlcAC7L7
+cB.wpj g-kcH9VE8Dlupx8gkK3T6Axhw.hsf8fhftG67xdDt fq0p;Lt5sN6UDJ2ib3R
+eY3ADLxU0.hoe8bectK87wrDC0.uuR;gpRFT6Y0dl.z.h;K17DB1jwslturQ;S,T6Axiw
+mpuuyR;Z1HtExc5;2boqnvS,5wTCe7.hsf8TrYsTwG2kyi2up8Pkb;G 5-UDpuf..e;d6H
+18EcB. sjsYlXvTwQ3U4jlodrf0k8H7T0QB.if.vawO175MxTDju.uuVvl"ApwT7X4f;
+pwre;KALz7xjDpm.uuVfUCT2B1aHupourQ;X;MwItfws2xivPkkw3vTuUwo2mzvajk;IwG
+8f1o2uirnwKqEwUE"86.jbnrneiAMz7Ebst .q.fwm"ALsBwqzf3."SrNgkxMD3-e7e3"
+
+UirnqY37DPtiDvueb1RgmA306Em uopv1nhS3AwKEi hubu2ehk;KD3wT4fzt,
+
+"gUhbtT9B-bDdhmm8hsY,TBH8q6p6ojtUwmA36Ttq3vhsure;d;TwBzX6.v'dm.Pnm"AB6
+LtYv;2"b.tRqd 7-31q9iv.erflbtLDM2quputvyg;i;NDN3e0.h.nngwO1T18Ejzf2wf-l
+gOtIwL7q-ptfo1o;I;N4T5Uufuu.0Rufx5wLEj1.vof8bik3AwT5eBbs.i.hvO2T18
+Xk4pwf.uNyOALzHAdDuobu8lreA347Ee0f2xi.npK8T53yU;z2cf8gue2Mw6Em uo
+nb1ghb2T9A.Sz.hsf8bikpGDB0f1s bopR;gwBuAESso2ib-QoiA4wTxnshnfsnghNB
+.zB6qsdjpv g;YuTBH8q9f2ib3R;P1H-Ttb;.xvb-ghb2T47vU wle,8;hkxGDR2k4
+dobnoRuk3AwGEQ6. ib1nkY4KFTtdv.kp. bwk33,7EY6.hnj0f;SuTBH8hDwptj1bu
+gt34Ttq-bzl,"
+
+"gUlcAB5T.dvfle.nnpi2MwKCs"DJ2sfzNuUt6ET"pXsu2ep8lreAB-3zY0f2uing;S3
+Fw31i?"
+
+"a.obwrnqYA6sMtqBf ,.Vg;S2TsTvQ2j bm8Zlc33,7Ej1. if.elctTt7ye4f2pornkK2
+6sMtrDJutf flL RDH1UDclhj f;d;T6P.i6.mbd1f;d;T5N.jDuofp-VhcCT G6jwbk.ps
+gkO;K 76q6p2tvvg;Pp56LFqTv .uuR;X;MwT.j5fsg,8JkK3TvHEo1v2efqhfOA84H0
+Y6?"
+
+J2db-Rie EBTxnsnpofqnwRtT9K.j on;.nagk3AwT3Q2fy.v,bqk6A 5 q u2xb0
+juS3MwGF
+
+"Jzf2nb nzR;T9K2jw.pu.4Nvk-KwL8cscsz.4RoVAM1TweF".P.srZdbz7vV
+xdvfhwp2elXvT6HEY-j burnpiA51F3Q0jvo't8cuYr75LxiE."ZvdunsK-74Tve7mk.o.g
+eOA41NzX6..oere;RpExTtqusvxo8N;Zp5,77rDJ .j0nsOrN;Bth;z2tu-bqQA306
+6j gm,"
+
+"QrPxVx34X7Xsu2jt8gkOAOwKCq9pye;"8fdSsTZH-cwt3."J1nlcAG1MEQ0.LohyVvR
+-3275qsu2bmyo;1;EvT.jDvw.u.nwRtT;BzX6,"
+
+P.evQ;c;VD31TDthx.nnoK19wT"X"q9j i.nnvWpE;T"zs"Db2"Q;"8NqNA3DEthyf2"H"
+xvgkkpT5Ftb;." ".x.ihXAB0M2q6il.urkwe17DHyq6il.qnchbB
+
+"-z37qvp2zp2npKz7DHyq6ihu?".nfnOsTZH-cwt3
+
+"UirnqK.7DHyq6il.nnXhbCT0HET1viu-8bukwB5T0e0pnsbzp;bpMz75r"
+
+"fp .b1ndV UD. UD'H'2xj1U;dw7DL0Q;m2'u'.0gdXsLD82hD'HltfyYvMw3xMG'
+mzjji.vf;dw7Doxh-bu.g.e;'.;F231oE'.Pu.vf;KA57L7e-byz.pbqd13uM.e0.sjlr
+bxbA'k1U'E'FF'.vg.pbxb27FT6jsokt.sbuk'e32BxhE'.Upx8SrbAMz7E'4y,'2Mf1nxc
+vEsGvUDb .p2e;.;G6B1U0uhm.TN,O3Mw75r"DIl.u.bnksH9GEQDilbw6neb;P0T9e;vtf
+g-bpkwB5T6Xwm,ft9n"HQ H9VE4ymvoj1m2RtKwTAUDbyf;81jbx3ETbjDjz.j nd
+0tK-31u5qlblvajkrH7G7hB0po.ObkO.BsVEd1u2gb-nib;FDkth;tibe9n'UO.34DtR;f
+ht.oRlXvT6Axq5dlof8bik3AwTwUsuo.psnZK EwG6jwju;.nagkuH4T.j5.uvnrere2
+9;36iHghdu.elO2TsGwq2bwfsCZlV LE'TaQF.ob;8Z.kqHBVEmzb .e.n.Y4T-3;UDpm
+uing?";1xLD7CU5.zqb-XoOsVD31TDil.trawk4ID3EW4fhu.oYxOAM4B8c2ihou8PoY46
+xK2cDipt.pVjK176Mxr
+
+"lil.qnchbAPsLEcsel.j nEYw7-Bts"DJ2tbvQ-
+
+"917uB6U;z3.B Q;dw7DFtdDxop.4erdtT6Axq0p f.vf;KAowK0Q0,2Ep8lreAG1Mxq6il
+qfphoSpKD52d5uyvd1VrXAHxT7Xw.zfo1RqMtX'lA.iDbjdp2awk;8DR2kDxl.inihkuK1F
+tb;.xvb-ghb2T47vU wle,'8,;-1705 cso2ps8Exc2BsGES1vse. bwkw387Em4j uf 
+gkK3UDq7q t2uirnJO1FsGEmzp2jt8frk4GuH8h6fvvt8grkwB5T9U4cz,.Vg;Y,EB
+Kxcsjut;8gkO17xH5UF. p.qVvM;OwKEmzb .j0nzK,Mw6ERB. ij0nJO1FsGEmzp
+;sj1Rvk4I1GE11ilnjna;ZpIwKEQ0e2qsrShb2T97th on.b8ZdczT6HEizp;jotnkS2
+8s5xrDBue.uRuOAAwTve-fz;.vS;2A3-T1e6.tjt1NnO,VDM2q4fzpm3R;K EDH8h
+vp.cu0o"
+
+DcAAwT6f1ll.uuRuOAPsLEjzf2tinesk2H7Gwq1g2ip-fhc'AA1HyiDbue.teddxGy
+P Uwmz.btNlX2MDM UDd.scAniY E1PxTDc0.b8fkK1IDI8b;.hu.1Uhkq7;EFqZpsnf0
+jkS2M;7wr
+
+"S.wbj-p;L8T6Axq5p.oeA"nvKx6DAxrD"Zlt;"8UhkrH0M.d7fk;.tYdXrB09Ee7u2pg
+1Uhk6B062mE."H.ovPhk B6M-UDcypvtUdWA306EQDqhjs8bikq7sN7Ywt3.B8UxXsKw6
+tdv.mjg1l;Q4B07tiDbwjfpR-kiAwKx'iDnvof6nlXAMzB6qubzf;8Jdd2H0VEYx. if-R
+lcAG1M Y0h2fm0R-"
+
+"2AMzB1aDuobu85;Rp6D4xj6fy.h.p;1;E-76r"
+
+"fp .b8OldCTVHvj1s3.T1N.k6AwKxqBp..b-R-kXTsFEb1t .xvgkY4MDFCqTpzxfyY-
+z,6DM Y5.wspzVvO2T6HERw.pourehc3B09Fqau2xp2Ygkq7D3Ef u0.u.npS2LDB7r"
+
+"Tv .z.hukrE 71jH"
+
+"Olwf-npS,6DA.cE.P.nnl;gpG6TCe7s2ifyc0kpGvT6eDnhz.uR-kW747EXw.jpnrf-
+CxMD62m0.po.1UddA34FvXsjy;.Qbfd;KFTtdv.njwrnxcAR1N5qtfzu.ngwO,M H1r"
+
+S.zmp4ndXsTz7tlB.zuf,p;gwBuAEXse2cfra;Rt346Ek2pu.uuR;c33 K6qsok.j nwRt
+IsL6Qyf4.qnhvOsT F0Uvjhufyl;Y4M5BwUDuof.qbrbBTlAxdDuofsrnzK2TsT-e7e2boq
+NxdwH4B7Q6j,f.1Nsl
+
+"RH-7EY0!".zbjqnKY FwLF
+
+0Dnho.rawO17vTAX1.jpvyQ;RpKvECqzb,f.oRhXAEwL6q6iho.0V ku7wMEi y2jopUhc
+xGDAxYyi ;.4VwRAMz7ESzfzu.nagk B-46q1g2b.URuM4EwLFqZjz.e-RvcAPsLEh do
+xj1U;KAK 5 dwtz.xuVfRAP1N-TF.po.RajVpGvVERw.sppxRgk4I1GEQ5.hlj nwYA4s6
+7Q5ul,.URdf8Tt31T5.vg.nfwbpDz31q9fyf.0Ydcw7vTtS4pzt.1Uhk2Ew79U5.hoe
+serX3LDHyqzjz.e.heVtXtKxQ5ule.pbddCT9A.bw. if8QhO-TtE8UDdspbxnzRx5zTAQ5
+uosp4a;Y574T Y5.zip2YgO1LDPtiDmpofqnzS3AD8-Q-f6dpybxbt6DL.b,.hoe
+0Rfe17vTtjDuof. RfUAP M qs.isp.Pkk6A 5 quputj0ghNAHxTtq5juhmrniVpF Gz
+Rws0m,8;rY3LDP Yui2fy1RqNt6DAtbxxhz.2c;RxLD5tb8fz;.nagk6A 5 q9fyf
+u-VpWt6D37q6il.u.cvk6B6AEh do.c-bzXA87KGquptqmrghNAMz7EY-qyft0VrXAHx
+4thtbyjd8bse 705xq9ipdi8jdcAL79zU5ule.ol;RxLDP e;f2bq,RdbpGu7FqZf
+jbs-VhNA3D45ese6csvZpOsTz37q o2ij0nkK,6FTAX ml.irnzY17D3vh1tz.uuR;e-IwK
+3Q4u2pg8UlcA8s5xsDf-uf QlXvTvHAdDqhtu8gkOA5z7xatpuftAndkqEs5;q8j1bsq
+ZdczVDP Yui2if8UdNA32Ithwo mz8NgT4L67wq6ihu.3RuiAF1Fxd6;2gp-nkS2Tz31T
+9bz.t1VoVAKsB6Uv. p.vg;K2Tz7EU0ulsfqo;-1H-T7Xw.spxre;ZpK6T2VDuof.sNfO
+w7D33fwbyfe8grkq7D3Ecso2pg8fwb;GyTvXsshdure0k6B6AEQDuojdxp;RpGyB1WDmpq;
+nagkpT;H1WF.zusnVjR3TuA.dDt.hhrfwS57DHyq4fzpm2glY,T2N6Xwe2up8gkOAEwGzjz
+pm.pofwS,3uRF
+
+"O1v2ibqnpiAG1Mx?"qzf2btxRgk6B6AEQDelfq8Udb2ADO2Yuf2boqndk2M4H1W;z
+tbsxRgkV74FtdDbjdf g-k"XT6H-TDzvv.1UddAqDP2k;e2dbyY-"kW7DE2e,fk.g-bp
+Y,7DM2q6il.p1UhbAHxT8iF.ht.vS;e,5wK7Q o2xivPkk3HD3wT4fzt,
+
+"cediAMsDxqs.zfb1p";cpBvTae;nlt,8"GkS2T LEcB.msjragkpGvTve;mlbh2R0kSKE
+-tj5pu;.4UrkxLDHvSstpponYoiA91HwqwovvhunwYAAwE3q-f2jo8Z.kr3576rDXopn
+uNyOAqDM UDivop2e;d;Ts6whwtz?"
+
+"Zp2npK8Ts6whwtz.nrndcAMz7E21vuu.ibqkZKsF0sDb2CpuRpSpGDG2R;ftbo9nL
+e,6wK6jsok.uuNwk3A LEWwo mfzNqmAR1N5qxspfoqp;S2TsT0Q0.vg.ubqY4KD31T
+vjzdsrglY,VDP e-.P.nnl;d1N5MEm uo.b8Zdd374T2VDuof.zbvdA7AM5U-f
+pnq.ewK,5wUE8x.upuAnLk2A1N-TDn.di8cuOu74T7eDdvnn2alMpMwTAY6i2zp2
+NoY,7E"
+
+qEh1tl.u.njYCTtN7qZpsnf0nfK49zMEcw.iz.1Uhk6K L7qsok.q2fkOsT-7ERsdr.j gr
+W8TuAtY4,2"Ju8VvkqH6AGq1s2op R0"k23 6EXw,2"Zp2npK8T53CqtfmpsrnwRxL
+y71j;ftbo8Nqi3A Gzq9ipdi8lreAFsREisz2up8Zhl"
+
+iAwTVe7o .tuexQv7vT Y5.ispnQ;cwH7EwU4t3."UuRqkXT-N6jDclhj p";cpBvT UF
+"c0.cvagS,9DR2kDcvui8grkp45H-k6f2tfpehM8TxH5q6xv.zrNucDTsMEjzf2foqnrP
+3AsMEj nl.uuR;WpM675q9jsm.oR;YuT0HEY-qvsunafOBTSMEf4fzfo1nldAB5T1e6. pp
+zhfRAM1T6QB. ib1nldAB5T2VDt.di8jhSvA6T.jDnhz.uNyOA30T.dxm.fopR;e-H0
+m8h1qlbo8Ulc3H4RF"
 
-"I promise," said Holmes.
+"8Dqypnvfhm"ALsBwqZpsnf0o
 
-"And I."
+"DXsTaU"
 
-"You will excuse this mask," continued our strange visitor. "The august
-person who employs me wishes his agent to be unknown to you, and I may
-confess at once that the title by which I have just called myself is
-not exactly my own."
+"re7.;jmynhhrN57Ejzjz.nnfnm"A51G7Y0vle..huk2M431Ww.,jtvgrbBT"lAxqsvnvt1
+chb2H0TAX1.lnqyb.cAFwTAY5ilt.uVvkp9wG7q6p2cf8hqU,H9GEj1.0pvAndXsTaT0QB
+dvogrfvkpMDH1Sw. ib1nwRtT6B7bw.iz.4UlMwTaT Q8f2kv0g;MpE;7wq-zzfmsnlc
+,H6Txnsd mz8Z.k;P0U"
 
-"I was aware of it," said Holmes dryly.
+"bq9bz.b4NuOAHxT.jF".zbjqnKY FwLET4zsz,
 
-"The circumstances are of great delicacy, and every precaution has to
-be taken to quench what might grow to be an immense scandal and
-seriously compromise one of the reigning families of Europe. To speak
-plainly, the matter implicates the great House of Ormstein, hereditary
-kings of Bohemia."
+"gUhkrB458c5uhodrf;K17DHyqyslbu8QhVx5s5CsDbue.rihb8T2KxSsv jp nkK2T6H
+uUDuhlf nwYAJ771Sz.;ib1npSvA6Tzh1x2up8OhkpGDB0cwozf.0PdXs3;Ttdv
+tlsj.hvV8TuH0f4ptjtrnrXtT18Ejzf2sfvTqS,9D8tc mpft8bikTN4H3UE.ap.0chKz
+I;3.d;z4.uuR;WpM675q nwmjpNwO2T6Axqyslbu84re27DHyqgstturVqmAAwKxT uhsz
+xVqQ2T18E11ilnjno"
 
-"I was also aware of that," murmured Holmes, settling himself down in
-his armchair and closing his eyes.
+"Lk635Ttb5p2bxnehk;8DM Q6;"2nv-Zxbt6Dp2b-fz;.0Rwd B09EX nzfmsngY6GDB1
+X t2bszPkKxKD31TDdsptvajkwB5Txowt3
 
-Our visitor glanced with some apparent surprise at the languid,
-lounging figure of the man who had been no doubt depicted to him as the
-most incisive reasoner and most energetic agent in Europe. Holmes
-slowly reopened his eyes and looked impatiently at his gigantic client.
+Pv-nyS2B6H5qymhodrQ;gxMzT6e-f2bq,NuO,MDL8h2sptf8Nwk3AwT-Q0h.jeA
+Yre,9 GzqxjnvsrnrPAMz7Ecso2xi.nkKsTt7xdDov.e.hedA6wI.S6fk.u.nkS.TsLEjzf
+tpt1nlXrB5B9UDslbt.ahbA306Ec1t .f RuQtM 5EQyfuu.va;;4K1IxrDIvmnrf
+vV;P;REhwpwforQ;RxLD7CU5.hoe8YrYz7vT.c2b jf goiA36T Y5.njhnawSrTuE.U0u3
 
-"If your Majesty would condescend to state your case," he remarked, "I
-should be better able to advise you."
+"Jg8lre1Te3,U5u0.x.hoNA51GwU5dloe8grk2MsMxqBp.s.pNvOC"Tz7EhwnhslrQ0k"X
+LzH8bv.if.oRwdtKD3ubw. p.nQyS27DR2kE"
 
-The man sprang from his chair and paced up and down the room in
-uncontrollable agitation. Then, with a gesture of desperation, he tore
-the mask from his face and hurled it upon the ground. "You are right,"
-he cried; "I am the King. Why should I attempt to conceal it?"
+Uof.zNqk2I431WDgypn8UlcA5z3.hDbue.,NfOsT7IEQ0e2ep4a;dw7DK2e-.po
+v PrX3K1E-Qtml.btVwK3B1GFqlilo;8jldwTsTzU5u.sf8biks75IxhsuppoAnkOAM1Kx
+jzf2nb0X;P1H-T Y5.mbdrndXsTzN5bwe2ju8hsY,T6Axqysvvoqo;"I;ND35UDsphi1p"
+kOA54BxTG."P.bznwRtTcB1WE.diz8fkY4EvTbqsu fn,g;d;TuH1Swbs.j1?"
 
-"Why, indeed?" murmured Holmes. "Your Majesty had not spoken before I
-was aware that I was addressing Wilhelm Gottsreich Sigismond von
-Ormstein, Grand Duke of Cassel-Felstein, and hereditary King of
-Bohemia."
+"JkiCT GwUwe?"2nv-Zxbt6Dp2b-fz,."lbxbAusCxi6z2ibqnqY3T5I2awo2cfsbuOAq
+936qsxhsf8gkK3TaTAQ5.hee-RvcxGyTpY;ilmn83rd3L47.Sz.ZjhvfpY,6DO2d
+gstturVqmAo431TDE.lf8bikR35LxbHGlmt1RlXCTsGwqzfyfevgdb8TcB1WDpm
+CpuRpSpU"
 
-"But you can understand," said our strange visitor, sitting down once
-more and passing his hand over his high white forehead, "you can
-understand that I am not accustomed to doing such business in my own
-person. Yet the matter was so delicate that I could not confide it to
-an agent without putting myself in his power. I have come incognito
-from Prague for the purpose of consulting you."
+"TN7qBp..dna;e,6wK6jsok;".0NlNAH7KEi6shohrnyS2B6H5sDtpuuvajksH9GEe0dl
+np-R;K,6DIti5juh.uVvkw306Ee8fy.ivf;Rx9zTAX ul.g.ehRt3vVE"o1v2db 
+hqNtK5Mtdv. ib1nLkpFDG2jDbjdv0grWt6DM2qvppoh8fxMwTtN6Y0fzt.va;W8T1P1
+fwszpo9nbO3T6Axq-b uf-nzK2T5HETwmpdb1R;dw36Tbqup.me8ardA51GyYvf2ju8gr
+K,Ts9xd6.;juubxdAI7M7Y0h2nz0RoPAB0T Y5.wpxre-kXTz39UDdvnf8VqM;90B7e
+xsvn.cedQ47D82hDuof.,huZ;LwT2VDdvot2YwS,9DR2kE"
 
-"Then, pray consult," said Holmes, shutting his eyes once more.
+"UofoAnsbpRD52d5vsu;"8fdSsTZH-cwt4.tuhwdxGyT Y5.lzf0nrXr7DF2hw,
 
-"The facts are briefly these: Some five years ago, during a lengthy
-visit to Warsaw, I made the acquaintance of the well-known adventuress,
-Irene Adler. The name is no doubt familiar to you."
+"aif8SdM3LD35UDcyjfsY.k3AwLx:qkptf.sVyOARw35iDbnp;8QxbxGyTtq;fuhuul
+yS2B6T7eDXhstnj0kXT-3wUDuof.nPtepB0Mtduf2pg8gkOAPwE-u,ovxo8NgftG6N5U5t4
+JsrahkP6;75rDUof. NpOAB5T1eDevvc1niK.B;BthDuv.z.h-"
 
-"Kindly look her up in my index, Doctor," murmured Holmes without
-opening his eyes. For many years he had adopted a system of docketing
-all paragraphs concerning men and things, so that it was difficult to
-name a subject or a person on which he could not at once furnish
-information. In this case I found her biography sandwiched in between
-that of a Hebrew rabbi and that of a staff-commander who had written a
-monograph upon the deep-sea fishes.
+"4xGvECq;pvl.uRuk4IDB1q-z2joqR mAl157e4;"2nv-Zxbt6Dp2b-fz.xvgkY4M
+1Ixd on.ivf;O875UE51s2nb l;it34LEXw.obe8NgY-Mw6EQDt0turZ;YuTvHvawupoh
+nYok-343zhsqot.pbqMtK0B1WDnlo.nagk3A GziF.zp.1UddAB6TAQ5.kjgsVfe MDM2
+dsnl.b8fxLy7uMEe4.h.qrevY,T1GEmzjji.uR;M;N;6Ed1u2bu8bqMtTxN5d to
+josbuWpM H1rDJu.uuVvkr357E8DgvvoqnkO1TtB2W4bwiz8fdXsP 5 Uv.po.oRwgt70
+M Q6.vg.nnKOqKwPEhscij.nagk3AsMEex.h.t1NiPE51F0Q0els.4Urkw3vTAh u fo8N
+pY,HyKtfz..qp nwRtTv7xfHtlb.sVvRtLE
 
-"Let me see!" said Holmes. "Hum! Born in New Jersey in the year 1858.
-Contralto-hum! La Scala, hum! Prima donna Imperial Opera of Warsaw-yes!
-Retired from operatic stage-ha! Living in London-quite so! Your
-Majesty, as I understand, became entangled with this young person,
-wrote her some compromising letters, and is now desirous of getting
-those letters back."
+"txjDnl.trR!";cpBvTae;nlt,8"4xW!Aj1K1q o2Of4nMO1LwREY0. if8lhK1TJgO;E
+Dvou-Nod;XzN0!qdb2TdnYdmAA7F!EF4jtb.qbqXpTaF3U4jhm.bchbpT18EMsszbxClhc!
+g76B5Uv.mspznrZtKsM.SDt bhrrkK!At O.dy.po.YbqN;GHJ8Y6f2tp!8Lre1
+usCxi6z4.b0nLk4Gv75i6bue;8OhMpFwTxd6buhmrQ;gxMzT7X t2zp2ajk-74L2dF
+xypurnkO1T5H0UDdvnq-bpS2B09Ebwu fs0p;K,6DB6q0p;.erflb;N5T2VDhluuvaj
+dwH57Ebwu fs0neKrDE"
 
-"Precisely so. But how-"
+"x5Uujzfm6nvYBTTN7qzp;0"
 
-"Was there a secret marriage?"
+"Xnf;dw747EQDtldsrg;WpK4BtWw?"
 
-"None."
+"Ovof9"
 
-"No legal papers or certificates?"
+"Ark 7y3-q2bwfs0nrbA5wK7Yxjjburf?"
 
-"None."
+"QY,7E"
 
-"Then I fail to follow your Majesty. If this young person should
-produce her letters for blackmailing or other purposes, how is she to
-prove their authenticity?"
+". U0.P.gnVok3HD82b;p;.z.hukb3.76jB,2Jg8gkS2TBH8dy.wfs0bqk2A1N-T
+2svevpR;RtKDExj6fyt.sbukqEs5;csjsjotnrbAH6AxhDq.sq.fhcCTzHAq t2tirnwY
+-K1Oxq6iljs8Nxdw70M.S u0?"
 
-"There is the writing."
+"UirehkxLDM UDxyjuvajl"
 
-"Pooh, pooh! Forgery."
+"eH1AGq2pvi!.SbuQtKBU"
 
-"My private note-paper."
+"foDqyjwnghk,H67Ifsqls,"
 
-"Stolen."
+"fgrVtGE"
 
-"My own seal."
+"uCq1xu.trNol"
 
-"Imitated."
+"XF Mtjwe3"
 
-"My photograph."
+"Nz8ckY3HyKtfz,"
 
-"Bought."
+"IpvtUwl"
 
-"We were both in the photograph."
+"l7DPxhw.ipuunlXAMz7Efzp ph-NsRB"
 
-"Oh, dear! That is very bad! Your Majesty has indeed committed an
-indiscretion."
+"wzVETwby!.UuNwkxLDOxhB.ibe!8Lre1Te3,U5u0.inf;S,6w7wquptnj1ghNA30
+B1T tjsf1VrXB"
 
-"I was mad-insane."
+"qDPtiDnhe0vavK,7E"
 
-"You have compromised yourself seriously."
+"12kDihwf8PrW-K1F.iwe2zp2evO 8DLxh p.tm6o"
 
-"I was only Crown Prince then. I was young. I am but thirty now."
+"Lk635T2d;z2Ds.jqkeK GvUDuofo9nLk635TCe7on,.VndWA47MEjzjyuz8argB"
 
-"It must be recovered."
+"q6T0k5u2cf8ehM;OwKxTE"
 
-"We have tried and failed."
+"Xl.inihk3K 7wqsok.gnVoOsU"
 
-"Your Majesty must pay. It must be bought."
+"qH8hDNhkf0g.k.N5MEfsz3.J1npe2MD4xqtp.hi1o"
 
-"She will not sell."
+"VRtT9B-bDovu.0RoVB"
 
-"Stolen, then."
+" 6H-U0;2uira-"
 
-"Five attempts have been made. Twice burglars in my pay ransacked her
-house. Once we diverted her luggage when she travelled. Twice she has
-been waylaid. There has been no result."
+"-xOwTtj6ftqu0nkK57D4xU0.tbero;D6Bu7ER7snmb-f;S,T-REfsz2sb fdMz7vT U4
+ivvtro;8,5wTAUDepwf-ghNAAwKEb7hnbhrnzRtGDL UDuybwrYoOsUD.AYuf2tirnkK2
+4w71q9b0mbvQ-kiAwKxqzbz.crRqk,HDKxi7m ,"
 
-"No sign of it?"
+"O.nvSvGDHyq u?"
 
-"Absolutely none."
+"Hct.YxdtEBT1e0f3"
 
-Holmes laughed. "It is quite a pretty little problem," said he.
+IpyZhcAEsNzXwe3."J1nlcAJ7B7UDb2qsrgwiAE M7bw.wspoYhWC"T53.TDil,
 
-"But a very serious one to me," returned the King reproachfully.
+"C2g;KAOwKCq5fyjp2f;Y,7DM2q-f4".srgxb,7vT7Xw.RjotnuO-K13vXxvsmz9
 
-"Very, indeed. And what does she propose to do with the photograph?"
+"Ihb8VDB1Twfk,.Nagk6AsMET1fz.tuR;Z1H2H6UDuv.e.nzS3ADM UDqopu.TuK-A?"
 
-"To ruin me."
+"lHEh7ju.nro"
 
-"But how?"
+"Ee3TzHA?"
 
-"I am about to be married."
+"8Dbt.bobxdAM1TuUDnhssvRgl"
 
-"So I have heard."
+"hHDqEXswl.irNuNB"
 
-"To Clotilde Lothman von Saxe-Meningen, second daughter of the King of
-Scandinavia. You may know the strict principles of her family. She is
-herself the very soul of delicacy. A shadow of a doubt as to my conduct
-would bring the matter to an end."
+".1TVb1upmernOY3A-31q8pu.Tnkhob70B1Wwo4.trPrXsTv38Wzuls..S;dw7Ds.dy.vg
+TpNqNxGsO.QE.fpv8ZdiAD0HAq6il.t1elM3T2K.dujwmf0nrPAAwKEVsnpmz9nVRtT L
+ U4tlmg8gkOAOwKCq5p.m..S;NtE 5tSB,2B.0UdN;PDHyqs.kpvog;K2T6HEcB.jpoqhfd
+6H7Ewqtspoh8gkOAFsM7U4. p.na;O,6E"
 
-"And Irene Adler?"
+"i1TDJyfornDN 74?"
 
-"Threatens to send them the photograph. And she will do it. I know that
-she will do it. You do not know her, but she has a soul of steel. She
-has the face of the most beautiful of women, and the mind of the most
-resolute of men. Rather than I should marry another woman, there are no
-lengths to which she would not go-none."
+". hwb fo0nwYALwGwq6iln.1Uhk-A1M2W4bwi,8,qNALz7Em ms.e.nldBTaT;d1x2uing
+vRtT9B-bDev.j1o;I;ND62q0p .l bzkw74VER7u2tirnkK2TsT6e7m2pg8fwOtEETlXw
+iht.1Uhku3u7Eex. if8Zrc3Tt7tk6jmvm8bik6H-71sDbue.1Uhk.B06Eex. if8Zrc3
+KwL2b7ul.psnpO,UDztjzfy.uuNqkXT5A2k;e2nb-e.kpG1M U4.;pnna0k3AwKxqssl.o.
+YhXvMzLEj1.;ijpU;cw7DP2k;e2op1njYEG1Gxr"
 
-"You are sure that she has not sent it yet?"
+"qp..b-R;c4KwT7Xsu2tirnkK2T0H7q5fuu.vg;itM?"
 
-"I am sure."
+"aTtcDt.sf9"
 
-"And why?"
+",qNAPzR?"
 
-"Because she has said that she would send it on the day when the
-betrothal was publicly proclaimed. That will be next Monday."
+"UUub.tf8fkOAAsLEisjk.uuNwk2AwTAe7mk.tragkxMDH1q6il.enl;gw70T7Xw
+clus.gkK T936q2vimjpY.k-K15-Q nle,8GkK3T9B-bDcl.orkwkbH06toE"
 
-"Oh, then we have three days yet," said Holmes with a yawn. "That is
-very fortunate, as I have one or two matters of importance to look into
-just at present. Your Majesty will, of course, stay in London for the
-present?"
+"Po;.1UhXAPwT Q8f2ui-Rhks3BLEowu4".tnVgkWH;FxiDxpui8N;ipP0UE"Jzb .j0
+ihb8TxH5j7ohufAndcAqDAtlw.vof8buk3P1T0Q6ulst8bikxF2H5jsojf.1b;V;H,T.d6p
+qvt1nddAI476U0u3.Z.hukb3.76jB.;jmyp;YuTuH8h5f4.t1N.kxGDt2dvpu.g.e;dw7
+2Kxiwo ?"
 
-"Certainly. You will find me at the Langham under the name of the Count
-Von Kramm."
+"Df-gdS,EBUEO1v2xjyY;PxGvT0UDb .uuR;5pGyAtcDvuef-nwRtT030UDpm.uuR;.;N0M
+oe0.RsbzZ-"
 
-"Then I shall drop you a line to let you know how we progress."
+"Dw70Tbq5ihmm8QuY-TBH8qs.sjornwYAEwMEo1v2lo.j;R;PDPxq2svhsrfvl"
 
-"Pray do so. I shall be all anxiety."
+"eKsRET1.zp,85;cw3;EERw.hmm8Nqhx76RF"
 
-"Then, as to money?"
+"Jzfu;.nf;d;T-H1UB?"
 
-"You have carte blanche."
+"Zvv.uNyOA5sK7UDcsbopUhl"
 
-"Absolutely?"
+"P45H-k6fsz?"
 
-"I tell you that I would give one of the provinces of my kingdom to
-have that photograph."
+"J8ghV TBH8q6ihu.VnzY4EvTzY8f2pornrPAMz7Ef4p,jopRvk;8DFCq,juhe.Z;d;
+AsOxq6ihu.,Urd;9433XE"
 
-"And for present expenses?"
+"Bue.sbuk-KwLxd6.lyqravO2?"
 
-The King took a heavy chamois leather bag from under his cloak and laid
-it on the table.
+.z7EA on.u.bnkpTz7tlB.jibzblcAEw37Xws2cbtnib;FDN1Tws2ij0nfV;3,Ttdv.sbjq
+Vwk;GDM UDuhcmro
 
-"There are three hundred pounds in gold and seven hundred in notes," he
-said.
+"WRtKwTthw. isrR;R4GvKxTDqvvoqf;S,TyH-TDbue.0RyO,TzN1T4fk.j nqY375V"EXw
+thje9
 
-Holmes scribbled a receipt upon a sheet of his note-book and handed it
-to him.
+4rV.75T6S4jicmrQ;KAKw5xY2u2vq.a;KALz7xjDpm.ivf;X;MwXue1l2boqnkK,6w6EY6
+uv.ivZ-
 
-"And Mademoiselle's address?" he asked.
+"z,6DutTwnvjtrYoO'2Ts6whwtz?".irndcz7vU
 
-"Is Briony Lodge, Serpentine Avenue, St. John's Wood."
+"biDCyjp l;5;6y7Gqkfyqf glXtTSOxd7f4.T1o;3;A0'LEM1pk,"
 
-Holmes took a note of it. "One other question," said he. "Was the
-photograph a cabinet?"
+I.YpO2T6H2aDb2op1R;YuT MFq"gol.p1UhbAJ776j pu;".0NlNAAwUE"Mst2uir
+ckY3HyKtfz.h.dnOlXtM?"
 
-"It was."
+"aMEmst3"
 
-"Then, good-night, your Majesty, and I trust that we shall soon have
-some good news for you. And good-night, Watson," he added, as the
-wheels of the royal brougham rolled down the street. "If you will be
-good enough to call to-morrow afternoon at three o'clock I should like
-to chat this little matter over with you."
+"Uira0kvH16Id hou;8lre1Te3,U5u0;.nagkXT6K8i6. ib1nzOALz3-bDtvpo8Udft
+L1Fxqypve. RzcA81KEo1v3.B Q;Q;HvX1Yyi ;.jNwc;GF"T UDbkefqp;K2T6Ax
+mzflmt8bik3AwT5eBbs.c-bxQw3-T5e;mle.qbzXAMz7Ei6slfu9n"LPAR1NEm ms.cr
+TrYsTwG2kyi2up8PdV T6HIc1sypx8NidtK0H2dDb .uuehOAH'uE2S,.P.tubxVsT;B;U
+6p2ding;dwB5T-Y6usf.zNwdtKDH9U4.;juun.Y4U"
 

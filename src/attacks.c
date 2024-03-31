@@ -70,14 +70,17 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize){
     //variáveis que ajudarão na determinaçã do erro mínimo e letras da chave correspondente
     int tempMinErrorIndex = 0; //guarda o número de letras que a chave com erro mínimo tem
     double tempMinError = ABSURDLY_LARGE_ERROR; //guarda o erro mínimo encontrado até ao momento
-
+    
+    
 
     //começamos em chunksize 1, correspondendo ao tamanho de chave = 1 e avançamos, até maxKeySize
     for (int chunkSize = 1; chunkSize <= maxKeySize; chunkSize++) {
+        for (int i = 0; i < chunkSize; i++){
+            errorArray[i] = (double *) calloc(TABLE_SIZE, sizeof(double)); // Aloca 67 espaços de erro para 67 diferentes offsets 
+        } 
         
         //Alocação de memória antes de entrar no loop
         key[chunkSize - 1] = malloc((chunkSize + 1) * sizeof(char));  // key terá chunksize + 1, para o '\0'
-        errorArray[chunkSize - 1] = (double *) calloc(TABLE_SIZE, sizeof(double)); // Aloca 67 espaços de erro para 67 diferentes offsets 
         min_error[chunkSize - 1] = ABSURDLY_LARGE_ERROR; //inicializa o erro a um número gigante
 
 
@@ -104,11 +107,16 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize){
                     min_offset[i] = j;
                 }
             }
-            free(errorArray[chunkSize - 1]);
             free(freq); // Já não precisamos das frequências
             key[chunkSize - 1][i] = cipher_table[((TABLE_SIZE - min_offset[i]) % TABLE_SIZE)]; // Escrever na chave de tamanho chunksize a(s) letra(s) encontradas com o menor erro
         }
         key[chunkSize - 1][chunkSize] = '\0'; // Terminar a string
+
+        for (int i = 0; i < chunkSize; i++){
+            free(errorArray[i]); //liberta porque vai ser alocado outra vez
+        } 
+            
+        
         
         // abre file para mandar o output decifrado com a chave na posição chunksize (começa em 1 e vai avançando) 
         FILE *att_out = fopen("attdraft.txt", "w");
@@ -147,6 +155,7 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize){
         free(attFreq);
         free(attOffset);
         fclose(att_out);
+        
     }
     // Por fim deciframos com a passe correspondente ao menor erro quadrático médio entre o ficheiro decifrado 
     //com as passes de diferentes tamanhos e as probabilidades dos caracteres da língua inglesa

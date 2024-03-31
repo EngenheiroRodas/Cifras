@@ -5,7 +5,7 @@
 # Shell script para correr testes a um projecto de CIFRAS
 # programas a correr
 PROG_ALUNOS="./cifras"
-VALGRIND="time "
+VALGRIND="time valgrind --leak-check=full --show-leak-kinds=all "
 DIFF="diff --text"
 # opções para o time
 export TIME="real %E\tuser %U\tsys %S\texit status %x\t%I inputs + %O outputs"

@@ -1,22 +1,22 @@
 min 	tamanho chave 1: "S" erro 28.137958
-min 	tamanho chave 2: "0t" erro 23.107622
-	tamanho chave 3: "Rss" erro 23.752922
-	tamanho chave 4: "UEEE" erro 91.251812
-	tamanho chave 5: "cDDDD" erro 30.776220
-	tamanho chave 6: " sssss" erro 31.491387
-	tamanho chave 7: "p------" erro 84.462809
-	tamanho chave 8: "SEEEEEEE" erro 91.196450
-	tamanho chave 9: "g44444444" erro 71.727326
-	tamanho chave 10: "RSSSSSSSSS" erro 25.715442
-	tamanho chave 11: "yTTTTTTTTTT" erro 165.431265
-	tamanho chave 12: "VEEEEEEEEEEE" erro 91.662197
-	tamanho chave 13: "YWWWWWWWWWWWW" erro 60.910641
-	tamanho chave 14: "fxxxxxxxxxxxx0" erro 186.852932
-	tamanho chave 15: "pDDDDDDDDDDDD.u" erro 37.739104
-	tamanho chave 16: "R666666666666w92" erro 73.800640
-	tamanho chave 17: "c222222222222VS99" erro 118.879668
-	tamanho chave 18: "f4444444444449E44z" erro 67.961087
-	tamanho chave 19: "N8888888888888-;;0y" erro 91.562814
-	tamanho chave 20: "b2222222222220z55fsr" erro 91.807421
-K!"#$%&'()*+ no/rnopgruL8N:2<=>?@l,7tCp9r1tFNYPeoOAFFBCD4FI[\]^_
-`obqhARbIgEdGVIjr,t3Dsejjfg{|}
+	tamanho chave 2: "St" erro 28.566461
+min 	tamanho chave 3: "Sts" erro 27.466299
+	tamanho chave 4: "StsE" erro 58.595780
+	tamanho chave 5: "StsED" erro 96.916543
+	tamanho chave 6: "StsEDs" erro 32.761231
+	tamanho chave 7: "StsEDs-" erro 37.652638
+	tamanho chave 8: "StsEDs-E" erro 82.712070
+	tamanho chave 9: "StsEDs-E4" erro 40.051056
+	tamanho chave 10: "StsEDs-E4S" erro 41.125187
+	tamanho chave 11: "StsEDs-E4ST" erro 160.521590
+	tamanho chave 12: "StsEDs-E4STE" erro 110.721151
+	tamanho chave 13: "StsEDs-E4STEW" erro 51.561022
+	tamanho chave 14: "StsEDs-E4STEW0" erro 58.447430
+	tamanho chave 15: "StsEDs-E4STEW0u" erro 35.578351
+	tamanho chave 16: "StsEDs-E4STEW0u2" erro 87.122687
+	tamanho chave 17: "StsEDs-E4STEW0u29" erro 64.678098
+	tamanho chave 18: "StsEDs-E4STEW0u29z" erro 51.790810
+	tamanho chave 19: "StsEDs-E4STEW0u29zy" erro 33.086525
+	tamanho chave 20: "StsEDs-E4STEW0u29zyr" erro 94.861709
+x!"#$%&'()*+  A/;oMptD1MlN:F<=>?@798RC,a;2RFazbfMONgRCpDHgU[\]^_
+`p9qubdcvgR-SWvj-O04qsr5vgE{|}
