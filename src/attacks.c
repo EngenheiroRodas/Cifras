@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <math.h>
 
 #include "cifras.h"
@@ -22,15 +23,15 @@ const double probabilities [TABLE_SIZE] =
   0.014999588, 0.000554985, 0.190494768, 0.014249609, 0.014999588, 0.000554985, //60-65
   0.001124969 }; //66
 
-void cesarAttack(FILE *input_stream, int *min_offset, double *min_error, int eflag, int offset)
+void cesarAttack(FILE *input_stream, int *min_offset, double *min_error, int eflag)
 {
     int chunkSize = 1;
     unsigned int regularChar = 0, weirdChar = 0, temp[67] = {0};
     double *freq = statCalculator(input_stream, &regularChar, &weirdChar, temp, chunkSize, eflag);
 
-    double error[TABLE_SIZE + 1] = {0};
+    double error[TABLE_SIZE + 1] = {ABSURDLY_LARGE_ERROR};
 
-    for (int j = 0; j <= offset; j++) {
+    for (int j = 0; j < TABLE_SIZE; j++) {
         for (int i = 0; i < TABLE_SIZE; i++) {
             error[j] += ((pow((freq[i] - probabilities[(i + j) % 67]), 2)) / probabilities[(i + j) % 67]);
         }
@@ -51,18 +52,19 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize, int
     if (maxKeySize <= DEFAULT_SIZE) {
         maxKeySize = DEFAULT_SIZE; // Restrict to the default max size
     }
-    
     // Dynamically allocate memory for the key array with initial size + 1 for null terminator
-    char *key = (char *)malloc(sizeof(char)); // Initial minimal allocation
+    char **key = (char **)malloc(DEFAULT_SIZE * sizeof(char *)); // Initial minimal allocation
     
     // Other necessary allocations
     double **errorArray = (double **) malloc(maxKeySize * sizeof(double *));
     int *min_offset = (int *) calloc(maxKeySize, sizeof(int));
     double *min_error = (double *) malloc(maxKeySize * sizeof(double));
-    
+
+    double tempMinError = ABSURDLY_LARGE_ERROR;
+    int tempMinErrorIndex = 0;
     for (int chunkSize = 1; chunkSize <= maxKeySize; chunkSize++) {
         // Memory management and initial assignment within the loop
-        key = realloc(key, (chunkSize + 1) * sizeof(char));  // Adjust `key` size for current chunkSize
+        key[chunkSize - 1] = malloc((chunkSize + 1) * sizeof(char));  // Adjust `key` size for current chunkSize
         for (int i = 0; i < chunkSize; i++) {          
             errorArray[i] = (double *) calloc(TABLE_SIZE, sizeof(double)); // Allocate or reallocate memory
             min_error[i] = ABSURDLY_LARGE_ERROR;
@@ -89,37 +91,66 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize, int
                 }
             }
             free(freq); // Free the frequency array now that we're done with it
-            key[i] = cipher_table[((TABLE_SIZE - min_offset[i]) % TABLE_SIZE)]; // Adjust getCipherChar function accordingly
+            key[chunkSize - 1][i] = cipher_table[((TABLE_SIZE - min_offset[i]) % TABLE_SIZE)]; // Adjust getCipherChar function accordingly
         }
-        
-        key[chunkSize] = '\0'; // Null-terminate after each assignment
+        key[chunkSize - 1][chunkSize] = '\0'; // Null-terminate after each assignment
         
         // Free allocated errorArray memory for this chunkSize iteration
+        // precisa de espaço
+        
+
+
+        FILE *att_out = fopen("attdraft.txt", "w");
+        rewind(input_stream);
+        
+        int attKeySize = strlen(key[chunkSize - 1]);
+        int *attOffset = offset_calculator(key[chunkSize - 1], attKeySize);
+        filter_d(input_stream, att_out, attOffset, attKeySize, 0, 2);
+        fclose(att_out);
+
+        att_out = fopen("attdraft.txt", "r");
+        unsigned int regularChar = 0, weirdChar = 0, temp[67] = {0};
+        double *attFreq = statCalculator(att_out, &regularChar, &weirdChar, temp, chunkSize, 1);
+
+        rewind(input_stream);
+        double *inputFreq = statCalculator(input_stream, &regularChar, &weirdChar, temp, chunkSize, 1);
+
+
+
+        double error = 0;
+        for (int i = 0; i < TABLE_SIZE; i++) {
+            error += ((pow((attFreq[i] - probabilities[i]), 2)) / probabilities[i]);
+        }
+        if (error < tempMinError) {
+            tempMinError = error;
+            fprintf(output_stream, "min\t");
+            tempMinErrorIndex = chunkSize;
+        } else {
+            fprintf(output_stream, "\t");
+        }
+
+        fprintf(output_stream, "tamanho chave %d: \"%s\" error %f\n", chunkSize, key[chunkSize - 1], error);
+        
         for (int i = 0; i < chunkSize; i++) {
             free(errorArray[i]);
         }
-
-        FILE *decoded_file = fopen("file.txt", "w");
-        int *attack_values = offset_calculator(key, chunkSize);
-        rewind(input_stream);
-
-        filter_d(input_stream, decoded_file, attack_values, chunkSize, 0, 2);
-
-        int min_offset = 0;
-        double min_error = 0;
-        cesarAttack(decoded_file, &min_offset, &min_error, 1, 0);
-
-
-        fprintf(output_stream, "tamanho chave %d: \"%s\" erro %f\n", chunkSize, key, min_error);
-
-        fclose(decoded_file);
-        free(attack_values);
-
+        free(attFreq);
+        free(inputFreq);
+        free(attOffset);
+        fclose(att_out);
+        free(key[chunkSize - 1]);
     }
-    
+
+    rewind(input_stream);
+
+    int attKeySize = strlen(key[tempMinErrorIndex - 1]);
+    int *attOffset = offset_calculator(key[tempMinErrorIndex - 1], attKeySize);
+    filter_d(input_stream, output_stream, attOffset, attKeySize, 0, 2); 
     // Final clean-up
+    free(key);
     free(errorArray);
     free(min_offset);
     free(min_error);
-    free(key); // Ensure `key` is freed after all operations
+
+    return;
 }

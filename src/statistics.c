@@ -45,12 +45,12 @@ double *statCalculator(FILE *input_stream, unsigned int *regularChar, unsigned i
                 j++;
             }
         }
-    } else {
+    } else { //ataque
         int bleedOver = 0; // Adjusted for bleeding out logic.
         for (int i = 0; i < lineCounter; i++) {
             removeForeignCharacters(lines[i]);
-            int length = strlen(lines[i]); //10
-            for (int j = 0; j < length; j++) { //j= 7
+            int length = strlen(lines[i]); 
+            for (int j = 0; j < length; j++) { //
                 // Correctly apply the bleed-over amount from the previous line, if any.
                 j += bleedOver;
                 if (j >= length) {
@@ -61,9 +61,9 @@ double *statCalculator(FILE *input_stream, unsigned int *regularChar, unsigned i
                 temp[getIndex(lines[i][j])]++;
                 (*regularChar)++;
             
-                int nextJump = chunkSize; //nextjump = 7
+                int nextJump = chunkSize; //
                 if (eflag == 0) { // During attack phase, jump calculations differ.
-                    int remain = length - (j + 1); // = 2
+                    int remain = length - (j + 1); // 
                     if (remain < chunkSize) {
                         bleedOver = chunkSize - remain - 1; // (-1 bcz j index) Correctly calculate bleed-over for the next line.
                         break; // End current line processing, bleed-over to next.
@@ -73,13 +73,11 @@ double *statCalculator(FILE *input_stream, unsigned int *regularChar, unsigned i
                 } else {
                     bleedOver = 0; // Reset bleedOver in statistics phase as it's not needed.
                 }
-                j += (nextJump - 1); // j = 6
+                j += (nextJump - 1); 
                 // Apply the jump, considering loop increment. 
             }
-            // Bleed-over handling adjustment for the next line here, if needed.
         }
     }
-    
     freeLines(lines, &lineCounter);
 
     // Calculate statistics.

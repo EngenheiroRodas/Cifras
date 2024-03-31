@@ -27,7 +27,7 @@ void removeForeignCharacters(char *str);
 double *statCalculator(FILE *input_stream, unsigned int *regularChar, unsigned int *weirdChar, unsigned int *temp, int chunkSize, int eflag);
 //ataca cesar
 
-void cesarAttack(FILE *input_stream, int *min_offset, double *min_error, int eflag, int offset);
+void cesarAttack(FILE *input_stream, int *min_offset, double *min_error, int eflag);
 //ataca viginere
 void vigenereAttack(FILE *input_stream, FILE *output_stream, int nnumber, int eflag);
 
