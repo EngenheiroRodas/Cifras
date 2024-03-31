@@ -127,7 +127,7 @@ int main(int argc, char *argv[])
         } else if (a_method == 2) { //ataque 2
         int min_offset = 0;
         double min_error = 0;
-            cesarAttack(input_stream, &min_offset, &min_error, eflag);
+            cesarAttack(input_stream, &min_offset, &min_error, 1, 66);
 
             fprintf(output_stream, "offset com menor erro %d, letra '%c', "
                        "cifrado com letra '%c', "

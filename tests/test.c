@@ -7,8 +7,6 @@
 #define NEEDED 1
 #define NOT_NEEDED 0
 
-int getIndex(char c);
-
 double *statCalculator(FILE *input_stream, unsigned int *regularChar, unsigned int *weirdChar, unsigned int *temp, int chunkSize, int eflag) {
     char **lines = NULL;
     int lineCounter = 0;
@@ -20,42 +18,64 @@ double *statCalculator(FILE *input_stream, unsigned int *regularChar, unsigned i
         return NULL;
     }
 
-    int bleedOver = 0; // Adjusted for bleeding out logic.
-    for (int i = 0; i < lineCounter; i++) {
-        int length = strlen(lines[i]);
-        for (int j = 0; j < length; j++) {
-            // Correctly apply the bleed-over amount from the previous line, if any.
-            j += bleedOver;
-            if (j >= length) break; // If bleed-over exceeds line length, move to next line.
-
-            // Handling of \n characters as weirdChar incrementation is only in statistics phase.
-            if (getIndex(lines[i][j]) != -1) {
-                temp[getIndex(lines[i][j])]++;
-                (*regularChar)++;
+    if (eflag == 1) { //estatística
+        for (int i = 0; i < lineCounter; i++) {
+            int j = 0;
+            while (lines[i][j] != '\0') {
+                if (getIndex(lines[i][j]) != -1) {
+                    // Increment the count for recognized characters
+                    temp[getIndex(lines[i][j])]++;
+                    (*regularChar)++;
+                } else {
+                    // Increment the count for unrecognized (weird) characters
+                    (*weirdChar)++;
+                } 
+                j++;
             }
-
-            int nextJump = chunkSize;
-            if (eflag == 0) { // During attack phase, jump calculations differ.
-                int remain = length - (j + 1);
-                if (remain < chunkSize) {
-                    bleedOver = chunkSize - remain - 1; // Correctly calculate bleed-over for the next line.
-                    break; // End current line processing, bleed-over to next.
-                }
-            } else {
-                bleedOver = 0; // Reset bleedOver in statistics phase as it's not needed.
-            }
-            j += (nextJump - 1); // Apply the jump, considering loop increment.
         }
-        // Bleed-over handling adjustment for the next line here, if needed.
+    } else { //ataque
+        int aux = 0;
+        int needTemp = NOT_NEEDED;
+        for (int i = 0; i < lineCounter; i++) { // i = 2
+            int length = strlen(lines[i]) - 1; //account for \n
+            if (needTemp == NOT_NEEDED) {
+                for (int j = 0; j < length; j += chunkSize) {
+                    // Process each character within the chunk, ensuring not to exceed string bounds
+                    if (getIndex(lines[i][j]) != -1) {
+                        temp[getIndex(lines[i][j])]++;
+                        (*regularChar)++;
+                        if ((length - 1) < chunkSize + j) {
+                            aux = chunkSize - (length - j);
+                            needTemp = NEEDED;   
+                        }
+                    } else {
+                        j++;
+                    }
+                }
+            } else if (needTemp == NEEDED) {
+                for (int j = aux; j < length; j += chunkSize) {
+                    // Process each character within the chunk, ensuring not to exceed string bounds
+                    if (getIndex(lines[i][j]) != -1) {
+                        temp[getIndex(lines[i][j])]++;
+                        (*regularChar)++;
+                        if ((length - 1) < chunkSize + j) {
+                            aux = chunkSize - (length - j);
+                            needTemp = NEEDED;   
+                        }
+                    } else {
+                        j++;
+                    }
+                }
+            }        
+        }
     }
-
     freeLines(lines, &lineCounter);
 
-    // Calculate statistics.
+    // Calculate statistics 
     for (int i = 0; i < TABLE_SIZE; i++) {
-        frequency[i] = (*regularChar > 0) ? (double)temp[i] / *regularChar : 0;
+        frequency[i] = *regularChar ? (double)temp[i] / *regularChar : 0;
     }
-    frequency[TABLE_SIZE] = (*weirdChar > 0) ? (double)*weirdChar / (*regularChar + *weirdChar) : 0;
-
+    frequency[TABLE_SIZE] = (*regularChar + *weirdChar) ? (double)*weirdChar / (*regularChar + *weirdChar) : 0;
+    
     return frequency;
 }

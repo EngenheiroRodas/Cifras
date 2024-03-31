@@ -22,7 +22,7 @@ const double probabilities [TABLE_SIZE] =
   0.014999588, 0.000554985, 0.190494768, 0.014249609, 0.014999588, 0.000554985, //60-65
   0.001124969 }; //66
 
-void cesarAttack(FILE *input_stream, int *min_offset, double *min_error, int eflag)
+void cesarAttack(FILE *input_stream, int *min_offset, double *min_error, int eflag, int offset)
 {
     int chunkSize = 1;
     unsigned int regularChar = 0, weirdChar = 0, temp[67] = {0};
@@ -30,9 +30,9 @@ void cesarAttack(FILE *input_stream, int *min_offset, double *min_error, int efl
 
     double error[TABLE_SIZE + 1] = {0};
 
-    for (int offset = 0; offset < TABLE_SIZE; offset++) {
+    for (int j = 0; j <= offset; j++) {
         for (int i = 0; i < TABLE_SIZE; i++) {
-            error[offset] +=((pow((freq[i] - probabilities[(i + offset) % 67]), 2)) / probabilities[(i + offset) % 67]);
+            error[j] += ((pow((freq[i] - probabilities[(i + j) % 67]), 2)) / probabilities[(i + j) % 67]);
         }
     }
 
@@ -93,12 +93,28 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize, int
         }
         
         key[chunkSize] = '\0'; // Null-terminate after each assignment
-        fprintf(output_stream, "tamanho chave %d: \"%s\"\n", chunkSize, key);
-
+        
         // Free allocated errorArray memory for this chunkSize iteration
         for (int i = 0; i < chunkSize; i++) {
             free(errorArray[i]);
         }
+
+        FILE *decoded_file = fopen("file.txt", "w");
+        int *attack_values = offset_calculator(key, chunkSize);
+        rewind(input_stream);
+
+        filter_d(input_stream, decoded_file, attack_values, chunkSize, 0, 2);
+
+        int min_offset = 0;
+        double min_error = 0;
+        cesarAttack(decoded_file, &min_offset, &min_error, 1, 0);
+
+
+        fprintf(output_stream, "tamanho chave %d: \"%s\" erro %f\n", chunkSize, key, min_error);
+
+        fclose(decoded_file);
+        free(attack_values);
+
     }
     
     // Final clean-up

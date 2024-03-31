@@ -1,20 +1,20 @@
-tamanho chave 1: "m"
-tamanho chave 2: "mk"
-tamanho chave 3: "knS"
-tamanho chave 4: "mYmy"
-tamanho chave 5: "msZeq"
-tamanho chave 6: "cnnksd"
-tamanho chave 7: "zxUdmkn"
-tamanho chave 8: "nrs--pmz"
-tamanho chave 9: "ktSXnsdnn"
-tamanho chave 10: "mzmeqmsjoq"
-tamanho chave 11: "kmmlm,mYyno"
-tamanho chave 12: "itoyxdllncss"
-tamanho chave 13: "tstjlkxsb mpm"
-tamanho chave 14: "9yndmnqlmwkhSz"
-tamanho chave 15: "Programacao2024"
-tamanho chave 16: "8hmnQwzznrs-oo1z"
-tamanho chave 17: "  mfnaZrxpq9hV uq"
-tamanho chave 18: " ,nPwspsnysfVnsxqz"
-tamanho chave 19: "dsx2rp nqculitdmssv"
-tamanho chave 20: "WyZermlj;qmz-gsZs9n-"
+tamanho chave 1: "m" erro 0.000000
+tamanho chave 2: "mk" erro 0.000000
+tamanho chave 3: "knS" erro 0.000000
+tamanho chave 4: "mYmy" erro 0.000000
+tamanho chave 5: "msZeq" erro 0.000000
+tamanho chave 6: "cnnksd" erro 0.000000
+tamanho chave 7: "zxUdmkn" erro 0.000000
+tamanho chave 8: "nrs--pmz" erro 0.000000
+tamanho chave 9: "ktSXnsdnn" erro 0.000000
+tamanho chave 10: "mzmeqmsjoq" erro 0.000000
+tamanho chave 11: "kmmlm,mYyno" erro 0.000000
+tamanho chave 12: "itoyxdllncss" erro 0.000000
+tamanho chave 13: "tstjlkxsb mpm" erro 0.000000
+tamanho chave 14: "9yndmnqlmwkhSz" erro 0.000000
+tamanho chave 15: "Programacao2024" erro 0.000000
+tamanho chave 16: "8hmnQwzznrs-oo1z" erro 0.000000
+tamanho chave 17: "  mfnaZrxpq9hV uq" erro 0.000000
+tamanho chave 18: " ,nPwspsnysfVnsxqz" erro 0.000000
+tamanho chave 19: "dsx2rp nqculitdmssv" erro 0.000000
+tamanho chave 20: "WyZermlj;qmz-gsZs9n-" erro 0.000000

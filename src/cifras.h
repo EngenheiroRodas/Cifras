@@ -18,12 +18,16 @@ void filter_d(FILE *input_stream, FILE *output_stream, int *offset_values, int k
 
 //carregar ficehiro para memória, devolve array com texto
 char **loadFile(FILE *input_stream, int *lineCounter);
-//escreve os conteúdos processados de lines num ficheiro 
+//escreve os conteúdos processados de lines num ficheiro
+ 
 void freeLines(char *lines[],int *lineCounter);
 //devolve array com valores das estatísticas
+void removeForeignCharacters(char *str);
+///
 double *statCalculator(FILE *input_stream, unsigned int *regularChar, unsigned int *weirdChar, unsigned int *temp, int chunkSize, int eflag);
 //ataca cesar
-void cesarAttack(FILE *input_stream, int *min_offset, double *min_error, int eflag);
+
+void cesarAttack(FILE *input_stream, int *min_offset, double *min_error, int eflag, int offset);
 //ataca viginere
 void vigenereAttack(FILE *input_stream, FILE *output_stream, int nnumber, int eflag);
 
