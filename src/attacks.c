@@ -125,7 +125,7 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize, int
             fprintf(output_stream, "\t");
         }
 
-        fprintf(output_stream, "tamanho chave %d: \"%s\" error %f\n", chunkSize, key[chunkSize - 1], error);
+        fprintf(output_stream, "tamanho chave %d: \"%s\" erro %f\n", chunkSize, key[chunkSize - 1], error);
         
         for (int i = 0; i < chunkSize; i++) {
             free(errorArray[i]);
