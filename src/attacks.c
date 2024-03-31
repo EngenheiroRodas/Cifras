@@ -67,9 +67,11 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize){
     int *min_offset = (int *) calloc(maxKeySize, sizeof(int));
     double *min_error = (double *) malloc(maxKeySize * sizeof(double));
 
-    
-    int tempMinErrorIndex = 0; ///////////////////////////////////////////////////77
-    double tempMinError = ABSURDLY_LARGE_ERROR;
+    //variáveis que ajudarão na determinaçã do erro mínimo e letras da chave correspondente
+    int tempMinErrorIndex = 0; //guarda o número de letras que a chave com erro mínimo tem
+    double tempMinError = ABSURDLY_LARGE_ERROR; //guarda o erro mínimo encontrado até ao momento
+
+
     //começamos em chunksize 1, correspondendo ao tamanho de chave = 1 e avançamos, até maxKeySize
     for (int chunkSize = 1; chunkSize <= maxKeySize; chunkSize++) {
         
@@ -102,68 +104,74 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize){
                     min_offset[i] = j;
                 }
             }
+            free(errorArray[chunkSize - 1]);
             free(freq); // Já não precisamos das frequências
             key[chunkSize - 1][i] = cipher_table[((TABLE_SIZE - min_offset[i]) % TABLE_SIZE)]; // Escrever na chave de tamanho chunksize a(s) letra(s) encontradas com o menor erro
         }
         key[chunkSize - 1][chunkSize] = '\0'; // Terminar a string
         
-        // Free allocated errorArray memory for this chunkSize iteration
-        // precisa de espaço
-        
-
-
+        // abre file para mandar o output decifrado com a chave na posição chunksize (começa em 1 e vai avançando) 
         FILE *att_out = fopen("attdraft.txt", "w");
-        rewind(input_stream);
-        
+        rewind(input_stream); //rascunho criado para o ataque que é eliminado depois
+
+        // decifra em attdraft.txt
         int attKeySize = strlen(key[chunkSize - 1]);
         int *attOffset = offset_calculator(key[chunkSize - 1], attKeySize);
         filter_d(input_stream, att_out, attOffset, attKeySize, 0, 2);
+
         fclose(att_out);
 
+
+        // abre o ficheiro em modo leitura e calcula as suas estatísticas 
         att_out = fopen("attdraft.txt", "r");
         unsigned int regularChar = 0, weirdChar = 0, temp[67] = {0};
         double *attFreq = statCalculator(att_out, &regularChar, &weirdChar, temp, chunkSize, 1);
-
 
         double error = 0;
         for (int i = 0; i < TABLE_SIZE; i++) {
             error += ((pow((attFreq[i] - probabilities[i]), 2)) / probabilities[i]);
         }
+        // fim de cálculo das estatísticas
+
+        //acha o menor erro e o tamanho da chave correspondente
         if (error < tempMinError) {
-            tempMinError = error;
+            tempMinError = error; //imprime min se achar min e apenas tab se não achar
             fprintf(output_stream, "min \t");
             tempMinErrorIndex = chunkSize;
         } else {
             fprintf(output_stream, "\t");
-        }
-
+        } // imprime o resto necessário
         fprintf(output_stream, "tamanho chave %d: \"%s\" erro %f\n", chunkSize, key[chunkSize - 1], error);
         
-        for (int i = 0; i < chunkSize; i++) {
-            free(errorArray[i]);
-        }
+        //liberta o que já não é preciso e fecha o ficheiro
         free(attFreq);
         free(attOffset);
         fclose(att_out);
     }
-
-
-    //done?
+    // Por fim deciframos com a passe correspondente ao menor erro quadrático médio entre o ficheiro decifrado 
+    //com as passes de diferentes tamanhos e as probabilidades dos caracteres da língua inglesa
     rewind(input_stream);
 
     int attKeySize = strlen(key[tempMinErrorIndex - 1]);
     int *attOffset = offset_calculator(key[tempMinErrorIndex - 1], attKeySize);
     filter_d(input_stream, output_stream, attOffset, attKeySize, 0, 2); 
-    // Final clean-up
+
+
+    ////////////////////////Limpeza final///////////////////////////
+    // remover ficheiro temporário criado e libertar vetor de offset
+    remove("attdraft.txt");
     free(attOffset);
-    free(errorArray);
-    free(min_offset);
-    free(min_error);
+
+    //libertar chave usada até então
     for (int i = 0; i < maxKeySize; i++) {
         free(key[i]);
     }
     free(key);
-    remove("attdraft.txt");
+
+    //vetores alocados incialmente
+    free(errorArray);
+    free(min_offset);
+    free(min_error);
 
     return;
 }
