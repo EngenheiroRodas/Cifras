@@ -68,15 +68,11 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize){
     double *min_error = (double *) malloc(maxKeySize * sizeof(double));
 
     //variáveis que ajudarão na determinaçã do erro mínimo e letras da chave correspondente
-    int tempMinErrorIndex = 0; //guarda o número de letras que a chave com erro mínimo tem
-    double tempMinError = ABSURDLY_LARGE_ERROR; //guarda o erro mínimo encontrado até ao momento
+    int FINALMinErrorIndex = 0; //guarda o número de letras que a chave com erro mínimo tem
+    double FINALMinError = ABSURDLY_LARGE_ERROR; //guarda o erro mínimo encontrado até ao momento
     
     //começamos em chunksize 1, correspondendo ao tamanho de chave = 1 e avançamos, até maxKeySize
     for (int chunkSize = 1; chunkSize <= maxKeySize; chunkSize++) {
-        for (int i = 0; i < chunkSize; i++){
-            errorArray[i] = (double *) calloc(TABLE_SIZE, sizeof(double)); // Aloca 67 espaços de erro para 67 diferentes offsets 
-            min_error[i] = ABSURDLY_LARGE_ERROR; //inicializa o erro a um número gigante
-        } 
         
         //Alocação de memória antes de entrar no loop
         key[chunkSize - 1] = malloc((chunkSize + 1) * sizeof(char));  // key terá chunksize + 1, para o '\0'
@@ -85,6 +81,9 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize){
         /*repete até chunksize, ou seja calcula estatísticas começando no primeiro elemento (i = 0) e saltando de chunksize em chunksize,
         depois começa no segundo elemento (i = 1) saltando de chunksize em chunksize e assim sucessivamente até i < chunkSize*/
         for (int i = 0; i < chunkSize; i++) {
+            errorArray[i] = (double *) calloc(TABLE_SIZE, sizeof(double)); // Aloca 67 espaços de erro para 67 diferentes offsets 
+            min_error[i] = ABSURDLY_LARGE_ERROR; //inicializa o erro a um número gigante
+
             unsigned int regularChar = 0, weirdChar = 0, temp[TABLE_SIZE] = {0};
             fseek(input_stream, i, SEEK_SET); 
             // Começa do iésimo caracter e calcula estatísticas de chunksize em chunksize
@@ -106,15 +105,12 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize){
                 }
             }
             free(freq); // Já não precisamos das frequências
-            key[chunkSize - 1][i] = cipher_table[((TABLE_SIZE - min_offset[i]) % TABLE_SIZE)]; // Escrever na chave de tamanho chunksize a(s) letra(s) encontradas com o menor erro
+            // Escrever na chave de tamanho chunksize a(s) letra(s) encontradas com o menor erro
+            key[chunkSize - 1][i] = cipher_table[((TABLE_SIZE - min_offset[i]) % TABLE_SIZE)]; 
+            free(errorArray[i]); //liberta porque vai ser alocado outra vez
+
         }
         key[chunkSize - 1][chunkSize] = '\0'; // Terminar a string
-
-        for (int i = 0; i < chunkSize; i++){
-            free(errorArray[i]); //liberta porque vai ser alocado outra vez
-        } 
-            
-        
         
         // abre file para mandar o output decifrado com a chave na posição chunksize (começa em 1 e vai avançando) 
         FILE *att_out = fopen("attdraft.txt", "w");
@@ -131,26 +127,26 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize){
         // abre o ficheiro em modo leitura e calcula as suas estatísticas 
         att_out = fopen("attdraft.txt", "r");
         unsigned int regularChar = 0, weirdChar = 0, temp[67] = {0};
-        double *attFreq = statCalculator(att_out, &regularChar, &weirdChar, temp, chunkSize, 1);
+        double *att_frequency = statCalculator(att_out, &regularChar, &weirdChar, temp, chunkSize, 1);
 
         double error = 0;
         for (int i = 0; i < TABLE_SIZE; i++) {
-            error += ((pow((attFreq[i] - probabilities[i]), 2)) / probabilities[i]);
+            error += ((pow((att_frequency[i] - probabilities[i]), 2)) / probabilities[i]);
         }
         // fim de cálculo das estatísticas
 
         //acha o menor erro e o tamanho da chave correspondente
-        if (error < tempMinError) {
-            tempMinError = error; //imprime min se achar min e apenas tab se não achar
+        if (error < FINALMinError) {
+            FINALMinError = error; //imprime min se achar min e apenas tab se não achar
             fprintf(output_stream, "min \t");
-            tempMinErrorIndex = chunkSize;
+            FINALMinErrorIndex = chunkSize;
         } else {
             fprintf(output_stream, "\t");
         } // imprime o resto necessário
         fprintf(output_stream, "tamanho chave %d: \"%s\" erro %f\n", chunkSize, key[chunkSize - 1], error);
         
         //liberta o que já não é preciso e fecha o ficheiro
-        free(attFreq);
+        free(att_frequency);
         free(attOffset);
         fclose(att_out);
         
@@ -159,8 +155,8 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize){
     //com as passes de diferentes tamanhos e as probabilidades dos caracteres da língua inglesa
     rewind(input_stream);
 
-    int attKeySize = strlen(key[tempMinErrorIndex - 1]);
-    int *attOffset = offset_calculator(key[tempMinErrorIndex - 1], attKeySize);
+    int attKeySize = strlen(key[FINALMinErrorIndex - 1]);
+    int *attOffset = offset_calculator(key[FINALMinErrorIndex - 1], attKeySize);
     filter_d(input_stream, output_stream, attOffset, attKeySize, 0, 2); 
 
 
