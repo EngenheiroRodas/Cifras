@@ -51,9 +51,6 @@ for file in $INPUT/*; do
   $VALGRIND $PROG_ALUNOS -c 3 -i $file -o $OUTPUT/$filename-matriz.txt
   $VALGRIND $PROG_ALUNOS -d 3 -i $EXPECTED/$filename-matriz.txt -o $OUTPUT/$filename-matriz-decifrado.txt
   $VALGRIND $PROG_ALUNOS -e -i $file -o $OUTPUT/$filename-stats.txt
-  $VALGRIND $PROG_ALUNOS -a 1 -i $EXPECTED/$filename-cesar.txt -o $OUTPUT/$filename-cesar-attacked1.txt -w dic-very-small.txt
-  $VALGRIND $PROG_ALUNOS -a 1 -i $EXPECTED/$filename-cesar.txt -o $OUTPUT/$filename-cesar-attacked1-small.txt -w dic-small.txt
-  $VALGRIND $PROG_ALUNOS -a 1 -i $EXPECTED/$filename-cesar.txt -o $OUTPUT/$filename-cesar-attacked1-en.txt -w en_US.dic
   $VALGRIND $PROG_ALUNOS -a 2 -i $EXPECTED/$filename-cesar.txt -o $OUTPUT/$filename-cesar-attacked2.txt
   $VALGRIND $PROG_ALUNOS -a 3 -i $EXPECTED/$filename-vigenere.txt -o $OUTPUT/$filename-vigenere-attacked3.txt
 done

@@ -53,7 +53,7 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize, int
         maxKeySize = DEFAULT_SIZE; // Restrict to the default max size
     }
     // Dynamically allocate memory for the key array with initial size + 1 for null terminator
-    char **key = (char **)malloc(DEFAULT_SIZE * sizeof(char *)); // Initial minimal allocation
+    char **key = (char **)malloc(maxKeySize * sizeof(char *)); // Initial minimal allocation
     
     // Other necessary allocations
     double **errorArray = (double **) malloc(maxKeySize * sizeof(double *));
@@ -112,10 +112,6 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize, int
         unsigned int regularChar = 0, weirdChar = 0, temp[67] = {0};
         double *attFreq = statCalculator(att_out, &regularChar, &weirdChar, temp, chunkSize, 1);
 
-        rewind(input_stream);
-        double *inputFreq = statCalculator(input_stream, &regularChar, &weirdChar, temp, chunkSize, 1);
-
-
 
         double error = 0;
         for (int i = 0; i < TABLE_SIZE; i++) {
@@ -135,10 +131,8 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize, int
             free(errorArray[i]);
         }
         free(attFreq);
-        free(inputFreq);
         free(attOffset);
         fclose(att_out);
-        free(key[chunkSize - 1]);
     }
 
     rewind(input_stream);
@@ -147,10 +141,15 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize, int
     int *attOffset = offset_calculator(key[tempMinErrorIndex - 1], attKeySize);
     filter_d(input_stream, output_stream, attOffset, attKeySize, 0, 2); 
     // Final clean-up
-    free(key);
+    free(attOffset);
     free(errorArray);
     free(min_offset);
     free(min_error);
+    for (int i = 0; i < maxKeySize; i++) {
+        free(key[i]);
+    }
+    free(key);
+    remove("attdraft.txt");
 
     return;
 }

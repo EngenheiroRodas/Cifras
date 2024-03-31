@@ -1,3 +1,31 @@
+min	tamanho chave 1: "n" error 27.218006
+min	tamanho chave 2: "nZ" error 20.033704
+	tamanho chave 3: "nnn" error 27.218006
+	tamanho chave 4: "nZnZ" error 20.033704
+	tamanho chave 5: "nnnnn" error 27.218006
+	tamanho chave 6: "nZnZnZ" error 20.033704
+	tamanho chave 7: "nnnknkn" error 25.811442
+	tamanho chave 8: "nZnZnZnZ" error 20.033704
+	tamanho chave 9: "nnnnnnnnk" error 26.568230
+	tamanho chave 10: "nZnZnZnZnZ" error 20.033704
+	tamanho chave 11: "nnnnknnknnn" error 26.175333
+	tamanho chave 12: "nZnZnZnZnZnZ" error 20.033704
+min	tamanho chave 13: "LqECoqqmccico" error 7.840280
+	tamanho chave 14: "nZnZnZnZnZnZnZ" error 20.033704
+	tamanho chave 15: "knnknnnnnnnnnnn" error 26.434386
+	tamanho chave 16: "nZnZnZnZnZnZnZnZ" error 20.033704
+	tamanho chave 17: "nnnnnnnnnnknnknnk" error 26.189672
+	tamanho chave 18: "nZnZnZnZkZnZnZnZnZ" error 19.800980
+	tamanho chave 19: "nnkknnkknknnnknnnkn" error 25.546559
+	tamanho chave 20: "nZnZnZnZnZnZnZnZnZnZ" error 20.033704
+	tamanho chave 21: "knnnnnnnkknnknnnnknkn" error 25.703031
+	tamanho chave 22: "nZnZkZnZnZnZnZnZnZnZnZ" error 19.799459
+	tamanho chave 23: "knknnknnnknnnnnnnnnkknl" error 25.403941
+	tamanho chave 24: "nZnZnZnZnZnZnZnZnZnZnZnZ" error 20.033704
+	tamanho chave 25: "nnnnnknnlnnnnnnnknknkkknk" error 25.449741
+min	tamanho chave 26: "LEECprogramacao2024rodrigo" error 0.031489
+	tamanho chave 27: "knknnnknkknnnnnnnnnnnnnnknk" error 25.869681
+	tamanho chave 28: "nZnZnZnZnZnZnZnZnZnZnZnZkZnZ" error 19.864773
 The Project Gutenberg eBook of The Adventures of Sherlock Holmes
     
 This ebook is for the use of anyone anywhere in the United States and
