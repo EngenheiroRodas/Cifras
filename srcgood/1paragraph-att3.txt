@@ -1,23 +1,23 @@
-min 	tamanho chave 1: "n" erro 26.509257
-min 	tamanho chave 2: "nZ" erro 20.827575
-min 	tamanho chave 3: "Qqn" erro 16.632268
-	tamanho chave 4: "nnnm" erro 21.208384
-min 	tamanho chave 5: "LomeU" erro 14.808283
-min 	tamanho chave 6: "lqnXnS" erro 12.796620
-	tamanho chave 7: "lign mp" erro 14.976682
-	tamanho chave 8: " inmonip" erro 16.003821
-min 	tamanho chave 9: "crSinwXqn" erro 11.521359
-	tamanho chave 10: "LomeaZtmeU" erro 12.059670
-	tamanho chave 11: "ncYmnii mK6" erro 14.373006
-	tamanho chave 12: "lnninacq XnS" erro 11.777461
-	tamanho chave 13: "inini,Ynmga R" erro 15.139122
-	tamanho chave 14: "omnnmmpliig ag" erro 12.610202
-min 	tamanho chave 15: "Programacao2024" erro 0.059364
-	tamanho chave 16: " anmoZtiRXmZknlR" erro 13.869984
-	tamanho chave 17: "i ngixmonnlm-ZZZp" erro 11.655150
-	tamanho chave 18: "lrbNnwXrnXqSlq9Xnn" erro 10.484895
-	tamanho chave 19: "p-nmmnm gVgg hxYRty" erro 13.001056
-	tamanho chave 20: "VkmenZomvnps 1aZq fU" erro 8.680534
+min 	tamanho chave 1: "n" error 26.509257
+min 	tamanho chave 2: "nZ" error 20.827575
+min 	tamanho chave 3: "Qqn" error 16.632268
+	tamanho chave 4: "nnnm" error 21.208384
+min 	tamanho chave 5: "LomeU" error 14.808283
+min 	tamanho chave 6: "lqnXnS" error 12.796620
+	tamanho chave 7: "lign mp" error 14.976682
+	tamanho chave 8: " inmonip" error 16.003821
+min 	tamanho chave 9: "crSinwXqn" error 11.521359
+	tamanho chave 10: "LomeaZtmeU" error 12.059670
+	tamanho chave 11: "ncYmnii mK6" error 14.373006
+	tamanho chave 12: "lnninacq XnS" error 11.777461
+	tamanho chave 13: "inini,Ynmga R" error 15.139122
+	tamanho chave 14: "omnnmmpliig ag" error 12.610202
+min 	tamanho chave 15: "Programacao2024" error 0.059364
+	tamanho chave 16: " anmoZtiRXmZknlR" error 13.869984
+	tamanho chave 17: "i ngixmonnlm-ZZZp" error 11.655150
+	tamanho chave 18: "lrbNnwXrnXqSlq9Xnn" error 10.484895
+	tamanho chave 19: "p-nmmnm gVgg hxYRty" error 13.001056
+	tamanho chave 20: "VkmenZomvnps 1aZq fU" error 8.680534
 To Sherlock Holmes she is always the woman. I have seldom heard him
 mention her under any other name. In his eyes she eclipses and
 predominates the whole of her sex. It was not that he felt any emotion

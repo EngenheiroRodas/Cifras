@@ -1,0 +1,24 @@
+min	tamanho chave 1: "m" error 22.905399
+min	tamanho chave 2: "mk" error 19.326523
+min	tamanho chave 3: "knS" error 17.810620
+min	tamanho chave 4: "mYmy" error 15.001547
+min	tamanho chave 5: "msZeq" error 10.371095
+	tamanho chave 6: "cnnksd" error 12.902389
+	tamanho chave 7: "zxUdmkn" error 14.611716
+min	tamanho chave 8: "nrs--pmz" error 9.730406
+min	tamanho chave 9: "ktSXnsdnn" error 7.917868
+	tamanho chave 10: "mzmeqmsjoq" error 8.813991
+	tamanho chave 11: "kmmlm,mYyno" error 11.243709
+	tamanho chave 12: "itoyxdllncss" error 8.603000
+	tamanho chave 13: "tstjlkxsb mpm" error 8.302794
+	tamanho chave 14: "9yndmnqlmwkhSz" error 8.377635
+min	tamanho chave 15: "Programacao2024" error 0.237347
+	tamanho chave 16: "8hmnQwzznrs-oo1z" error 8.986137
+	tamanho chave 17: "  mfnaZrxpq9hV uq" error 7.578374
+	tamanho chave 18: " ,nPwspsnysfVnsxqz" error 6.425133
+	tamanho chave 19: "dsx2rp nqculitdmssv" error 7.102089
+	tamanho chave 20: "WyZermlj;qmz-gsZs9n-" error 5.783108
+To Sherlock Holmes she is always the woman. I have seldom heard him 
+mention her under any other name. In his eyes she eclipses and 
+predominates the whole of her sex. It was not that he felt any emotion 
+akin to love for Irene Adler. All emotions, and that one particularly, 

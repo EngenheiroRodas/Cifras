@@ -71,17 +71,15 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize){
     int tempMinErrorIndex = 0; //guarda o número de letras que a chave com erro mínimo tem
     double tempMinError = ABSURDLY_LARGE_ERROR; //guarda o erro mínimo encontrado até ao momento
     
-    
-
     //começamos em chunksize 1, correspondendo ao tamanho de chave = 1 e avançamos, até maxKeySize
     for (int chunkSize = 1; chunkSize <= maxKeySize; chunkSize++) {
         for (int i = 0; i < chunkSize; i++){
             errorArray[i] = (double *) calloc(TABLE_SIZE, sizeof(double)); // Aloca 67 espaços de erro para 67 diferentes offsets 
+            min_error[i] = ABSURDLY_LARGE_ERROR; //inicializa o erro a um número gigante
         } 
         
         //Alocação de memória antes de entrar no loop
         key[chunkSize - 1] = malloc((chunkSize + 1) * sizeof(char));  // key terá chunksize + 1, para o '\0'
-        min_error[chunkSize - 1] = ABSURDLY_LARGE_ERROR; //inicializa o erro a um número gigante
 
 
         /*repete até chunksize, ou seja calcula estatísticas começando no primeiro elemento (i = 0) e saltando de chunksize em chunksize,

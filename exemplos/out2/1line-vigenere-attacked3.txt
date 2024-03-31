@@ -1,21 +1,21 @@
 min 	tamanho chave 1: "q" erro 40.572826
-min 	tamanho chave 2: "qy" erro 38.828804
-	tamanho chave 3: "qyq" erro 105.951787
-min 	tamanho chave 4: "qyqQ" erro 33.484994
-	tamanho chave 5: "qyqQy" erro 109.230045
-	tamanho chave 6: "qyqQyR" erro 96.983243
-	tamanho chave 7: "qyqQyRu" erro 52.656540
-	tamanho chave 8: "qyqQyRuQ" erro 41.392384
-	tamanho chave 9: "qyqQyRuQl" erro 68.392534
-	tamanho chave 10: "qyqQyRuQlj" erro 59.470954
-	tamanho chave 11: "qyqQyRuQljq" erro 47.722398
-	tamanho chave 12: "qyqQyRuQljqK" erro 57.816354
-	tamanho chave 13: "qyqQyRuQljqKm" erro 54.746729
-min 	tamanho chave 14: "qyqQyRuQljqKm," erro 31.999605
-	tamanho chave 15: "qyqQyRuQljqKm,." erro 106.810561
-	tamanho chave 16: "qyqQyRuQljqKm,.Q" erro 39.405436
-	tamanho chave 17: "qyqQyRuQljqKm,.Qv" erro 52.861337
-	tamanho chave 18: "qyqQyRuQljqKm,.Qve" erro 59.914167
-	tamanho chave 19: "qyqQyRuQljqKm,.Qves" erro 91.012353
-	tamanho chave 20: "qyqQyRuQljqKm,.Qvesj" erro 143.151887
-2hyianjvfTiiat-DfBiDN pbcPvo8lXEq3eo.na,csB
+min 	tamanho chave 2: "my" erro 20.271899
+min 	tamanho chave 3: "kuq" erro 19.238775
+min 	tamanho chave 4: "XwnQ" erro 11.434850
+min 	tamanho chave 5: "Wo-gy" erro 9.587564
+min 	tamanho chave 6: "0uqXgR" erro 7.028740
+	tamanho chave 7: "XoVlslu" erro 9.090711
+	tamanho chave 8: "VunNXUfQ" erro 8.451646
+	tamanho chave 9: ",ooUvwksl" erro 7.867202
+min 	tamanho chave 10: "a07YsMvskj" erro 4.428368
+	tamanho chave 11: "ef 7tXki4Qq" erro 8.044561
+min 	tamanho chave 12: "zu;XkwkjoZYK" erro 3.888913
+min 	tamanho chave 13: "-.9Cg-vhqakom" erro 2.547354
+min 	tamanho chave 14: "AxnuvlhXmcfLh," erro 1.634249
+min 	tamanho chave 15: "ProuqamiQZm23;." erro 1.284604
+	tamanho chave 16: "vsvQtWmTo,nBMv4Q" erro 3.513748
+	tamanho chave 17: "vevWqakb7OqOjc.9v" erro 3.387573
+	tamanho chave 18: "-soYhMd2qBk2Uv.Zre" erro 2.299537
+	tamanho chave 19: "xfouYavhqKqNjvuYets" erro 1.415580
+	tamanho chave 20: "efnKf ;XOyf2mvuXvsnj" erro 4.734334
+To Eierd dm Estmesmthesut,ai iys fie o ncny
