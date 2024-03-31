@@ -12,16 +12,6 @@
 #define NEEDED 1
 #define NOT_NEEDED 0
 
-/*
- * Function:  getIndex 
- * --------------------
- * devolve o valor de tabela do input:
- *
- * Parâmetros: caracter de input
- *
- * Returns: o valor da tabela do caracter de input
- *          se o valor não estiver na tabela devolve -1
- */
 int getIndex(char input) {
 	int i;
 	for(i= 0; i<TABLE_SIZE; i++) {
@@ -32,16 +22,6 @@ int getIndex(char input) {
 	return -1;
 }
 
-/*
- * Function:  encode 
- * --------------------
- * codifica e imprime o caracter de input:
- *
- * input: caracter de input tranformado para o valor de tabela por getIndex(input)
- * offset_value: o valor do offset
- * 
- * Returns: imprime para stdout o input codificado, usando encoded = (input + offset) % 67 
- */
 char encode(char input, int offset_value)
 {
     // Se estiver na tabela é codificado 
@@ -55,16 +35,6 @@ char encode(char input, int offset_value)
     }
 }
 
-/*
- * Function:  decode 
- * --------------------
- * descodifica e imprime o caracter codificado:
- *
- * input: caracter de input codificado, tranformado para o valor de tabela por getIndex(input)
- * offset_value: o valor do offset
- * 
- * Returns: imprime para stdout o input descodificado, usando decoded = (encoded_char - offset + 67) % 67 
- */
 char decode(char input, int offset_value)
 {
     int input_num = getIndex(input);
@@ -79,16 +49,6 @@ char decode(char input, int offset_value)
     }
 }
 
-/*
- * Function:  calcular offsets 
- * --------------------
- * transforma as letras da senha em valores da tabela:
- *
- * input: senha
- * 
- * Returns: guarda num array offset_values, com o tamanho da chave, os valores da tabela de cada letra da senha, 
- * retornando o apontador para o início desse array
- */
 int *offset_calculator(char *key, int key_size)
 {
     int *offset_values = malloc(key_size * sizeof(int)); // allocate memory for the offset values

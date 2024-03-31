@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
     FILE *input_stream = stdin; //Default to standard output
     FILE *output_stream = stdout; // Default to standard output
 
-    while ((opt = getopt(argc, argv, "fc:d:s:i:o:ea:n:")) != -1) { // lê as opções fornecidas através da linha de comando
+    while ((opt = getopt(argc, argv, "fc:d:s:i:o:ea:n:h")) != -1) { // lê as opções fornecidas através da linha de comando
         switch (opt) {
             case 'f':
                 fflag = 1;
@@ -86,12 +86,25 @@ int main(int argc, char *argv[])
                 wflag = 1;
                 dictionary_name = strdup(optarg);
                 break;
+            case 'h':
+                FILE *file = fopen("help.txt", "r");
+                if (file == NULL) {
+                    printf("Error opening the file.\n");
+                    exit(EXIT_FAILURE);
+                }
+                char ch;
+                while ((ch = fgetc(file)) != EOF)
+                    printf("%c", ch);
+                printf("\n");
+                fclose(file);
+
+                return 0;
             default: /* '?' is returned if neither flag is found*/
                 fprintf(stderr, "Use -h for help\n");
                 exit(EXIT_FAILURE);
         }
     }
-    //Error handling
+    //Tratamento de erros
     for (size_t i = 0; i < strlen(key); i++) { //password não pode ter carcateres desconhecidos
         if (getIndex(key[i]) == -1) {
             fprintf(stderr, "ERROR: your password has an unknown character.\n");
@@ -103,54 +116,57 @@ int main(int argc, char *argv[])
         fprintf(stderr, "ERROR: ciphering or attack method invalid.\n");
         exit(EXIT_FAILURE);
     }
-    //End of error handling
+    //Fim de tratamento de erros
     
-      
     if (eflag == 1) { //calcula estatísticas
         int chunkSize = 1;
-        unsigned int regularChar = 0, weirdChar = 0, temp[67] = {0};
+        unsigned int regularChar = 0, weirdChar = 0, temp[67] = {0}; //estes valores serão modificados
         double *frequency = statCalculator(input_stream, &regularChar, &weirdChar, temp, chunkSize, eflag);
 
-        for (int i = 0; i < TABLE_SIZE; i++) {
+        for (int i = 0; i < TABLE_SIZE; i++) { //imprime os valores dos caracteres da tabela
             fprintf(output_stream,"conta('%c')=%u\t%f%%\n", cipher_table[i], temp [i], (frequency[i] * 100));
         }
 
+        //resto da impressão
         fprintf(output_stream, "Total: %u caracteres\n", regularChar);
         fprintf(output_stream, "conta(outros)=%u\t%f%%\n", weirdChar, (frequency[67] * 100));
         fprintf(output_stream, "Total do ficheiro: %u caracteres\n", (regularChar + weirdChar));
         free(frequency);
     }
 
-    if (aflag == 1) {
-        if (a_method == 1) {
+    if (aflag == 1) { //ataques
+        if (a_method == 1) { //ataque 1
 
         } else if (a_method == 2) { //ataque 2
-        int min_offset = 0;
-        double min_error = 0;
-            cesarAttack(input_stream, &min_offset, &min_error, 1);
+        int min_offset = 0; 
+        double min_error = 0; //estes valores serão modificados
+            cesarAttack(input_stream, &min_offset, &min_error);
 
             fprintf(output_stream, "offset com menor erro %d, letra '%c', "
                        "cifrado com letra '%c', "
                        "erro quadrático médio: %f.\n",
                        min_offset, cipher_table[min_offset],
                        cipher_table[(TABLE_SIZE - min_offset) % TABLE_SIZE], min_error);
-        
+
+            //letra a usar para decifra
             char key_letter[1] = {cipher_table[(TABLE_SIZE - min_offset) % TABLE_SIZE]};
             int *attack_values = offset_calculator(key_letter, 1);
-            rewind(input_stream);
 
+            //decifra
+            rewind(input_stream);
             filter_d(input_stream, output_stream, attack_values, 1, 0, 1);
 
+            //libertar memória
             free(attack_values);
         } else { //ataque 3
-            vigenereAttack(input_stream, output_stream, nnumber, eflag);
+            vigenereAttack(input_stream, output_stream, nnumber);
         }
     }      
     
 
     //cipher decipher block
     int key_size = strlen(key);
-    int *offset_values = offset_calculator(key, key_size); // Array para guardar valores do offset
+    int *offset_values = offset_calculator(key, key_size); // Vetor para guardar valores do offset
     if (cflag == 1) {
         filter_c(input_stream, output_stream, offset_values, key_size, fflag, c_method); //produzem ficheiro de output dentro da função sem alocação de mem dinâmica
     } else {

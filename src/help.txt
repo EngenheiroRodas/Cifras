@@ -1,0 +1,26 @@
+Uso: $ ./cifras [OPTIONS]
+
+Uma ferramenta para encriptar e desencriptar texto usando vários métodos.
+
+Options:
+-h	mostra a ajuda para o utilizador 
+-i	filename nome do ficheiro de entrada, em alternativa a stdin 
+-o	filename nome do ficheiro de saída, em alternativa a stdout 
+-s	senha senha a usar para cifrar/decifrar, em alternativa a “Programacao2024” 
+-f	filtra o ficheiro de entrada e formata o ficheiro de saída 
+-c	nn a operação a realizar deve ser cifrar, com o método nn 
+-d	nn a operação a realizar deve ser decifrar, com o método nn 
+-e	a operação a realizar deve ser calcular estatísticas 
+-a	nn a operação a realizar deve ser atacar, com o método nn 
+-n	nn para o ataque método 3, a dimensão máxima da chave deve ser nn, em vez de 20 
+-w	filename nome do ficheiro de dicionário a usar 
+
+Exemplos válidos de invocação do programa: 
+Exemplo 1: ./cifras -h 
+Exemplo 2: ./cifras -c 1 
+Exemplo 3: ./cifras -d 1 -s Programacao  
+Exemplo 4: ./cifras -c 1 -i 1line.txt -o 1line-cesar.txt 
+ 
+Exemplos inválidos de invocação do programa: 
+Exemplo 1: ./cifras -c 20 
+Exemplo 2: ./cifras -c 1 -s

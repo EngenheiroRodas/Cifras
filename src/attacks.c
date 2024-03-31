@@ -7,7 +7,7 @@
 
 #define TABLE_SIZE 67
 #define DEFAULT_SIZE 20 
-#define ABSURDLY_LARGE_ERROR 1000
+#define ABSURDLY_LARGE_ERROR 100
 
 const double probabilities [TABLE_SIZE] = 
 { 0.000160079, 0.000554985, 0.000381091, 0.000306662, 0.000263793, 0.000235223, //0-5
@@ -23,21 +23,27 @@ const double probabilities [TABLE_SIZE] =
   0.014999588, 0.000554985, 0.190494768, 0.014249609, 0.014999588, 0.000554985, //60-65
   0.001124969 }; //66
 
-void cesarAttack(FILE *input_stream, int *min_offset, double *min_error, int eflag)
+
+void cesarAttack(FILE *input_stream, int *min_offset, double *min_error)
 {
     int chunkSize = 1;
-    unsigned int regularChar = 0, weirdChar = 0, temp[67] = {0};
-    double *freq = statCalculator(input_stream, &regularChar, &weirdChar, temp, chunkSize, eflag);
+    unsigned int regularChar = 0, weirdChar = 0, temp[67] = {0}; 
+    //vetor que vai guardar as estatísticas do ficheiro de input
+    double *freq = statCalculator(input_stream, &regularChar, &weirdChar, temp, chunkSize, 1);
 
     double error[TABLE_SIZE + 1] = {ABSURDLY_LARGE_ERROR};
 
     for (int j = 0; j < TABLE_SIZE; j++) {
         for (int i = 0; i < TABLE_SIZE; i++) {
-            error[j] += ((pow((freq[i] - probabilities[(i + j) % 67]), 2)) / probabilities[(i + j) % 67]);
+            //usam-se as estatísticas para calcular o erro quadrático médio
+            error[j] += ((pow((freq[i] - probabilities[(i + j) % TABLE_SIZE]), 2)) / probabilities[(i + j) % TABLE_SIZE]);
         }
     }
 
+    //já não vamos precisar das estísticas
     free(freq);
+    
+    //cáclulo do erro mínimo e do offset mínimo
     *min_error = error[0];
     for (int i = 1; i < TABLE_SIZE; i++) {
         if (error[i] < *min_error) {
@@ -48,52 +54,58 @@ void cesarAttack(FILE *input_stream, int *min_offset, double *min_error, int efl
     return;
 }
 
-void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize, int eflag){
+void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize){
     if (maxKeySize <= DEFAULT_SIZE) {
-        maxKeySize = DEFAULT_SIZE; // Restrict to the default max size
+        maxKeySize = DEFAULT_SIZE; // ver qual será o tamanho máximo da chave
     }
-    // Dynamically allocate memory for the key array with initial size + 1 for null terminator
-    char **key = (char **)malloc(maxKeySize * sizeof(char *)); // Initial minimal allocation
-    
-    // Other necessary allocations
+
+    // Aloca memória para o número de chaves e de erros com diferents chaves que vão existir
+    char **key = (char **)malloc(maxKeySize * sizeof(char *)); 
     double **errorArray = (double **) malloc(maxKeySize * sizeof(double *));
+
+    //existirão maxKeysize erros e offsets diferentes, 1 para cada chave
     int *min_offset = (int *) calloc(maxKeySize, sizeof(int));
     double *min_error = (double *) malloc(maxKeySize * sizeof(double));
 
+    
+    int tempMinErrorIndex = 0; ///////////////////////////////////////////////////77
     double tempMinError = ABSURDLY_LARGE_ERROR;
-    int tempMinErrorIndex = 0;
+    //começamos em chunksize 1, correspondendo ao tamanho de chave = 1 e avançamos, até maxKeySize
     for (int chunkSize = 1; chunkSize <= maxKeySize; chunkSize++) {
-        // Memory management and initial assignment within the loop
-        key[chunkSize - 1] = malloc((chunkSize + 1) * sizeof(char));  // Adjust `key` size for current chunkSize
-        for (int i = 0; i < chunkSize; i++) {          
-            errorArray[i] = (double *) calloc(TABLE_SIZE, sizeof(double)); // Allocate or reallocate memory
-            min_error[i] = ABSURDLY_LARGE_ERROR;
-        }
+        
+        //Alocação de memória antes de entrar no loop
+        key[chunkSize - 1] = malloc((chunkSize + 1) * sizeof(char));  // key terá chunksize + 1, para o '\0'
+        errorArray[chunkSize - 1] = (double *) malloc(TABLE_SIZE * sizeof(double)); // Aloca 67 espaços de erro para 67 diferentes offsets 
+        min_error[chunkSize - 1] = ABSURDLY_LARGE_ERROR; //inicializa o erro a um número gigante
 
-        for (int i = 0; i < chunkSize; i++) { // For each segment of the key
+
+        /*repete até chunksize, ou seja calcula estatísticas começando no primeiro elemento (i = 0) e saltando de chunksize em chunksize,
+        depois começa no segundo elemento (i = 1) saltando de chunksize em chunksize e assim sucessivamente até i < chunkSize*/
+        for (int i = 0; i < chunkSize; i++) {
             unsigned int regularChar = 0, weirdChar = 0, temp[TABLE_SIZE] = {0};
-            fseek(input_stream, i, SEEK_SET);  // Start from the ith character
-            double *freq = statCalculator(input_stream, &regularChar, &weirdChar, temp, chunkSize, eflag);
+            fseek(input_stream, i, SEEK_SET); 
+            // Começa do iésimo caracter e calcula estatísticas de chunksize em chunksize
+            double *freq = statCalculator(input_stream, &regularChar, &weirdChar, temp, chunkSize, 0);
 
-            // Quadratic error calculation for each possible character in the key
+
             for (int offset = 0; offset < TABLE_SIZE; offset++) {
-                for (int j = 0; j < TABLE_SIZE; j++) { // For each character in array
-                    int index = (j + offset) % TABLE_SIZE;
-                    errorArray[i][offset] += (pow(freq[j] - probabilities[index], 2)) / probabilities[index];
+                for (int j = 0; j < TABLE_SIZE; j++) { 
+                    //usam-se as estatísticas para calcular o erro quadrático médio
+                    errorArray[i][offset] += (pow(freq[j] - probabilities[(j + offset) % TABLE_SIZE], 2)) / probabilities[(j + offset) % TABLE_SIZE];
                 }
             }
 
-            // Identify minimum error and corresponding character for this segment
+            //cáclulo do erro mínimo e do offset mínimo
             for (int j = 0; j < TABLE_SIZE; j++) {
                 if (errorArray[i][j] < min_error[i]) {
                     min_error[i] = errorArray[i][j];
                     min_offset[i] = j;
                 }
             }
-            free(freq); // Free the frequency array now that we're done with it
-            key[chunkSize - 1][i] = cipher_table[((TABLE_SIZE - min_offset[i]) % TABLE_SIZE)]; // Adjust getCipherChar function accordingly
+            free(freq); // Já não precisamos das frequências
+            key[chunkSize - 1][i] = cipher_table[((TABLE_SIZE - min_offset[i]) % TABLE_SIZE)]; // Escrever na chave de tamanho chunksize a(s) letra(s) encontradas com o menor erro
         }
-        key[chunkSize - 1][chunkSize] = '\0'; // Null-terminate after each assignment
+        key[chunkSize - 1][chunkSize] = '\0'; // Terminar a string
         
         // Free allocated errorArray memory for this chunkSize iteration
         // precisa de espaço
@@ -135,6 +147,8 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize, int
         fclose(att_out);
     }
 
+
+    //done?
     rewind(input_stream);
 
     int attKeySize = strlen(key[tempMinErrorIndex - 1]);
