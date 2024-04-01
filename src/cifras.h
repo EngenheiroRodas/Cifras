@@ -1,7 +1,16 @@
 #ifndef FUNCTIONSF1_H
 #define FUNCTIONSF1_H
+#define TABLE_SIZE 67
+
+#include <stdbool.h>
 
 extern char cipher_table[];
+
+typedef struct Trienode
+{
+    struct Trienode *filho[TABLE_SIZE];
+    bool fimpalavra;
+} Trienode;
 
 /// @brief Devolve o valor de tabela do input
 /// @param input 
@@ -105,5 +114,7 @@ double *statCalculator(FILE *input_stream, unsigned int *regularChar, unsigned i
 void cesarAttack(FILE *input_stream, int *min_offset, double *min_error);
 //ataca viginere
 void vigenereAttack(FILE *input_stream, FILE *output_stream, int nnumber);
+
+void ataquedicionario(Trienode *dicionario, char *input);
 
 #endif

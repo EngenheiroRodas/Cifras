@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <stdbool.h>
 
 #include "cifras.h"
 
@@ -22,7 +23,12 @@ const double probabilities [TABLE_SIZE] =
   0.047248702, 0.068248126, 0.020999423, 0.007349798, 0.017999506, 0.001124969, //54-59
   0.014999588, 0.000554985, 0.190494768, 0.014249609, 0.014999588, 0.000554985, //60-65
   0.001124969 }; //66
-
+  
+typedef struct Trienode
+{
+    struct Trienode *filho[TABLE_SIZE];
+    bool fimpalavra;
+} Trienode;
 
 void cesarAttack(FILE *input_stream, int *min_offset, double *min_error)
 {
@@ -177,4 +183,52 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize){
     free(min_error);
 
     return;
+}
+
+void ataquedicionario(Trienode *dicionario, char *input)
+{
+    int best_offset = 0;
+    int max_palavra = 0;
+    int best_score = 0;
+    int len = strlen(input);
+    char text[len + 1]; 
+
+    for (int offset = 0; offset < TABLE_SIZE; offset++)
+    {
+        char decoded_input[len + 1];
+        for (int i = 0; i < len; i++)
+        {
+            decoded_input[i] = decode(input[i], offset); // Decodifica cada caractere
+        }
+        //printf("%s\n", decoded_input);
+
+        int palavras = 0, score = 0;
+
+        for (int i = 0; i < len; i++)
+        {
+            for (int j = i; j < len; j++)
+            {
+                char word[j - i + 2];
+                strncpy(word, &decoded_input[i], j - i + 1);
+                word[j - i + 1] = '\0';
+                
+                //printf("%s\n", word);
+                if (procurarpalavra(word, dicionario))
+                {
+                    palavras++;
+                    score +=  strlen(word)*strlen(word);
+                }
+            }
+        }
+        if (palavras > max_palavra)
+        {
+            max_palavra = palavras;
+            best_score = score;
+            best_offset = offset;
+            strcpy(text, decoded_input);
+        }
+    }
+    int cifra = (TABLE_SIZE-best_offset)%TABLE_SIZE;
+    printf("offset máximo %d, letra '%c', cifrado com letra '%c', total %d palavras, score %d.", cifra, cipher_table[cifra], cipher_table[best_offset], max_palavra, best_score);
+    printf("\n%s", text);
 }
