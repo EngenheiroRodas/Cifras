@@ -60,21 +60,6 @@ int inserirpalavra(char *palavra, Trienode *raiz)
     return 0;
 }
 
-bool procurarpalavra(char* palavra, Trienode* raiz) {
-    Trienode* current = raiz;
-    while (*palavra) {
-        int indice = getIndex(*palavra);
-        if (indice != -1) {
-            if (!current->filho[indice]) {
-                return false;  // A palavra não está na árvore
-            }
-            current = current->filho[indice];
-        }
-        palavra++;
-    }
-    return current != NULL && current->fimpalavra;
-}
-
 int main(int argc, char *argv[])
 {
     int opt, cflag, fflag, iflag, oflag, eflag, aflag, wflag; // flags que vão dizer se os comandos foram utilizados

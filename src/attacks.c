@@ -23,12 +23,6 @@ const double probabilities [TABLE_SIZE] =
   0.047248702, 0.068248126, 0.020999423, 0.007349798, 0.017999506, 0.001124969, //54-59
   0.014999588, 0.000554985, 0.190494768, 0.014249609, 0.014999588, 0.000554985, //60-65
   0.001124969 }; //66
-  
-typedef struct Trienode
-{
-    struct Trienode *filho[TABLE_SIZE];
-    bool fimpalavra;
-} Trienode;
 
 void cesarAttack(FILE *input_stream, int *min_offset, double *min_error)
 {
@@ -183,6 +177,21 @@ void vigenereAttack(FILE *input_stream, FILE *output_stream, int maxKeySize){
     free(min_error);
 
     return;
+}
+
+bool procurarpalavra(char* palavra, Trienode* raiz) {
+    Trienode* current = raiz;
+    while (*palavra) {
+        int indice = getIndex(*palavra);
+        if (indice != -1) {
+            if (!current->filho[indice]) {
+                return false;  // A palavra não está na árvore
+            }
+            current = current->filho[indice];
+        }
+        palavra++;
+    }
+    return current != NULL && current->fimpalavra;
 }
 
 void ataquedicionario(Trienode *dicionario, char *input)
