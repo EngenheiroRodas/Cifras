@@ -22,6 +22,59 @@ int getopt(int argc, char *const argv[], const char *optstring);
 extern char *optarg;
 extern int optind, opterr, optopt;
 
+Trienode *createnode()
+{
+    Trienode *node = (Trienode *)malloc(sizeof(Trienode));
+    if (node)
+    {
+        node->fimpalavra = false;
+        for (int i = 0; i < TABLE_SIZE; i++)
+        {
+            node->filho[i] = NULL;
+        }
+    }
+    return node;
+}
+
+int inserirpalavra(char *palavra, Trienode *raiz)
+{
+    Trienode *current = raiz;
+    while (*palavra)
+    {
+        int indice = getIndex(*palavra);
+        if (indice != -1)
+        {
+            if (!current->filho[indice])
+            {
+                current->filho[indice] = createnode();
+                if (current->filho[indice] == NULL)
+                {
+                    return -1; // Handle memory allocation failure
+                }
+            }
+            current = current->filho[indice];
+        }
+        palavra++;
+    }
+    current->fimpalavra = true;
+    return 0;
+}
+
+bool procurarpalavra(char* palavra, Trienode* raiz) {
+    Trienode* current = raiz;
+    while (*palavra) {
+        int indice = getIndex(*palavra);
+        if (indice != -1) {
+            if (!current->filho[indice]) {
+                return false;  // A palavra não está na árvore
+            }
+            current = current->filho[indice];
+        }
+        palavra++;
+    }
+    return current != NULL && current->fimpalavra;
+}
+
 int main(int argc, char *argv[])
 {
     int opt, cflag, fflag, iflag, oflag, eflag, aflag, wflag; // flags que vão dizer se os comandos foram utilizados
