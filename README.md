@@ -17,10 +17,15 @@ Options:
 
 Valid program invocation examples:
 Example 1: ./cifras -h
+
 Example 2: ./cifras -c 1
+
 Example 3: ./cifras -d 1 -s Programacao
+
 Example 4: ./cifras -c 1 -i 1line.txt -o 1line-cesar.txt
+
 
 Invalid program invocation examples:
 Example 1: ./cifras -c 20
+
 Example 2: ./cifras -c 1 -s
