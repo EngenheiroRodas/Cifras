@@ -3,8 +3,8 @@ Usage: $ ./cifras [OPTIONS]
 A tool for encrypting and decrypting text using various methods.
 
 Options:
--h display user help
--i filename input file name, alternatively stdin
+-h display user help  
+-i filename input file name, alternatively stdin  
 -o filename output file name, alternatively stdout
 -s password password to use for encrypting/decrypting, alternatively "Programacao2024"
 -f filters the input file and formats the output file
