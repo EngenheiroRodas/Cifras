@@ -115,6 +115,6 @@ void cesarAttack(FILE *input_stream, int *min_offset, double *min_error);
 //ataca viginere
 void vigenereAttack(FILE *input_stream, FILE *output_stream, int nnumber);
 
-void ataquedicionario(Trienode *dicionario, char *input);
+void ataquedicionario(FILE *output_stream, Trienode *dicionario, char **input, int lineCounter);
 
 #endif

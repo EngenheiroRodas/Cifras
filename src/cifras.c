@@ -60,12 +60,26 @@ int inserirpalavra(char *palavra, Trienode *raiz)
     return 0;
 }
 
+void freeTrie(Trienode *root) {
+    if (root == NULL) {
+        return;
+    }
+
+    for (int i = 0; i < TABLE_SIZE; i++) {
+        if (root->filho[i] != NULL) {
+            freeTrie(root->filho[i]);
+        }
+    }
+
+    free(root);
+}
+
 int main(int argc, char *argv[])
 {
     int opt, cflag, fflag, iflag, oflag, eflag, aflag, wflag; // flags que vão dizer se os comandos foram utilizados
     int c_method = 0, a_method = 0;                           // método de cifra e ataque
     char *key = "Programacao2024";                            // Password default
-    char *dictionary_name;
+    char *dictionary_name = "/usr/share/dict/words";
     fflag = 0; // inicialização
     cflag = 1;
     iflag = 0;
@@ -78,7 +92,7 @@ int main(int argc, char *argv[])
     FILE *input_stream = stdin;   // Default to standard output
     FILE *output_stream = stdout; // Default to standard output
 
-    while ((opt = getopt(argc, argv, "fc:d:s:i:o:ea:n:h")) != -1)
+    while ((opt = getopt(argc, argv, "fc:d:s:i:o:ea:n:hw:")) != -1)
     { // lê as opções fornecidas através da linha de comando
         switch (opt)
         {
@@ -211,10 +225,11 @@ int main(int argc, char *argv[])
             int lineCounter = 0;
             lines = loadFile(input_stream, &lineCounter); // carrega para a memória o ficheiro de input_stream, e diz quantas linhas carregou
 
-            for(int i=0;i<lineCounter;i++){
-                ataquedicionario(dicionario, lines[i]);
-            }
+            ataquedicionario(output_stream, dicionario, lines, lineCounter);
             
+            freeTrie(dicionario);
+            
+            freeLines(lines, &lineCounter);
         }
         else if (a_method == 2)
         { // ataque 2
